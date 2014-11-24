@@ -35,7 +35,7 @@
 #include "api.h"
 
 #include <mman.h>
-//#include <ioctls.h>
+#include <ioctls.h>
 #include <fcntl.h>
 #include <asm-errno.h>
 #include <elf/elf.h>

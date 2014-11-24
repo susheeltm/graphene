@@ -128,6 +128,7 @@ typedef struct
     fpregset_t fpregs;
     unsigned long __reserved1 [8];
 } mcontext_t;
+#ifndef ucontext
 /* Userlevel context.  */
 typedef struct ucontext
   {
@@ -138,6 +139,7 @@ typedef struct ucontext
     __sigset_t uc_sigmask;
     struct _libc_fpstate __fpregs_mem;
   } ucontext_t;
+#endif
 #else /* __WORDSIZE == 32 */
 /* Type for general register.  */
 typedef int greg_t;

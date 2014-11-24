@@ -32,9 +32,9 @@
 #include "pal_debug.h"
 #include "api.h"
 
-#include <time.h>
-#include <sys/poll.h>
-#include <sys/wait.h>
+#include <linux/time.h>
+#include <linux/poll.h>
+#include <linux/wait.h>
 #include <atomic.h>
 #include <cmpxchg.h>
 #include <asm-errno.h>

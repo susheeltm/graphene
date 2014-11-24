@@ -43,7 +43,7 @@
 #include <sched.h>
 #include <types.h>
 typedef __kernel_pid_t pid_t;
-#include <asm/fcntl.h>
+#include <fcntl.h>
 #include <sys/socket.h>
 #include <asm-errno.h>
 

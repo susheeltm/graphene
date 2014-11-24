@@ -32,8 +32,8 @@
 #include "pal_security.h"
 #include "api.h"
 
-#include <time.h>
-#include <fcntl.h>
+#include <linux/time.h>
+#include <asm/fcntl.h>
 
 #ifdef __x86_64__
 int __gettimeofday(struct timeval *tv, struct timezone *tz);

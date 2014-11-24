@@ -3,7 +3,7 @@
 
 #include <sys/ioctl.h>
 #include <netinet/in.h>
-//#include <netinet6/in6.h>
+#include <netinet6/in6.h>
 
 #define GRAPHENE_FILE   "/dev/graphene"
 #define GRAPHENE_MINOR		239
