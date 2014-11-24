@@ -116,7 +116,7 @@ struct _fpstate
   struct _xmmreg	_xmm[16];
   uint32_t		padding[24];
 };
-
+/*
 struct sigcontext
 {
   unsigned long r8;
@@ -148,6 +148,7 @@ struct sigcontext
   struct _fpstate * fpstate;
   unsigned long __reserved1 [8];
 };
+*/
 
 #endif /* __WORDSIZE == 64 */
 
