@@ -29,12 +29,12 @@ typedef int __sig_atomic_t;
 /* A `sigset_t' has a bit for each signal.  */
 
 # define _SIGSET_NWORDS	(64 / (8 * sizeof (unsigned long int)))
-
+#ifndef __sigset_t
 typedef struct
   {
     unsigned long int __val[_SIGSET_NWORDS];
   } __sigset_t;
-
+#endif
 
 /* Return a mask that includes the bit for SIG only.  */
 # define __sigmask(sig) \
