@@ -23,7 +23,7 @@
 #include "pal_defs.h"
 #include "pal_linux_defs.h"
 #include "pal.h"
-#include "sigset.h"
+#include <_sigset.h>
 #include <sys/syscall.h>
 
 #ifdef __x86_64__
@@ -41,8 +41,7 @@ extern struct pal_linux_config {
     bool            noexec;
 } pal_linux_config;
 
-#include <sys/mman.h>
-#include "mman-common.h"
+#include "mman.h"
 #ifdef INLINE_SYSCALL
 # ifdef __i386__
 #  define ARCH_MMAP(addr, len, prot, flags, fd, offset)          \

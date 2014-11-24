@@ -32,9 +32,9 @@
 #include "api.h"
 
 #include <atomic.h>
-#include <futex.h>
+#include <linux/futex.h>
 #include <asm-errno.h>
-#include <sys/time.h>
+#include <linux/time.h>
 
 int _DkEventCreate (PAL_HANDLE * event, bool initialState, bool isnotification)
 {

@@ -35,7 +35,7 @@
 #include <sys/cdefs.h>
 #include <sys/_types.h>
 
-#include <sys/_sigset.h>
+#include "sigset.h"
 #include <sys/_timeval.h>
 #include <sys/timespec.h>
 

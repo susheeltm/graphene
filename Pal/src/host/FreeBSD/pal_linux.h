@@ -23,7 +23,7 @@
 #include "pal_defs.h"
 #include "pal_linux_defs.h"
 #include "pal.h"
-#include "sigset.h"
+#include <sys/_sigset.h>
 #include <sys/syscall.h>
 
 #ifdef __x86_64__

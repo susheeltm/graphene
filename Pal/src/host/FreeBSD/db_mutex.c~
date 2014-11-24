@@ -39,7 +39,7 @@
 #include <cmpxchg.h>
 #include <asm-errno.h>
 #include <sys/time.h>
-//#include <unistd.h>
+#include <unistd.h>
 
 #if defined(__i386__)
 #define rmb()           asm volatile("lock; addl $0,0(%%esp)" ::: "memory")

@@ -32,7 +32,7 @@
 #include "pal_debug.h"
 #include "api.h"
 
-#include <mman.h>
+#include <asm/mman.h>
 
 int _DkVirtualMemoryAlloc (void ** paddr, size_t size, int alloc_type,
                            int prot)

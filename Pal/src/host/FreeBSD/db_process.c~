@@ -40,8 +40,8 @@
 #include "graphene-ipc.h"
 #include "api.h"
 
-#include <sched.h>
-#include <types.h>
+#include <linux/sched.h>
+#include <linux/types.h>
 typedef __kernel_pid_t pid_t;
 #include <asm/fcntl.h>
 #include <sys/socket.h>
