@@ -224,7 +224,7 @@ elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
             value += reloc->r_addend - (Elf64_Addr) reloc_addr;
             *(Elf64_Addr *) reloc_addr = value;
             break;
-
+	
         case R_X86_64_COPY:
             elf_machine_rela_debug (R_X86_64_COPY, SYM, value);
             size_t sym_size = sym ? sym->st_size : 0;

@@ -18,7 +18,7 @@
 
 #include "api.h"
 #include <sys/endian.h>
-
+/*
 uint32_t __htonl (uint32_t x)
 {
 #if BYTE_ORDER == BIG_ENDIAN
@@ -50,3 +50,4 @@ uint16_t __ntohs (uint16_t x)
 {
     return __htons (x);
 }
+*/

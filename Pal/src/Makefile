@@ -9,7 +9,8 @@ LD	= ld
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
 	  -fno-omit-frame-pointer \
 	  -fno-stack-protector -fno-builtin \
-	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD
+	  -fPIC \
+	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD 
 LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
 	  -T pal.lds
 ARFLAGS	=
@@ -45,7 +46,7 @@ security:
 
 libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
 	   $(host_lib) $(graphene_lib)
-	@echo [ $@ ]
+	@echo [ ld $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@]
 	@$(LD) $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@
 
 libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
