@@ -1,0 +1,10 @@
+/home/tm/Graphene/graphene/LibOS/build/math/t_sincosl.os: \
+ ../sysdeps/ieee754/ldbl-96/t_sincosl.c ../include/libc-symbols.h \
+ /home/tm/Graphene/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/tm/Graphene/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:

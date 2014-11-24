@@ -1,0 +1,10 @@
+/home/tm/Graphene/graphene/LibOS/build/math/k_rem_pio2l.os: \
+ ../sysdeps/x86_64/fpu/k_rem_pio2l.c ../include/libc-symbols.h \
+ /home/tm/Graphene/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/tm/Graphene/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:

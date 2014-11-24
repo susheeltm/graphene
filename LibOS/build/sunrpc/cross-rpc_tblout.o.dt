@@ -1,0 +1,11 @@
+/home/tm/Graphene/graphene/LibOS/build/sunrpc/cross-rpc_tblout.o: \
+ rpc_tblout.c /home/tm/Graphene/graphene/LibOS/build/config.h rpc_parse.h \
+ rpc_util.h proto.h
+
+/home/tm/Graphene/graphene/LibOS/build/config.h:
+
+rpc_parse.h:
+
+rpc_util.h:
+
+proto.h:

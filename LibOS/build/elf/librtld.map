@@ -1,0 +1,1510 @@
+Archive member included because of file (symbol)
+
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__libc_check_standard_fds)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os) (__libc_errno)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__sigsetjmp)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__longjmp)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (strchr)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (strcmp)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (strcpy)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (strlen)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (strnlen)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (memchr)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (memcmp)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (memmove)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (memset)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (mempcpy)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (stpcpy)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+                              (memcpy@@GLIBC_2.14)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os) (_wordcopy_fwd_aligned)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (rawmemchr)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os) (__strcmp_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os) (__strend_sse4)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os) (__memcmp_sse4_1)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os) (__memcpy_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os) (__mempcpy_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os) (__memmove_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os) (__memcpy_ssse3_back)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os) (__mempcpy_ssse3_back)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os) (__memmove_ssse3_back)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os) (__strlen_sse42)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os) (__strlen_sse2_no_bsf)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os) (__memset_x86_64)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os) (__strcpy_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os) (__stpcpy_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os) (__strcpy_sse2_unaligned)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os) (__stpcpy_sse2_unaligned)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os) (__strlen_sse2_pminub)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os) (__strnlen_sse2_no_bsf)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os) (__strchr_sse2_no_bsf)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os) (__memcmp_ssse3)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os) (__x86_64_data_cache_size)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__closedir)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__readdir)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (rewinddir)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os) (__getdents)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__fdopendir)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__uname)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (_exit)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__getpid)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__environ)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__GI___xstat64)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__GI___fxstat64)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__GI___lxstat64)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os) (__open_nocancel)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os) (__close_nocancel)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__libc_read)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__libc_write)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__access)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os) (__GI___libc_fcntl)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__mmap)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__munmap)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__mprotect)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__lseek)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+                              /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os (__profil)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os) (__GI___profile_frequency)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os) (__lll_lock_wait_private)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os) (__libc_enable_asynccancel)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os) (__libc_multiple_threads)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os) (__init_cpu_features)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os) (__GI___sigaction)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os) (__GI_bsearch)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os) (__setitimer)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os) (__pthread_unwind)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os) (__GI_exit)
+/home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+                              /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os) (__exit_funcs)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+START GROUP
+LOAD /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+LOAD /home/tm/Graphene/graphene/LibOS/build/libc_pic.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/4.6/libgcc.a
+END GROUP
+
+.interp
+ *(.interp)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rela.init
+ *(.rela.init)
+
+.rela.text
+ *(.rela.text)
+
+.rela.fini
+ *(.rela.fini)
+
+.rela.rodata
+ *(.rela.rodata)
+
+.rela.data.rel.ro
+ *(.rela.data.rel.ro)
+
+.rela.data
+ *(.rela.data)
+
+.rela.tdata
+ *(.rela.tdata)
+
+.rela.tbss
+ *(.rela.tbss)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rela.got
+ *(.rela.got)
+
+.rela.bss
+ *(.rela.bss)
+
+.rela.ldata
+ *(.rela.ldata)
+
+.rela.lbss
+ *(.rela.lbss)
+
+.rela.lrodata
+ *(.rela.lrodata)
+
+.rela.ifunc
+ *(.rela.ifunc)
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(.init)
+
+.plt
+ *(.plt)
+ *(.iplt)
+
+.text           0x0000000000000000    0x1c76a
+ *(.text .stub)
+ .text          0x0000000000000000    0x15332 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+                0x0000000000000000                _start
+                0x0000000000000008                _dl_start_user
+                0x0000000000000080                _dl_initial_error_catch_tsd
+                0x0000000000005d10                _dl_dst_count
+                0x0000000000005dc0                _dl_dst_substitute
+                0x0000000000006400                _dl_init_paths
+                0x0000000000006800                _dl_map_object
+                0x00000000000070c0                _dl_rtld_di_serinfo
+                0x0000000000007c60                _dl_lookup_symbol_x
+                0x0000000000008c40                _dl_setup_hash
+                0x0000000000008d00                _dl_add_to_namespace_list
+                0x0000000000008da0                _dl_new_object
+                0x00000000000090d0                _dl_try_allocate_static_tls
+                0x00000000000091c0                _dl_allocate_static_tls
+                0x00000000000091f0                _dl_nothread_init_static_tls
+                0x0000000000009280                _dl_protect_relro
+                0x00000000000092e0                _dl_reloc_bad_type
+                0x00000000000093b0                _dl_relocate_object
+                0x000000000000a8d0                _dl_map_object_deps
+                0x000000000000ba60                _dl_important_hwcaps
+                0x000000000000c1d0                _dl_fixup
+                0x000000000000c3f0                _dl_profile_fixup
+                0x000000000000c980                _dl_call_pltexit
+                0x000000000000ca90                _dl_signal_error
+                0x000000000000cc10                _dl_signal_cerror
+                0x000000000000ccb0                _dl_catch_error
+                0x000000000000cda0                _dl_receive_error
+                0x000000000000cf60                _dl_init_internal
+                0x000000000000cf60                _dl_init
+                0x000000000000d080                _dl_sort_fini
+                0x000000000000d2e0                _dl_fini
+                0x000000000000d6d0                __libc_dl_debug_state
+                0x000000000000d6e0                _dl_debug_initialize
+                0x000000000000dd10                _dl_sysdep_read_whole_file
+                0x000000000000ddc0                _dl_debug_printf
+                0x000000000000de20                _dl_debug_printf_c
+                0x000000000000de80                _dl_dprintf
+                0x000000000000ded0                _dl_name_match_p
+                0x000000000000df40                _dl_higher_prime_number
+                0x000000000000e390                _dl_check_map_versions
+                0x000000000000e800                _dl_check_all_versions
+                0x000000000000e870                _dl_start_profile
+                0x000000000000ef90                _dl_mcount_internal
+                0x000000000000ef90                _dl_mcount
+                0x000000000000f1e0                _dl_resolve_conflicts
+                0x000000000000f400                _dl_next_tls_modid
+                0x000000000000f4e0                _dl_determine_tlsoffset
+                0x000000000000f6b0                __GI__dl_tls_setup
+                0x000000000000f6b0                _dl_tls_setup
+                0x000000000000f760                _dl_get_tls_static_info
+                0x000000000000f780                _dl_allocate_tls_storage
+                0x000000000000f8c0                __GI__dl_allocate_tls_init
+                0x000000000000f8c0                _dl_allocate_tls_init
+                0x000000000000fae0                __GI__dl_allocate_tls
+                0x000000000000fae0                _dl_allocate_tls
+                0x000000000000fb20                _dl_deallocate_tls
+                0x000000000000fb20                __GI__dl_deallocate_tls
+                0x000000000000fbb0                _dl_update_slotinfo
+                0x000000000000fec0                __tls_get_addr
+                0x000000000000ff00                _dl_tls_get_addr_soft
+                0x000000000000ff80                _dl_add_to_slotinfo
+                0x0000000000010060                _dl_get_origin
+                0x00000000000101f0                _dl_scope_free
+                0x00000000000102c0                _dl_make_stack_executable
+                0x00000000000102c0                __GI__dl_make_stack_executable
+                0x0000000000010360                _dl_check_caller
+                0x0000000000010710                _dl_open
+                0x0000000000010a90                _dl_show_scope
+                0x0000000000010bb0                _dl_addr_inside_object
+                0x00000000000117a0                _dl_close_worker
+                0x0000000000012610                _dl_close
+                0x0000000000012690                _dl_runtime_resolve
+                0x0000000000012700                _dl_runtime_profile
+                0x0000000000012c60                _dl_x86_64_save_sse
+                0x0000000000012d50                _dl_x86_64_restore_sse
+                0x0000000000012e00                register_library
+                0x0000000000012e04                syscalldb
+                0x0000000000012e10                _dl_cache_libcmp
+                0x0000000000012f00                _dl_load_cache_lookup
+                0x0000000000013470                _dl_unload_cache
+                0x00000000000134b0                _dl_sysdep_start
+                0x0000000000013760                _dl_sysdep_start_cleanup
+                0x0000000000013770                _dl_show_auxv
+                0x0000000000013920                _dl_discover_osversion
+                0x0000000000013b00                _dl_next_ld_env_entry
+                0x0000000000013b40                unsetenv
+                0x0000000000013bb0                __libc_memalign
+                0x0000000000013cb0                malloc
+                0x0000000000013cc0                calloc
+                0x0000000000013d00                free
+                0x0000000000013d30                __sigjmp_save
+                0x0000000000013d40                __strerror_r
+                0x0000000000013e20                __GI___assert_fail
+                0x0000000000013e20                __assert_fail
+                0x0000000000013e70                realloc
+                0x0000000000013f20                __GI___assert_perror_fail
+                0x0000000000013f20                __assert_perror_fail
+                0x0000000000013f90                __strtoul_internal
+                0x0000000000014130                _itoa
+                0x0000000000014190                __strsep
+                0x0000000000014190                strsep
+                0x0000000000014190                __strsep_g
+                0x0000000000014220                __GI___chk_fail
+                0x0000000000014220                __chk_fail
+                0x0000000000014230                __brk
+                0x0000000000014230                brk
+                0x0000000000014290                sbrk
+                0x0000000000014290                __sbrk
+                0x0000000000014930                __getcwd
+                0x0000000000014930                getcwd
+                0x00000000000149b0                openat64
+                0x0000000000014a10                __alloc_dir
+                0x0000000000014b40                __opendirat
+                0x0000000000014bb0                __opendir
+                0x0000000000014bb0                opendir
+                0x0000000000014bc0                __fxstatat
+                0x0000000000014bc0                __fxstatat64
+                0x0000000000014bc0                __GI___fxstatat64
+                0x0000000000014c10                _dl_make_tlsdesc_dynamic
+                0x0000000000014ee0                _dl_tlsdesc_resolve_rela_fixup
+                0x00000000000150c0                _dl_tlsdesc_resolve_hold_fixup
+                0x0000000000015100                _dl_unmap
+                0x0000000000015190                _dl_tlsdesc_return
+                0x00000000000151a0                _dl_tlsdesc_undefweak
+                0x00000000000151b0                _dl_tlsdesc_dynamic
+                0x0000000000015250                _dl_tlsdesc_resolve_rela
+                0x00000000000152c0                _dl_tlsdesc_resolve_hold
+ *fill*         0x0000000000015332        0xe 90909090
+ .text          0x0000000000015340      0x102 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+                0x0000000000015410                __libc_check_standard_fds
+ *fill*         0x0000000000015442        0x2 90909090
+ .text          0x0000000000015444        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+ *fill*         0x0000000000015444        0xc 90909090
+ .text          0x0000000000015450       0x57 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+                0x0000000000015450                __sigsetjmp
+                0x0000000000015450                __GI___sigsetjmp
+ *fill*         0x00000000000154a7        0x9 90909090
+ .text          0x00000000000154b0       0x50 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+                0x00000000000154b0                __longjmp
+ .text          0x0000000000015500       0xbc /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+                0x0000000000015500                index
+                0x0000000000015500                strchr
+                0x0000000000015540                __strchr_sse2
+                0x0000000000015540                __GI_strchr
+ *fill*         0x00000000000155bc        0x4 90909090
+ .text          0x00000000000155c0     0x1479 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+                0x00000000000155c0                strcmp
+                0x0000000000015600                __strcmp_sse2
+                0x0000000000015600                __GI_strcmp
+ *fill*         0x0000000000016a39        0x7 90909090
+ .text          0x0000000000016a40      0x11c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+                0x0000000000016a40                strcpy
+                0x0000000000016a80                __GI_strcpy
+                0x0000000000016a80                __strcpy_sse2
+ *fill*         0x0000000000016b5c        0x4 90909090
+ .text          0x0000000000016b60      0x12d /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+                0x0000000000016b60                strlen
+                0x0000000000016bb0                __strlen_sse2
+                0x0000000000016bb0                __GI_strlen
+ *fill*         0x0000000000016c8d        0x3 90909090
+ .text          0x0000000000016c90       0x9d /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+                0x0000000000016c90                __strnlen
+                0x0000000000016c90                strnlen
+                0x0000000000016cc0                __strnlen_sse2
+                0x0000000000016cc0                __GI_strnlen
+ *fill*         0x0000000000016d2d        0x3 90909090
+ .text          0x0000000000016d30      0x344 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+                0x0000000000016d30                __GI_memchr
+                0x0000000000016d30                memchr
+                0x0000000000016d30                __memchr
+ *fill*         0x0000000000017074        0xc 90909090
+ .text          0x0000000000017080      0x440 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+                0x0000000000017080                bcmp
+                0x0000000000017080                memcmp
+                0x00000000000170c0                __GI_memcmp
+                0x00000000000170c0                __memcmp_sse2
+ .text          0x00000000000174c0      0x1d7 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+                0x00000000000174c0                __GI_memmove
+                0x00000000000174c0                __memmove_sse2
+                0x0000000000017650                memmove
+                0x0000000000017650                memcpy@GLIBC_2.2.5
+                0x0000000000017650                __libc_memmove
+ *fill*         0x0000000000017697        0x9 90909090
+ .text          0x00000000000176a0      0xb50 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+                0x00000000000176a0                memset
+                0x00000000000176a0                __libc_memset
+                0x00000000000176d0                __memset_chk_sse2
+                0x00000000000176e0                __GI_memset
+                0x00000000000176e0                __memset_sse2
+ .text          0x00000000000181f0      0x4a2 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+                0x00000000000181f0                mempcpy
+                0x00000000000181f0                __mempcpy
+                0x0000000000018230                __mempcpy_chk_sse2
+                0x0000000000018240                __GI_mempcpy
+                0x0000000000018240                __mempcpy_sse2
+                0x0000000000018240                __GI___mempcpy
+ *fill*         0x0000000000018692        0xe 90909090
+ .text          0x00000000000186a0      0x11c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+                0x00000000000186a0                stpcpy
+                0x00000000000186a0                __stpcpy
+                0x00000000000186e0                __GI_stpcpy
+                0x00000000000186e0                __GI___stpcpy
+                0x00000000000186e0                __stpcpy_sse2
+ *fill*         0x00000000000187bc        0x4 90909090
+ .text          0x00000000000187c0      0x4b5 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+                0x00000000000187c0                __new_memcpy
+                0x00000000000187c0                memcpy@@GLIBC_2.14
+                0x0000000000018800                __memcpy_chk_sse2
+                0x0000000000018810                __memcpy_sse2
+                0x0000000000018810                __GI_memcpy
+ *fill*         0x0000000000018c75        0xb 90909090
+ .text          0x0000000000018c80      0x546 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+                0x0000000000018c80                _wordcopy_fwd_aligned
+                0x0000000000018dc0                _wordcopy_fwd_dest_aligned
+                0x0000000000018ef0                _wordcopy_bwd_aligned
+                0x0000000000019070                _wordcopy_bwd_dest_aligned
+ *fill*         0x00000000000191c6        0xa 90909090
+ .text          0x00000000000191d0      0x244 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+                0x00000000000191d0                __rawmemchr
+                0x00000000000191d0                rawmemchr
+                0x0000000000019210                __GI___rawmemchr
+                0x0000000000019210                __rawmemchr_sse2
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+ .text          0x0000000000019414        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+ *fill*         0x0000000000019414        0xc 90909090
+ .text          0x0000000000019420      0x560 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+                0x0000000000019420                __memset_chk_x86_64
+                0x0000000000019430                __memset_x86_64
+ .text          0x0000000000019980        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+ .text          0x0000000000019980        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+ .text          0x0000000000019980      0x630 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+                0x0000000000019980                __strcpy_sse2_unaligned
+ .text          0x0000000000019fb0      0x6b0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+                0x0000000000019fb0                __stpcpy_sse2_unaligned
+ .text          0x000000000001a660        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+ .text          0x000000000001a660        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+ .text          0x000000000001a660        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+ .text          0x000000000001a660        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+ .text          0x000000000001a660      0x5b7 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+                0x000000000001abc0                __cache_sysconf
+ *fill*         0x000000000001ac17        0x9 90909090
+ .text          0x000000000001ac20       0x2d /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+                0x000000000001ac20                __closedir
+                0x000000000001ac20                closedir
+ *fill*         0x000000000001ac4d        0x3 90909090
+ .text          0x000000000001ac50      0x10c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+                0x000000000001ac50                readdir
+                0x000000000001ac50                __readdir64
+                0x000000000001ac50                __readdir
+                0x000000000001ac50                readdir64
+ *fill*         0x000000000001ad5c        0x4 90909090
+ .text          0x000000000001ad60       0x90 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+                0x000000000001ad60                rewinddir
+                0x000000000001ad60                __GI_rewinddir
+ .text          0x000000000001adf0       0x8b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+                0x000000000001adf0                __getdents
+                0x000000000001adf0                __getdents64
+ *fill*         0x000000000001ae7b        0x5 90909090
+ .text          0x000000000001ae80       0x89 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+                0x000000000001ae80                fdopendir
+                0x000000000001ae80                __fdopendir
+ *fill*         0x000000000001af09        0x7 90909090
+ .text          0x000000000001af10       0x2a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+                0x000000000001af10                uname
+                0x000000000001af10                __GI_uname
+                0x000000000001af10                __uname
+                0x000000000001af10                __GI___uname
+ *fill*         0x000000000001af3a        0x6 90909090
+ .text          0x000000000001af40       0x5e /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+                0x000000000001af40                _Exit
+                0x000000000001af40                __GI__exit
+                0x000000000001af40                _exit
+ *fill*         0x000000000001af9e        0x2 90909090
+ .text          0x000000000001afa0       0x3e /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+                0x000000000001afa0                __getpid
+                0x000000000001afa0                getpid
+                0x000000000001afa0                __GI_getpid
+                0x000000000001afa0                __GI___getpid
+ *fill*         0x000000000001afde        0x2 90909090
+ .text          0x000000000001afe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+ .text          0x000000000001afe0       0x57 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+                0x000000000001afe0                _xstat
+                0x000000000001afe0                __xstat64
+                0x000000000001afe0                __GI___xstat64
+                0x000000000001afe0                __GI___xstat
+                0x000000000001afe0                __xstat
+ *fill*         0x000000000001b037        0x9 90909090
+ .text          0x000000000001b040       0x57 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+                0x000000000001b040                __GI___fxstat
+                0x000000000001b040                __GI___fxstat64
+                0x000000000001b040                __fxstat64
+                0x000000000001b040                _fxstat
+                0x000000000001b040                __fxstat
+ *fill*         0x000000000001b097        0x9 90909090
+ .text          0x000000000001b0a0       0x57 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+                0x000000000001b0a0                __GI___lxstat
+                0x000000000001b0a0                _lxstat
+                0x000000000001b0a0                __lxstat
+                0x000000000001b0a0                __lxstat64
+                0x000000000001b0a0                __GI___lxstat64
+ *fill*         0x000000000001b0f7        0x9 90909090
+ .text          0x000000000001b100       0x6c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+                0x000000000001b100                __GI___open64
+                0x000000000001b100                __open
+                0x000000000001b100                __GI_open
+                0x000000000001b100                __GI___open
+                0x000000000001b100                __GI_open64
+                0x000000000001b100                __libc_open
+                0x000000000001b100                open64
+                0x000000000001b100                __GI___libc_open
+                0x000000000001b100                open
+                0x000000000001b100                __open64
+                0x000000000001b109                __open_nocancel
+ *fill*         0x000000000001b16c        0x4 90909090
+ .text          0x000000000001b170       0x6c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+                0x000000000001b170                __GI_close
+                0x000000000001b170                __GI___libc_close
+                0x000000000001b170                __libc_close
+                0x000000000001b170                __close
+                0x000000000001b170                __GI___close
+                0x000000000001b170                close
+                0x000000000001b179                __close_nocancel
+ *fill*         0x000000000001b1dc        0x4 90909090
+ .text          0x000000000001b1e0       0x6c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+                0x000000000001b1e0                __read
+                0x000000000001b1e0                __GI_read
+                0x000000000001b1e0                __libc_read
+                0x000000000001b1e0                __GI___read
+                0x000000000001b1e0                read
+                0x000000000001b1e0                __GI___libc_read
+                0x000000000001b1e9                __read_nocancel
+ *fill*         0x000000000001b24c        0x4 90909090
+ .text          0x000000000001b250       0x6c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+                0x000000000001b250                __write
+                0x000000000001b250                __GI_write
+                0x000000000001b250                write
+                0x000000000001b250                __GI___libc_write
+                0x000000000001b250                __GI___write
+                0x000000000001b250                __libc_write
+                0x000000000001b259                __write_nocancel
+ *fill*         0x000000000001b2bc        0x4 90909090
+ .text          0x000000000001b2c0       0x2a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+                0x000000000001b2c0                __GI_access
+                0x000000000001b2c0                __GI___access
+                0x000000000001b2c0                access
+                0x000000000001b2c0                __access
+ *fill*         0x000000000001b2ea        0x6 90909090
+ .text          0x000000000001b2f0      0x19f /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+                0x000000000001b3e0                __fcntl_nocancel
+                0x000000000001b410                __libc_fcntl
+                0x000000000001b410                __GI___libc_fcntl
+                0x000000000001b410                __GI___fcntl
+                0x000000000001b410                __fcntl
+                0x000000000001b410                fcntl
+ *fill*         0x000000000001b48f        0x1 90909090
+ .text          0x000000000001b490       0x2d /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+                0x000000000001b490                __GI___mmap
+                0x000000000001b490                __GI_mmap64
+                0x000000000001b490                __mmap
+                0x000000000001b490                mmap
+                0x000000000001b490                __GI___mmap64
+                0x000000000001b490                __mmap64
+                0x000000000001b490                __GI_mmap
+                0x000000000001b490                mmap64
+ *fill*         0x000000000001b4bd        0x3 90909090
+ .text          0x000000000001b4c0       0x2a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+                0x000000000001b4c0                munmap
+                0x000000000001b4c0                __GI___munmap
+                0x000000000001b4c0                __GI_munmap
+                0x000000000001b4c0                __munmap
+ *fill*         0x000000000001b4ea        0x6 90909090
+ .text          0x000000000001b4f0       0x2a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+                0x000000000001b4f0                __mprotect
+                0x000000000001b4f0                __GI___mprotect
+                0x000000000001b4f0                __GI_mprotect
+                0x000000000001b4f0                mprotect
+ *fill*         0x000000000001b51a        0x6 90909090
+ .text          0x000000000001b520       0x6c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+                0x000000000001b520                __GI___lseek
+                0x000000000001b520                __GI_lseek64
+                0x000000000001b520                __llseek
+                0x000000000001b520                __GI_llseek
+                0x000000000001b520                __lseek64
+                0x000000000001b520                lseek
+                0x000000000001b520                __libc_lseek64
+                0x000000000001b520                __GI___libc_lseek64
+                0x000000000001b520                __GI___libc_lseek
+                0x000000000001b520                llseek
+                0x000000000001b520                __lseek
+                0x000000000001b520                __GI___lseek64
+                0x000000000001b520                __libc_lseek
+                0x000000000001b520                __GI___llseek
+                0x000000000001b520                __GI_lseek
+                0x000000000001b520                lseek64
+                0x000000000001b529                __lseek_nocancel
+ *fill*         0x000000000001b58c        0x4 90909090
+ .text          0x000000000001b590      0x1fd /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+                0x000000000001b5f0                __profil
+                0x000000000001b5f0                profil
+ *fill*         0x000000000001b78d        0x3 90909090
+ .text          0x000000000001b790        0xb /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+                0x000000000001b790                __GI___profile_frequency
+                0x000000000001b790                __profile_frequency
+ *fill*         0x000000000001b79b        0x5 90909090
+ .text          0x000000000001b7a0       0x6b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+                0x000000000001b7a0                __lll_lock_wait_private
+                0x000000000001b7e0                __lll_unlock_wake_private
+ *fill*         0x000000000001b80b        0x5 90909090
+ .text          0x000000000001b810       0xc5 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+                0x000000000001b810                __libc_enable_asynccancel
+                0x000000000001b870                __libc_disable_asynccancel
+ *fill*         0x000000000001b8d5        0x3 90909090
+ .text          0x000000000001b8d8        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ *fill*         0x000000000001b8d8        0x8 90909090
+ .text          0x000000000001b8e0      0x267 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+                0x000000000001b8e0                __init_cpu_features
+                0x000000000001bb30                __get_cpu_features
+ *fill*         0x000000000001bb47        0x9 90909090
+ .text          0x000000000001bb50      0x23f /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+                0x000000000001bb70                __libc_sigaction
+                0x000000000001bb70                __GI___libc_sigaction
+                0x000000000001bd70                sigaction
+                0x000000000001bd70                __GI___sigaction
+                0x000000000001bd70                __sigaction
+ *fill*         0x000000000001bd8f        0x1 90909090
+ .text          0x000000000001bd90       0x8a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+                0x000000000001bd90                bsearch
+                0x000000000001bd90                __GI_bsearch
+ *fill*         0x000000000001be1a        0x6 90909090
+ .text          0x000000000001be20       0x2a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+                0x000000000001be20                setitimer
+                0x000000000001be20                __setitimer
+                0x000000000001be20                __GI_setitimer
+                0x000000000001be20                __GI___setitimer
+ *fill*         0x000000000001be4a        0x6 90909090
+ .text          0x000000000001be50      0x5c6 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+                0x000000000001be50                pthread_equal
+                0x000000000001be80                pthread_attr_destroy
+                0x000000000001beb0                pthread_attr_init@@GLIBC_2.2.5
+                0x000000000001beb0                __pthread_attr_init_2_1
+                0x000000000001bee0                pthread_attr_getdetachstate
+                0x000000000001bf10                pthread_attr_setdetachstate
+                0x000000000001bf40                pthread_attr_getinheritsched
+                0x000000000001bf70                pthread_attr_setinheritsched
+                0x000000000001bfa0                pthread_attr_getschedparam
+                0x000000000001bfd0                pthread_attr_setschedparam
+                0x000000000001c000                pthread_attr_getschedpolicy
+                0x000000000001c030                pthread_attr_setschedpolicy
+                0x000000000001c060                pthread_attr_getscope
+                0x000000000001c090                pthread_attr_setscope
+                0x000000000001c0c0                pthread_condattr_destroy
+                0x000000000001c0f0                pthread_condattr_init
+                0x000000000001c120                pthread_cond_broadcast@@GLIBC_2.3.2
+                0x000000000001c120                __pthread_cond_broadcast
+                0x000000000001c150                pthread_cond_destroy@@GLIBC_2.3.2
+                0x000000000001c150                __pthread_cond_destroy
+                0x000000000001c180                pthread_cond_init@@GLIBC_2.3.2
+                0x000000000001c180                __pthread_cond_init
+                0x000000000001c1b0                pthread_cond_signal@@GLIBC_2.3.2
+                0x000000000001c1b0                __pthread_cond_signal
+                0x000000000001c1e0                pthread_cond_wait@@GLIBC_2.3.2
+                0x000000000001c1e0                __pthread_cond_wait
+                0x000000000001c210                pthread_cond_timedwait@@GLIBC_2.3.2
+                0x000000000001c210                __pthread_cond_timedwait
+                0x000000000001c240                pthread_exit
+                0x000000000001c240                __pthread_exit
+                0x000000000001c270                pthread_getschedparam
+                0x000000000001c2a0                pthread_setschedparam
+                0x000000000001c2d0                pthread_mutex_destroy
+                0x000000000001c300                pthread_mutex_init
+                0x000000000001c330                pthread_mutex_lock
+                0x000000000001c360                pthread_mutex_unlock
+                0x000000000001c390                pthread_self
+                0x000000000001c3c0                pthread_setcancelstate
+                0x000000000001c3f0                pthread_setcanceltype
+ *fill*         0x000000000001c416        0xa 90909090
+ .text          0x000000000001c420      0x115 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+                0x000000000001c420                __run_exit_handlers
+                0x000000000001c520                __GI_exit
+                0x000000000001c520                exit
+ *fill*         0x000000000001c535        0xb 90909090
+ .text          0x000000000001c540      0x22a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+                0x000000000001c540                __new_exitfn
+                0x000000000001c6b0                __internal_atexit
+                0x000000000001c720                __cxa_atexit_internal
+                0x000000000001c720                __cxa_atexit
+ *(.gnu.warning)
+
+.text.unlikely  0x0000000000000000      0xa47
+ .text.unlikely
+                0x0000000000000000      0xa47 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+
+.text.sse4.2    0x0000000000000000      0xf8a
+ .text.sse4.2   0x0000000000000000       0xa5 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+                0x0000000000000000                __strchr_sse42
+ *fill*         0x00000000000000a5        0xb 00
+ .text.sse4.2   0x00000000000000b0      0xda9 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+                0x00000000000000b0                __strcmp_sse42
+ *fill*         0x0000000000000e59        0x7 00
+ .text.sse4.2   0x0000000000000e60       0x4f /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+                0x0000000000000e60                __rawmemchr_sse42
+ *fill*         0x0000000000000eaf        0x1 00
+ .text.sse4.2   0x0000000000000eb0       0x3c /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+                0x0000000000000eb0                __strend_sse4
+ *fill*         0x0000000000000eec        0x4 00
+ .text.sse4.2   0x0000000000000ef0       0x9a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+                0x0000000000000ef0                __strlen_sse42
+
+.text.ssse3     0x0000000000000000    0x141f3
+ .text.ssse3    0x0000000000000000     0x1259 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+                0x0000000000000000                __GI___strcmp_ssse3
+                0x0000000000000000                __strcmp_ssse3
+ *fill*         0x0000000000001259        0x7 00
+ .text.ssse3    0x0000000000001260     0x29c6 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+                0x0000000000001260                __memcpy_chk_ssse3
+                0x0000000000001270                __memcpy_ssse3
+ *fill*         0x0000000000003c26        0xa 00
+ .text.ssse3    0x0000000000003c30     0x29c6 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+                0x0000000000003c30                __mempcpy_chk_ssse3
+                0x0000000000003c40                __mempcpy_ssse3
+ *fill*         0x00000000000065f6        0xa 00
+ .text.ssse3    0x0000000000006600     0x2b77 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+                0x0000000000006600                __memmove_chk_ssse3
+                0x0000000000006610                __memmove_ssse3
+ *fill*         0x0000000000009177        0x9 00
+ .text.ssse3    0x0000000000009180     0x2ac6 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+                0x0000000000009180                __memcpy_chk_ssse3_back
+                0x0000000000009190                __memcpy_ssse3_back
+ *fill*         0x000000000000bc46        0xa 00
+ .text.ssse3    0x000000000000bc50     0x2ac6 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+                0x000000000000bc50                __mempcpy_chk_ssse3_back
+                0x000000000000bc60                __mempcpy_ssse3_back
+ *fill*         0x000000000000e716        0xa 00
+ .text.ssse3    0x000000000000e720     0x2b16 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+                0x000000000000e720                __memmove_chk_ssse3_back
+                0x000000000000e730                __memmove_ssse3_back
+ *fill*         0x0000000000011236        0xa 00
+ .text.ssse3    0x0000000000011240     0x17a2 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+                0x0000000000011240                __strcpy_ssse3
+ *fill*         0x00000000000129e2        0xe 00
+ .text.ssse3    0x00000000000129f0     0x1803 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+                0x00000000000129f0                __stpcpy_ssse3
+
+.text.sse4.1    0x0000000000000000     0x163e
+ .text.sse4.1   0x0000000000000000     0x163e /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+                0x0000000000000000                __memcmp_sse4_1
+
+.text.atom      0x0000000000000000     0x25f3
+ .text.atom     0x0000000000000000      0x3a4 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+                0x0000000000000000                __strlen_sse2_no_bsf
+ *fill*         0x00000000000003a4        0xc 00
+ .text.atom     0x00000000000003b0      0x7b4 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+                0x00000000000003b0                __strnlen_sse2_no_bsf
+ *fill*         0x0000000000000b64        0xc 00
+ .text.atom     0x0000000000000b70      0x315 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+                0x0000000000000b70                __strchr_sse2_no_bsf
+ *fill*         0x0000000000000e85        0xb 00
+ .text.atom     0x0000000000000e90     0x1763 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+                0x0000000000000e90                __memcmp_ssse3
+
+.text.sse2      0x0000000000000000      0x2bf
+ .text.sse2     0x0000000000000000      0x2bf /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+                0x0000000000000000                __strlen_sse2_pminub
+
+.text.startup   0x0000000000000000      0x278
+ .text.startup  0x0000000000000000      0x278 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+
+.text.compat    0x0000000000000000      0x15a
+ .text.compat   0x0000000000000000      0x15a /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+                0x0000000000000000                pthread_cond_broadcast@GLIBC_2.2.5
+                0x0000000000000000                __pthread_cond_broadcast_2_0
+                0x0000000000000030                __pthread_cond_destroy_2_0
+                0x0000000000000030                pthread_cond_destroy@GLIBC_2.2.5
+                0x0000000000000060                __pthread_cond_init_2_0
+                0x0000000000000060                pthread_cond_init@GLIBC_2.2.5
+                0x0000000000000090                __pthread_cond_signal_2_0
+                0x0000000000000090                pthread_cond_signal@GLIBC_2.2.5
+                0x00000000000000c0                pthread_cond_wait@GLIBC_2.2.5
+                0x00000000000000c0                __pthread_cond_wait_2_0
+                0x00000000000000f0                pthread_cond_timedwait@GLIBC_2.2.5
+                0x00000000000000f0                __pthread_cond_timedwait_2_0
+                0x0000000000000120                __pthread_unwind
+
+.fini
+ *(.fini)
+
+.rodata         0x0000000000000000     0x14a0
+ *(.rodata)
+ .rodata        0x0000000000000000      0xbd0 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+                0x0000000000000bc0                __GI__itoa_lower_digits
+                0x0000000000000bc0                _itoa_lower_digits
+ .rodata        0x0000000000000bd0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+ .rodata        0x0000000000000c10      0x2d0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+ .rodata        0x0000000000000ee0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .rodata        0x0000000000000f20       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .rodata        0x0000000000000f60      0x150 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+ .rodata        0x00000000000010b0       0x80 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+ .rodata        0x0000000000001130       0x80 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+ *fill*         0x00000000000011b0       0x10 00
+ .rodata        0x00000000000011c0      0x2e0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+
+.rodata.str1.1  0x0000000000000000     0x1070
+ .rodata.str1.1
+                0x0000000000000000      0xfef /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ .rodata.str1.1
+                0x0000000000000fef       0x14 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .rodata.str1.1
+                0x0000000000001003       0x42 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ .rodata.str1.1
+                0x0000000000001045       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.rodata.str1.8  0x0000000000000000     0x25c3
+ .rodata.str1.8
+                0x0000000000000000     0x2591 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ *fill*         0x0000000000002591        0x7 00
+ .rodata.str1.8
+                0x0000000000002598       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+
+.rodata.str1.16
+                0x0000000000000000      0x3d1
+ .rodata.str1.16
+                0x0000000000000000      0x3b3 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ *fill*         0x00000000000003b3        0xd 00
+ .rodata.str1.16
+                0x00000000000003c0       0x11 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+
+.rodata.cst4    0x0000000000000000        0x4
+ .rodata.cst4   0x0000000000000000        0x4 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+
+.rodata.str1.32
+                0x0000000000000000      0x121
+ .rodata.str1.32
+                0x0000000000000000      0x121 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+
+.rodata.sse4.2  0x0000000000000000       0x40
+ .rodata.sse4.2
+                0x0000000000000000       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+
+.rodata.sse4.1  0x0000000000000000      0x140
+ .rodata.sse4.1
+                0x0000000000000000      0x140 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+
+.rodata.ssse3   0x0000000000000000     0x1440
+ .rodata.ssse3  0x0000000000000000      0x1c0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .rodata.ssse3  0x00000000000001c0      0x1c0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .rodata.ssse3  0x0000000000000380      0x1c0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .rodata.ssse3  0x0000000000000540      0x500 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .rodata.ssse3  0x0000000000000a40      0x500 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .rodata.ssse3  0x0000000000000f40      0x500 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x0000000000000000     0x37b8
+ *(.eh_frame)
+ .eh_frame      0x0000000000000000     0x1dc8 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ .eh_frame      0x0000000000001dc8       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .eh_frame      0x0000000000001e20       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+ .eh_frame      0x0000000000001e50       0x48 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+ .eh_frame      0x0000000000001e98       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+ .eh_frame      0x0000000000001ef0       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+ .eh_frame      0x0000000000001f48       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+ .eh_frame      0x0000000000001f88       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+ .eh_frame      0x0000000000001fc8       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+ .eh_frame      0x0000000000002008       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+ .eh_frame      0x0000000000002038       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+ .eh_frame      0x0000000000002078       0x88 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+ .eh_frame      0x0000000000002100       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+ .eh_frame      0x0000000000002158       0x80 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+ .eh_frame      0x00000000000021d8       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+ .eh_frame      0x0000000000002218       0x80 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+ .eh_frame      0x0000000000002298       0x80 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .eh_frame      0x0000000000002318       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+ .eh_frame      0x0000000000002370       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .eh_frame      0x00000000000023a0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+ .eh_frame      0x00000000000023d0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+ .eh_frame      0x0000000000002400       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .eh_frame      0x0000000000002440       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .eh_frame      0x0000000000002480       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .eh_frame      0x00000000000024c0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .eh_frame      0x0000000000002500       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .eh_frame      0x0000000000002540       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+ .eh_frame      0x0000000000002580       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+ .eh_frame      0x00000000000025b0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+ .eh_frame      0x00000000000025e0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+ .eh_frame      0x0000000000002620       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+ .eh_frame      0x0000000000002650       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+ .eh_frame      0x0000000000002680       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+ .eh_frame      0x00000000000026b0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+ .eh_frame      0x00000000000026e0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+ .eh_frame      0x0000000000002710       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+ .eh_frame      0x0000000000002740       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+ .eh_frame      0x0000000000002770       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+ .eh_frame      0x00000000000027a0      0x198 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ .eh_frame      0x0000000000002938       0x38 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+ .eh_frame      0x0000000000002970      0x128 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+ .eh_frame      0x0000000000002a98      0x108 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+ .eh_frame      0x0000000000002ba0       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+ .eh_frame      0x0000000000002bf8       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+ .eh_frame      0x0000000000002c38       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+ .eh_frame      0x0000000000002c68       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+ .eh_frame      0x0000000000002c98       0x38 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+ .eh_frame      0x0000000000002cd0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+ .eh_frame      0x0000000000002d10       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+ .eh_frame      0x0000000000002d50       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+ .eh_frame      0x0000000000002d90       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+ .eh_frame      0x0000000000002dc0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+ .eh_frame      0x0000000000002df0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+ .eh_frame      0x0000000000002e20       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+ .eh_frame      0x0000000000002e50       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+ .eh_frame      0x0000000000002e80       0xa0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+ .eh_frame      0x0000000000002f20       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+ .eh_frame      0x0000000000002f50       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+ .eh_frame      0x0000000000002f80       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+ .eh_frame      0x0000000000002fb0       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+ .eh_frame      0x0000000000002fe0       0x78 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+ .eh_frame      0x0000000000003058       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+ .eh_frame      0x0000000000003088       0x60 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+ .eh_frame      0x00000000000030e8       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+ .eh_frame      0x0000000000003128       0x50 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ .eh_frame      0x0000000000003178       0xf0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+ .eh_frame      0x0000000000003268       0x60 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+ .eh_frame      0x00000000000032c8       0x30 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+ .eh_frame      0x00000000000032f8      0x318 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ .eh_frame      0x0000000000003610       0x58 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+ .eh_frame      0x0000000000003668      0x150 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata)
+
+.tbss           0x0000000000000000        0x4
+ *(.tbss)
+ .tbss          0x0000000000000000        0x4 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+                0x0000000000000000                errno
+                0x0000000000000000                __libc_errno
+
+.preinit_array
+ *(.preinit_array)
+
+.jcr
+ *(.jcr)
+
+.dynamic
+ *(.dynamic)
+
+.got
+ *(.got)
+ *(.igot)
+
+.got.plt
+ *(.got.plt)
+ *(.igot.plt)
+
+.data           0x0000000000000000      0xfe0
+ *(.data)
+ .data          0x0000000000000000      0xf9c /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+                0x0000000000000000                glibc_vers_2_17
+                0x0000000000000020                _rtld_global
+                0x0000000000000020                _rtld_local
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+ .data          0x0000000000000f9c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+ *fill*         0x0000000000000f9c        0x4 00
+ .data          0x0000000000000fa0       0x40 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+                0x0000000000000fa0                __x86_64_raw_shared_cache_size
+                0x0000000000000fa8                __x86_64_raw_shared_cache_size_half
+                0x0000000000000fb0                __x86_64_shared_cache_size
+                0x0000000000000fb8                __x86_64_shared_cache_size_half
+                0x0000000000000fc0                __x86_64_raw_data_cache_size
+                0x0000000000000fc8                __x86_64_raw_data_cache_size_half
+                0x0000000000000fd0                __x86_64_data_cache_size
+                0x0000000000000fd8                __x86_64_data_cache_size_half
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+ .data          0x0000000000000fe0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.data.rel.ro    0x0000000000000000      0x244
+ .data.rel.ro   0x0000000000000000      0x244 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+                0x0000000000000000                _rtld_global_ro
+                0x0000000000000000                _rtld_local_ro
+                0x0000000000000128                __pointer_chk_guard_local
+                0x0000000000000130                _dl_skip_args
+                0x0000000000000138                _dl_argv_internal
+                0x0000000000000138                _dl_argv
+                0x0000000000000140                _dl_argc
+                0x00000000000001f0                __stack_prot
+                0x0000000000000230                _dl_random
+                0x0000000000000238                __libc_stack_end
+                0x0000000000000238                __GI___libc_stack_end
+                0x0000000000000240                __libc_enable_secure_internal
+                0x0000000000000240                __libc_enable_secure
+
+.ctors          0x0000000000000000        0x8
+ .ctors         0x0000000000000000        0x8 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+
+.data.rel.local
+                0x0000000000000000        0x8
+ .data.rel.local
+                0x0000000000000000        0x8 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+                0x0000000000000000                __exit_funcs
+
+.data1
+ *(.data1)
+
+.bss            0x0000000000000000      0x6b0
+ *(.dynbss)
+ *(.bss)
+ .bss           0x0000000000000000      0x154 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+                0x00000000000000a0                __libc_r_debug
+                0x0000000000000128                __libc_multiple_libcs
+                0x0000000000000148                __curbrk
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+ .bss           0x0000000000000154        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+ *fill*         0x0000000000000154        0x4 00
+ .bss           0x0000000000000158        0x8 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+                0x0000000000000158                _environ
+                0x0000000000000158                __environ
+                0x0000000000000158                environ
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+ .bss           0x0000000000000160        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+ .bss           0x0000000000000160        0x4 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+ .bss           0x0000000000000164        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+ .bss           0x0000000000000164        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+ .bss           0x0000000000000164        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+ .bss           0x0000000000000164        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+ *fill*         0x0000000000000164       0x1c 00
+ .bss           0x0000000000000180       0xec /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ .bss           0x000000000000026c        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+ *fill*         0x000000000000026c       0x14 00
+ .bss           0x0000000000000280      0x430 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+ *(COMMON)
+ COMMON         0x00000000000006b0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ COMMON         0x00000000000006b0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ COMMON         0x00000000000006b0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ COMMON         0x00000000000006b0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ COMMON         0x00000000000006b0        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.lbss
+ *(.dynlbss)
+ *(.lbss)
+ *(LARGE_COMMON)
+
+.lrodata
+ *(.lrodata)
+
+.ldata
+ *(.ldata)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000      0xa3f
+ *(.comment)
+ .comment       0x0000000000000000      0x5e1 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ .comment       0x00000000000005e1       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .comment       0x000000000000060c       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+ .comment       0x0000000000000637       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+ .comment       0x0000000000000662       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .comment       0x000000000000068d       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ .comment       0x00000000000006b8       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+ .comment       0x00000000000006e3       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+ .comment       0x000000000000070e       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+ .comment       0x0000000000000739       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+ .comment       0x0000000000000764       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+ .comment       0x000000000000078f       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+ .comment       0x00000000000007ba       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+ .comment       0x00000000000007e5       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+ .comment       0x0000000000000810       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+ .comment       0x000000000000083b       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+ .comment       0x0000000000000866       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+ .comment       0x0000000000000891       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+ .comment       0x00000000000008bc       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+ .comment       0x00000000000008e7       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+ .comment       0x0000000000000912       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ .comment       0x000000000000093d       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ .comment       0x0000000000000968       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+ .comment       0x0000000000000993       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+ .comment       0x00000000000009be       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ .comment       0x00000000000009e9       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+ .comment       0x0000000000000a14       0x2b /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/elf/dl-allobjs.os
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(check_fds.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(errno.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setjmp.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(__longjmp.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memchr.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(wordcopy.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rawmemchr.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcmp-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strend-sse4.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-sse4.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcpy-ssse3-back.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mempcpy-ssse3-back.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memmove-ssse3-back.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse4.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-no-bsf.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memset-x86-64.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strcpy-sse2-unaligned.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(stpcpy-sse2-unaligned.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strlen-sse2-pminub.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strnlen-sse2-no-bsf.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(strchr-sse2-no-bsf.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(memcmp-ssse3.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cacheinfo.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(closedir.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(readdir.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(rewinddir.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getdents.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fdopendir.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(uname.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(_exit.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(getpid.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(environ.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(xstat.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fxstat.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(lxstat.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(open.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(close.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(read.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(write.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(access.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(fcntl.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mmap.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(munmap.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(mprotect.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(llseek.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(profil.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(prof-freq.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-lowlevellock.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc-cancellation.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(libc_multiple_threads.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(init-arch.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(sigaction.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(bsearch.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(setitimer.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(forward.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(exit.os)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/tm/Graphene/graphene/LibOS/build/libc_pic.a(cxa_atexit.os)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.gnu.attributes
+ *(.gnu.attributes)
+OUTPUT(/home/tm/Graphene/graphene/LibOS/build/elf/librtld.map.o elf64-x86-64)

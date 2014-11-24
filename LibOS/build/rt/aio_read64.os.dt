@@ -1,0 +1,11 @@
+/home/tm/Graphene/graphene/LibOS/build/rt/aio_read64.os: \
+ ../sysdeps/unix/sysv/linux/wordsize-64/aio_read64.c \
+ ../include/libc-symbols.h \
+ /home/tm/Graphene/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/tm/Graphene/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:

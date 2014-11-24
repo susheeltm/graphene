@@ -1,0 +1,10 @@
+/home/tm/Graphene/graphene/LibOS/build/math/k_cos.o: \
+ ../sysdeps/ieee754/dbl-64/k_cos.c ../include/libc-symbols.h \
+ /home/tm/Graphene/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/tm/Graphene/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:
