@@ -8,7 +8,7 @@ CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -Wall -U_FORTIFY_SOURCE \
 	  -fno-omit-frame-pointer \
 	  -fno-stack-protector -fno-builtin \
 	  -I. -I../.. -I../../../include -I../../../lib -I../../../ipc/linux \
-	  -I../../../linux-3.5/graphene
+	  -I../../../linux-3.5/graphene -I../../../include/includeBSD
 ASFLAGS = -DPIC -DSHARED -fPIC -DASSEMBLER -Wa,--noexecstack \
 	  -x assembler-with-cpp \
 	  -I. -I../.. -I../../../include

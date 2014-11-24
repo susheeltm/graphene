@@ -24,8 +24,7 @@
  * "file:" or "dir:".
  */
 #undef __GLIBC__
-#include <sys/stat.h>
-#include <sys/stat.h>
+#include "stat.h"
 #include <sys/fcntl.h>
 #include <asm-errno.h>
 

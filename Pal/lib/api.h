@@ -45,11 +45,18 @@ void vfprintfmt (void (*_fputch)(void *, int, void *), void * f, void * putdat,
                  const char * fmt, va_list ap);
 
 int inet_pton(int af, const char *src, void *dst);
-
+#ifndef __htonl
 uint32_t __htonl (uint32_t x);
+#endif
+#ifndef __ntohl
 uint32_t __ntohl (uint32_t x);
-uint16_t __htons (uint16_t x);
+#endif
+#ifndef __htons
+uint16_t __htoNs (uint16_t x);
+#endif
+#ifndef __ntohs
 uint16_t __ntohs (uint16_t x);
+#endif
 
 extern const char * const * sys_errlist_internal;
 
