@@ -277,7 +277,7 @@ void __store_frame (struct pal_frame * frame,
    optimization for SHIM. */
 void notify_failure (unsigned long error);
 
-#include <sigset.h>
+//#include "sigset.h"
 
 /* all pal config value */
 extern struct pal_config {

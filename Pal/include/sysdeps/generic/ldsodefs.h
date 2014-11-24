@@ -20,7 +20,7 @@
 #ifndef	_LDSODEFS_H
 #define	_LDSODEFS_H	1
 
-#include <features.h>
+//#include <features.h>
 
 #include <stdbool.h>
 #define __need_size_t

@@ -2,7 +2,7 @@ MAKEFLAGS += --check-symlink-times
 
 include Makefile.Host
 
-CC	= gcc
+CC	= gcc49
 AR	= ar rcs
 LD	= ld
 
@@ -28,7 +28,7 @@ headers	= $(wildcard *.h) $(wildcard ../lib/*.h)
 all: $(pal_target) security
 
 debug: debug = debug
-debug: CC = gcc -gdwarf-2 -g3
+debug: CC = gcc49 -gdwarf-2 -g3
 debug: CFLAGS += -DDEBUG
 debug: $(pal_target) security
 
@@ -38,7 +38,7 @@ $(graphene_lib):
 	make -C ../lib $(debug)
 
 $(host_lib):
-	@[ ! -d host/$(OS) ] || make -C host/$(OS) $(debug)
+	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) $(debug)
 
 security:
 	@[ ! -d security/$(OS) ] || make -C security/$(OS) $(debug)
@@ -67,5 +67,5 @@ libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
 
 clean:
 	rm -f $(addsuffix .o,$(objs)) $(pal_target)
-	@[ ! -d host/$(OS) ] || make -C host/$(OS) clean
-	@[ ! -d security/$(OS) ] || make -C security/$(OS) clean
+	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) clean
+	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) clean

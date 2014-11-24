@@ -1,9 +1,11 @@
-all_hosts = Linux
+all_hosts = Linux FreeBSD
 
 ifeq ($(OS),)
-SYS := $(shell gcc -dumpmachine)
+SYS := $(shell gcc49 -dumpmachine)
 ifeq ($(SYS),x86_64-linux-gnu)
 OS := Linux
+else ifeq ($(SYS), x86_64-portbld-freebsd10.0)
+OS := FreeBSD
 else
 $(error Unsupported platform: $(SYS))
 endif
