@@ -34,7 +34,7 @@
 #define	_SYS_TIME_H_
 
 #include <sys/_timeval.h>
-#include <sys/types.h>
+#include "types.h"
 #include <sys/timespec.h>
 
 struct timezone {
