@@ -36,8 +36,8 @@
 
 #include <atomic.h>
 #include <sys/_sigset.h>
-#include <signal.h>
-//#include <ucontext.h>
+#include "signal.h"
+#include <ucontext.h>
 #include <asm-errno.h>
 
 #if !defined(__i386__)

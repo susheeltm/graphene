@@ -36,7 +36,7 @@
 
 #include <atomic.h>
 #include <sys/_sigset.h>
-#include <signal.h>
+#include "signal.h"
 #include <ucontext.h>
 #include <asm-errno.h>
 
@@ -82,7 +82,7 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 
 #if !defined(__i386__)
     action.sa_flags |= SA_RESTORER;
-    action.sa_restorer = restore_rt;
+//    action.sa_restorer = restore_rt;
 #endif
 
     __sigemptyset((__sigset_t *) &action.sa_mask);
