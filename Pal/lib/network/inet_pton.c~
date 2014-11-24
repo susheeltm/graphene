@@ -20,7 +20,7 @@
 #include <arpa/inet.h>
 #include <arpa/nameser.h>
 #include <asm-errno.h>
-#include <sys/socket.h>
+#include <socket.h>
 /*
  * WARNING: Don't even consider trying to compile this on a system where
  * sizeof(int) < 4.  sizeof(int) > 4 is fine; all the world's not a VAX.

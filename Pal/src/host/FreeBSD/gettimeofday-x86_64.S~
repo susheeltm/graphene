@@ -22,7 +22,7 @@
  * The source code is imported and modified from the GNU C Library.
  */
 
-//#include <asm/unistd.h>
+#include <asm/unistd.h>
 #include <sysdep.h>
 
 #include "sysdep-x86_64.h"

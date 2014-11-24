@@ -35,13 +35,13 @@ debug: $(pal_target) security
 .PHONY: security $(host_lib) $(graphene_lib)
 
 $(graphene_lib):
-	gmake -C ../lib $(debug)
+	make -C ../lib $(debug)
 
 $(host_lib):
 	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) $(debug)
 
 security:
-	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) $(debug)
+	@[ ! -d security/$(OS) ] || make -C security/$(OS) $(debug)
 
 libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
 	   $(host_lib) $(graphene_lib)
