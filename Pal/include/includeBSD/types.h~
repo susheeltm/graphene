@@ -326,5 +326,5 @@ __END_DECLS
 
 #endif /* __BSD_VISIBLE */
 
-typedef unsigned short __attribute__((bitwise)) __be16;
+typedef unsigned short __atribute__((bitwise)) __be16;
 #endif /* !_SYS_TYPES_H_ */

@@ -23,16 +23,6 @@
  * This file contains APIs to open, read, write and get attribute of
  * streams.
  */
-
-#include "pal_defs.h"
-#include "pal_linux_defs.h"
-#include "pal.h"
-#include "pal_internal.h"
-#include "pal_linux.h"
-#include "pal_debug.h"
-#include "pal_error.h"
-#include "api.h"
-
 #include "types.h"
 typedef __kernel_pid_t pid_t;
 #include <stat.h>
@@ -46,6 +36,16 @@ typedef __kernel_pid_t pid_t;
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <asm-errno.h>
+
+
+#include "pal_defs.h"
+#include "pal_linux_defs.h"
+#include "pal.h"
+#include "pal_internal.h"
+#include "pal_linux.h"
+#include "pal_debug.h"
+#include "pal_error.h"
+#include "api.h"
 
 void _DkPrintConsole (const void * buf, int size)
 {
