@@ -5,30 +5,30 @@
 #define _SHIM_TYPES_H_
 
 #define _GNU_SOURCE
-#include <features.h>
+//#include <features.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/ustat.h>
+//#include <sys/ustat.h>
 #include <sys/socket.h>
 #include <sys/poll.h>
-#include <asm/statfs.h>
-#include <asm/ldt.h>
+//#include <asm/statfs.h>
+//#include <asm/ldt.h>
 #include <netinet/in.h>
-#include <linux/types.h>
-#include <linux/utsname.h>
-#include <linux/times.h>
-#include <linux/shm.h>
-#include <linux/msg.h>
-#include <linux/sem.h>
-#include <linux/kernel.h>
-#include <linux/utime.h>
-#include <linux/futex.h>
-#include <linux/aio_abi.h>
-#include <linux/perf_event.h>
+#include <sys/types.h>
+#include <sys/utsname.h>
+#include <sys/times.h>
+#include <sys/shm.h>
+#include <sys/msg.h>
+#include <sys/sem.h>
+#include <sys/kernel.h>
+#include <utime.h>
+//#include <linux/futex.h>
+//#include <linux/aio_abi.h>
+//#include <linux/perf_event.h>
 
 typedef unsigned int __u32;
 

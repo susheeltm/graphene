@@ -8,8 +8,8 @@
 #define USE_PIPE_SYSCALL        1
 
 #define USE_VSYSCALL_GETTIME    0
-#define USE_VDSO_GETTIME        1
-#define USE_CLOCK_GETTIME       1
+#define USE_VDSO_GETTIME        0
+#define USE_CLOCK_GETTIME       0
 
 typedef int __kernel_pid_t;
 #endif /* PAL_LINUX_DEFS_H */

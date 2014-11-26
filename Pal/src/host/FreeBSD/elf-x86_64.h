@@ -38,17 +38,18 @@
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_dynamic (Elf64_Addr mapbase)
 {
-     Elf64_Addr addr;/*
-#ifdef PIC
-     addr = (const Elf64_Dyn *)(mapbase + (Elf64_Addr)&_DYNAMIC));
-#else
-     addr = (const Elf64_Dyn *)0 + (Elf64_Addr)&_DYNAMIC;
-#endif
-*/     /* This works because we have our GOT address available in the small PIC
+     Elf64_Addr addr;
+//#ifdef PIC
+     //addr = (const Elf64_Dyn *)(mapbase + (Elf64_Addr)&_DYNAMIC);
+//#else
+   //  addr = (const Elf64_Dyn *)0 + (Elf64_Addr)&_DYNAMIC;
+//#endif
+    /* This work because we have our GOT address available in the small PIC
        model.  */
     //addr = (Elf64_Addr) &_DYNAMIC;
-    extern const ElfW(Addr) _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    return _GLOBAL_OFFSET_TABLE_[0];
+    extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
+    asm volatile ("int $3");
+    return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
     return addr;
 }
 
@@ -74,11 +75,13 @@ elf_machine_load_address (void** auxv)
        it is prelinked for.  */
 
     /* fetch environment information from aux vectors */
+    asm volatile ("int $3");
     for (; *(auxv - 1); auxv++);
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
-		   base = av->a_un.a_val;
+   	 		asm volatile ("int $3");
+			base = av->a_un.a_val;
 	   		break;}
     assert(base != NULL);
     /*asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"

@@ -5,7 +5,6 @@
 #ifndef __GNUC__
 #define __GNUC__ 1
 #endif
-
 #include <unistd.h>
 #include <mman.h>
 #include <stdint.h>

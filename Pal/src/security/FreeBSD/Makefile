@@ -16,7 +16,7 @@ graphene_lib = ../../../lib/graphene-lib.a
 all: libpal_sec.so
 
 debug: debug = debug
-debug: CC = gcc49 -g
+debug: CC = gcc49 -g -gdwarf-2
 debug: CFLAGS += -DDEBUG
 debug: libpal_sec.so
 

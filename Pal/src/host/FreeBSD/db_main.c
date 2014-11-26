@@ -47,7 +47,7 @@
    messed up by function calls */
 asm (".global pal_start \n"
      "  .type pal_start,@function \n"
-     "pal_start: \n"
+     "pal_start: \n int $3 \n"
      "  movq %rsp, %rdi \n"
      "  call pal_linux_main@PLT \n");
 

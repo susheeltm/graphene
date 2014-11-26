@@ -46,5 +46,4 @@ $(NATIVE_TESTS_STATIC): %: %.c
 test-helloworld = grep -q "Hello world" OUTPUT
 
 clean-exec:
-	find -type f -executable -exec rm {} \;
 	rm -rf manifest static.manifest libpal.so

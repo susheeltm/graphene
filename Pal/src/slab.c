@@ -56,7 +56,7 @@ static inline void * __malloc (size_t size)
     }
 #else
     void * addr = NULL;
-    _DkVirtualMemory(&addr, size, 0, PAL_PROT_READ|PAL_PROT_WRITE);
+    _DkVirtualMemoryAlloc(&addr, size, 0, PAL_PROT_READ|PAL_PROT_WRITE);
 #endif /* STATIC_SLAB != 1 */
 
     return addr;

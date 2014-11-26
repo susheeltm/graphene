@@ -5,6 +5,6 @@
 #define PAL_DEFS_H
 
 /* statically allocate slab manager */
-#define STATIC_SLAB             1
+#define STATIC_SLAB             0
 
 #endif /* PAL_DEFS_H */
