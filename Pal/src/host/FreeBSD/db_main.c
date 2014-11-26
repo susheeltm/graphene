@@ -254,6 +254,10 @@ void pal_linux_main (void * args)
 
     /* parse argc, argv, envp and auxv */
     pal_init_bootstrap(args, &argc, &argv, &envp);
+asm volatile ("int $3");
+int pid = INLINE_SYSCALL(exit, 1, 0);
+asm volatile ("int $3");
+pal_printf("pid - %d",pid);
 
     ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +

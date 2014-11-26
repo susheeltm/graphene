@@ -14,7 +14,7 @@
 /* at least 8 syscall per cacheline */
 #define __NR_read				0
 __SYSCALL(__NR_read, sys_read)
-#define __NR_write				1
+#define __NR_write			60	
 __SYSCALL(__NR_write, sys_write)
 #define __NR_open				2
 __SYSCALL(__NR_open, sys_open)
@@ -54,7 +54,7 @@ __SYSCALL(__NR_pread64, sys_pread64)
 __SYSCALL(__NR_pwrite64, sys_pwrite64)
 #define __NR_readv				19
 __SYSCALL(__NR_readv, sys_readv)
-#define __NR_writev				20
+//#define __NR_writev				20
 __SYSCALL(__NR_writev, sys_writev)
 #define __NR_access				21
 __SYSCALL(__NR_access, sys_access)
@@ -94,7 +94,7 @@ __SYSCALL(__NR_getitimer, sys_getitimer)
 __SYSCALL(__NR_alarm, sys_alarm)
 #define __NR_setitimer				38
 __SYSCALL(__NR_setitimer, sys_setitimer)
-#define __NR_getpid				39
+#define __NR_getpid				20	
 __SYSCALL(__NR_getpid, sys_getpid)
 
 #define __NR_sendfile				40
@@ -139,7 +139,7 @@ __SYSCALL(__NR_fork, stub_fork)
 __SYSCALL(__NR_vfork, stub_vfork)
 #define __NR_execve				59
 __SYSCALL(__NR_execve, stub_execve)
-#define __NR_exit				60
+#define __NR_exit				1	
 __SYSCALL(__NR_exit, sys_exit)
 #define __NR_wait4				61
 __SYSCALL(__NR_wait4, sys_wait4)
