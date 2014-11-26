@@ -137,9 +137,11 @@ static void pal_init_bootstrap (void * args, int * pargc,
         }
     }
 
+    int pid = INLINE_SYSCALL(getpid,0);
     *pargc = argc;
     *pargv = argv;
     *penvp = envp;
+    
 }
 
 unsigned long _DkGetPagesize (void)
@@ -271,7 +273,7 @@ pal_printf("pid - hi raj");
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
     init_slab_mgr();
-
+	pal_printf("%lx %lx\n\n",pal_dyn,pal_addr);
     setup_pal_map(XSTRINGIFY(SRCDIR) "/" LIBRARY_NAME, pal_dyn, pal_addr);
 
     /* jump to main function */
