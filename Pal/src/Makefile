@@ -29,7 +29,7 @@ headers	= $(wildcard *.h) $(wildcard ../lib/*.h)
 all: $(pal_target) security
 
 debug: debug = debug
-debug: CC = gcc49 -gdwarf-2 -g
+debug: CC = gcc49 -g -gdwarf-2 -gstrict-dwarf
 debug: CFLAGS += -DDEBUG
 debug: $(pal_target) security
 

@@ -288,8 +288,9 @@
     LOAD_REGS_##nr							      \
     asm volatile (							      \
     "int $0x80\n\t"							      \
+    /*"syscall\n\t"*/							      \
     : "=a" (resultvar)							      \
-    : "0" (name) ASM_ARGS_##nr : "memory", "cc", "r11", "cx");		      \
+    : "0" (name) );		      \
     (long) resultvar; })
 
 #undef INTERNAL_SYSCALL
@@ -323,6 +324,7 @@
   "pushq %0\n\t" 				        \
   : : "r" (__arg1) : "memory", "cc");	         	\
   LOAD_REGS_0
+
 #define ASM_ARGS_1	ASM_ARGS_0, "r" (_a1)
 
 #define LOAD_ARGS_2(a1, a2)				\

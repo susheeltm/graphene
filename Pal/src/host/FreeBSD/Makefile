@@ -26,7 +26,7 @@ headers	= $(wildcard *.h) $(wildcard ../../*.h) $(wildcard ../../../lib/*.h)
 all: $(host_target)
 
 debug: debug = debug
-debug: CC = gcc49 -g -gdwarf-2
+debug: CC = gcc49 -g -gdwarf-2 -gstrict-dwarf
 debug: CFLAGS += -DDEBUG
 debug: $(host_target)
 

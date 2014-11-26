@@ -12,66 +12,66 @@
  */
 
 /* at least 8 syscall per cacheline */
-#define __NR_read				0
+#define __NR_read			3	
 __SYSCALL(__NR_read, sys_read)
-#define __NR_write			60	
+#define __NR_write			4	
 __SYSCALL(__NR_write, sys_write)
-#define __NR_open				2
+#define __NR_open			5	
 __SYSCALL(__NR_open, sys_open)
-#define __NR_close				3
+#define __NR_close			6
 __SYSCALL(__NR_close, sys_close)
-#define __NR_stat				4
+#define __NR_stat		188		
 __SYSCALL(__NR_stat, sys_newstat)
-#define __NR_fstat				5
+#define __NR_fstat		189	
 __SYSCALL(__NR_fstat, sys_newfstat)
-#define __NR_lstat				6
+#define __NR_lstat			190	
 __SYSCALL(__NR_lstat, sys_newlstat)
-#define __NR_poll				7
+#define __NR_poll		230	
 __SYSCALL(__NR_poll, sys_poll)
 
-#define __NR_lseek				8
+#define __NR_lseek			199	
 __SYSCALL(__NR_lseek, sys_lseek)
-#define __NR_mmap				9
+#define __NR_mmap			71	
 __SYSCALL(__NR_mmap, sys_mmap)
-#define __NR_mprotect				10
+#define __NR_mprotect			74	
 __SYSCALL(__NR_mprotect, sys_mprotect)
-#define __NR_munmap				11
+#define __NR_munmap			73
 __SYSCALL(__NR_munmap, sys_munmap)
-#define __NR_brk				12
+#define __NR_brk			69
 __SYSCALL(__NR_brk, sys_brk)
-#define __NR_rt_sigaction			13
+#define __NR_rt_sigaction		342	
 __SYSCALL(__NR_rt_sigaction, sys_rt_sigaction)
-#define __NR_rt_sigprocmask			14
+#define __NR_rt_sigprocmask		48	
 __SYSCALL(__NR_rt_sigprocmask, sys_rt_sigprocmask)
-#define __NR_rt_sigreturn			15
+#define __NR_rt_sigreturn		103
 __SYSCALL(__NR_rt_sigreturn, stub_rt_sigreturn)
 
-#define __NR_ioctl				16
+#define __NR_ioctl			54	
 __SYSCALL(__NR_ioctl, sys_ioctl)
-#define __NR_pread64				17
+#define __NR_pread64			173	
 __SYSCALL(__NR_pread64, sys_pread64)
-#define __NR_pwrite64				18
+#define __NR_pwrite64			174	
 __SYSCALL(__NR_pwrite64, sys_pwrite64)
-#define __NR_readv				19
+#define __NR_readv			289	
 __SYSCALL(__NR_readv, sys_readv)
-//#define __NR_writev				20
+//#define __NR_writev			290	
 __SYSCALL(__NR_writev, sys_writev)
-#define __NR_access				21
+#define __NR_access			33	
 __SYSCALL(__NR_access, sys_access)
-#define __NR_pipe				22
+#define __NR_pipe			42	
 __SYSCALL(__NR_pipe, sys_pipe)
-#define __NR_select				23
+#define __NR_select				93
 __SYSCALL(__NR_select, sys_select)
 
-#define __NR_sched_yield			24
+#define __NR_sched_yield		331	
 __SYSCALL(__NR_sched_yield, sys_sched_yield)
-#define __NR_mremap				25
+#define __NR_mremap				123456725 // There is no remap in BSD
 __SYSCALL(__NR_mremap, sys_mremap)
-#define __NR_msync				26
+#define __NR_msync			65	
 __SYSCALL(__NR_msync, sys_msync)
-#define __NR_mincore				27
+#define __NR_mincore				78
 __SYSCALL(__NR_mincore, sys_mincore)
-#define __NR_madvise				28
+#define __NR_madvise				28 // Not sure if it is posix_fadvice -> 531
 __SYSCALL(__NR_madvise, sys_madvise)
 #define __NR_shmget				29
 __SYSCALL(__NR_shmget, sys_shmget)
@@ -139,7 +139,7 @@ __SYSCALL(__NR_fork, stub_fork)
 __SYSCALL(__NR_vfork, stub_vfork)
 #define __NR_execve				59
 __SYSCALL(__NR_execve, stub_execve)
-#define __NR_exit				1	
+#define __NR_exit				1
 __SYSCALL(__NR_exit, sys_exit)
 #define __NR_wait4				61
 __SYSCALL(__NR_wait4, sys_wait4)
