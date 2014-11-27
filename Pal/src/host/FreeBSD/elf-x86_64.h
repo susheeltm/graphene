@@ -48,7 +48,6 @@ elf_machine_dynamic (Elf64_Addr mapbase)
        model.  */
     //addr = (Elf64_Addr) &_DYNAMIC;
     extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    asm volatile ("int $3");
     return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
     return addr;
 }
@@ -75,12 +74,10 @@ elf_machine_load_address (void** auxv)
        it is prelinked for.  */
 
     /* fetch environment information from aux vectors */
-    asm volatile ("int $3");
     for (; *(auxv - 1); auxv++);
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
-   	 		asm volatile ("int $3");
 			base = av->a_un.a_val;
 	   		break;}
     assert(base != NULL);

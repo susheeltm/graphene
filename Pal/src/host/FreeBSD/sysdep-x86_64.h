@@ -286,7 +286,6 @@
 #define INTERNAL_SYSCALL_NCS(name, err, nr, args...) \
   ({									      \
     unsigned long resultvar;						      \
-	 asm ("int $3"); \
     LOAD_ARGS_##nr (args)						      \
     LOAD_REGS_##nr							      \
     asm volatile (		 			\
