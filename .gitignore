@@ -3,7 +3,7 @@
 *.o
 *.so
 *.core
-/*bkp
+*bkp
 *.BAK
-/.*.swp
-*.a
+*.swp
+**.a
