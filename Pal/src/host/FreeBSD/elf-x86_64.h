@@ -31,25 +31,22 @@
 #include <sysdep.h>
 #include <sysdeps/generic/ldsodefs.h>
 #include "pal_internal.h"
-#define AT_COUNT	24
 /* Return the link-time address of _DYNAMIC.  Conveniently, this is the
    first element of the GOT.  This must be inlined in a function which
    uses global data.  */
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_dynamic (Elf64_Addr mapbase)
 {
-     Elf64_Addr addr;
-//#ifdef PIC
-     //addr = (const Elf64_Dyn *)(mapbase + (Elf64_Addr)&_DYNAMIC);
-//#else
-   //  addr = (const Elf64_Dyn *)0 + (Elf64_Addr)&_DYNAMIC;
-//#endif
-    /* This work because we have our GOT address available in the small PIC
-       model.  */
+     //Elf64_Addr addr;
+    
     //addr = (Elf64_Addr) &_DYNAMIC;
+    
+     /* This work because we have our GOT address available in the small PIC
+       model.  */
     extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
     return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
-    return addr;
+    
+    //return addr;
 }
 
 /* Return the run-time load address of the shared object.  */
@@ -74,22 +71,23 @@ elf_machine_load_address (void** auxv)
        it is prelinked for.  */
 
     /* fetch environment information from aux vectors */
+    //Consume envp vector
     for (; *(auxv - 1); auxv++);
+    
+    //Start processing auxv
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
 			base = av->a_un.a_val;
 	   		break;}
     assert(base != NULL);
+    
     /*asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
 	"subq %1, %0\n\t"
          ".section\t.data.rel.ro\n"
          "1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
          ".previous\n\t"
          : "=r" (addr) :"r"(base) : "cc");
-
-    //extern ElfW(Dyn) _DYNAMIC[] attribute_hidden;
-    //return (ElfW(Addr)) &_DYNAMIC - elf_machine_dynamic((void *)0);
-    assert(addr != NULL);*/
+	*/
     return base;
 }

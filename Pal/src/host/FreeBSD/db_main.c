@@ -260,6 +260,16 @@ void pal_linux_main (void * args)
     pal_init_bootstrap(args, &argc, &argv, &envp);
 
     ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
+    /* Debugging code only
+    asm("int $3");
+    int pid = INLINE_SYSCALL(getpid,0);
+    INLINE_SYSCALL(exit, 1, 1);
+    asm("int $3");    
+    asm volatile ("int $3");
+    pal_printf("pid - %d", pid);
+    */
+    
+    /* parse argc, argv, envp and auxv */
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
