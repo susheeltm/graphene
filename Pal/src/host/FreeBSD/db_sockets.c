@@ -40,6 +40,7 @@ typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include "tcp.h"
 #include <asm-errno.h>
 

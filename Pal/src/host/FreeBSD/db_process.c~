@@ -36,8 +36,8 @@
 #include "pal_debug.h"
 #include "pal_error.h"
 #include "pal_security.h"
-//#include "graphene.h"
-//#include "graphene-ipc.h"
+#include "graphene.h"
+#include "graphene-ipc.h"
 #include "api.h"
 
 #include <sched.h>
@@ -46,7 +46,7 @@ typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <asm-errno.h>
-
+#include <netinet/in.h>
 #ifndef SEEK_SET
 # define SEEK_SET 0
 #endif

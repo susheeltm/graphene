@@ -46,7 +46,8 @@ typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <asm-errno.h>
-
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #ifndef SEEK_SET
 # define SEEK_SET 0
 #endif

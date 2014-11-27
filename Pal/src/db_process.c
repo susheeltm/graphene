@@ -34,7 +34,6 @@
 #include "pal_debug.h"
 #include "pal_error.h"
 #include "api.h"
-
 PAL_HANDLE
 DkProcessCreate (PAL_STR uri, PAL_FLG flags, PAL_STR * args)
 {
