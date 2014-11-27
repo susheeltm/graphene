@@ -49,8 +49,8 @@ extern void setup_elf_hash (struct link_map *map);
 
 void setup_pal_map (const char * realname, ElfW(Dyn) ** dyn, ElfW(Addr) addr)
 {
-	pal_printf("Loaded libraries %x", &loaded_libraries);
-    //assert (loaded_libraries == NULL || loaded_libraries == 0x0); //-> points to a bad address. Why?
+    pal_printf("Loaded libraries %x", &loaded_libraries);
+    assert (loaded_libraries == NULL || loaded_libraries == 0x0); //-> points to a bad address. Why?
 	
     const ElfW(Ehdr) * header = (void *) addr;
     struct link_map * l = new_elf_object(realname, OBJECT_RTLD);

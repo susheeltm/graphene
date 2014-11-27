@@ -38,8 +38,7 @@ static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_dynamic (Elf64_Addr mapbase)
 {
     Elf64_Addr addr;
-    
-    addr = (Elf64_Addr) &_DYNAMIC + mapbase;
+    addr = (Elf64_Addr)&_DYNAMIC + mapbase;
     
      /* This work because we have our GOT address available in the small PIC
        model.  */
