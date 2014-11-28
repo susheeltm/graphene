@@ -46,9 +46,9 @@ elf_machine_dynamic (Elf64_Addr mapbase)
 #endif
      /* This works because we have our GOT address available in the small PIC
        model.  */
-    //addr = (Elf64_Addr) &_DYNAMIC;
-    extern const ElfW(Addr) _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    return _GLOBAL_OFFSET_TABLE_[0];
+    /*addr = (Elf64_Addr) &_DYNAMIC;
+    extern const ElfW(Addr) __GLOBAL_OFFSET_TABLE_[] attribute_hidden;
+    return __GLOBAL_OFFSET_TABLE_[0];*/
     return addr;
 }
 
@@ -80,16 +80,16 @@ elf_machine_load_address (void** auxv)
            if (av->a_type == AT_BASE){ 
 		   base = av->a_un.a_val;
 	   		break;}
-    asser(base != NULL);
-    asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
+    assert(base != NULL);
+    /*asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
 	"subq %1, %0\n\t"
-         //".section\t.data.rel.ro\n"
-         //"1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
-         //".previous\n\t"
-         : "=r" (addr) : "r"(base): "cc");
+         ".section\t.data.rel.ro\n"
+         "1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
+         ".previous\n\t"
+         : "=r" (addr) :"r"(base) : "cc");
 
     //extern ElfW(Dyn) _DYNAMIC[] attribute_hidden;
     //return (ElfW(Addr)) &_DYNAMIC - elf_machine_dynamic((void *)0);
-    assert(addr != NULL);
-    return addr;
+    assert(addr != NULL);*/
+    return base;
 }

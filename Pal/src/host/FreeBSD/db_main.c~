@@ -49,7 +49,7 @@ asm (".global pal_start \n"
      "  .type pal_start,@function \n"
      "pal_start: \n"
      "  movq %rsp, %rdi \n"
-     "  call pal_linux_main \n");
+    /* "  call pal_linux_main \n"*/);
 
 #define RTLD_BOOTSTRAP
 
@@ -259,7 +259,7 @@ void pal_linux_main (void * args)
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
-    elf_get_dynamic_info((void *)pal_addr + elf_machine_dynamic(pal_addr), pal_dyn,
+    elf_get_dynamic_info(elf_machine_dynamic(pal_addr), pal_dyn,
                          pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
