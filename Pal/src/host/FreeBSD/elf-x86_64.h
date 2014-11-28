@@ -31,7 +31,6 @@
 #include <sysdep.h>
 #include <sysdeps/generic/ldsodefs.h>
 #include "pal_internal.h"
-#include <elf/elf.h>
 #define AT_COUNT	24
 /* Return the link-time address of _DYNAMIC.  Conveniently, this is the
    first element of the GOT.  This must be inlined in a function which
@@ -48,6 +47,8 @@ elf_machine_dynamic (Elf64_Addr mapbase)
      /* This works because we have our GOT address available in the small PIC
        model.  */
     //addr = (Elf64_Addr) &_DYNAMIC;
+    extern const ElfW(Addr) _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
+    return _GLOBAL_OFFSET_TABLE_[0];
     return addr;
 }
 
@@ -55,7 +56,7 @@ elf_machine_dynamic (Elf64_Addr mapbase)
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_load_address (void** auxv)
 {
-    Elf64_Addr addr;
+    Elf64_Addr addr = NULL, base = NULL;
 
     /* The easy way is just the same as on x86:
          leaq _dl_start, %0
@@ -77,15 +78,18 @@ elf_machine_load_address (void** auxv)
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
-		   addr = av->a_un.a_val;
+		   base = av->a_un.a_val;
 	   		break;}
-/*
+    asser(base != NULL);
     asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
-         "subq 1f(%%rip), %0\n\t"
-         ".section\t.data.rel.ro\n"
-         "1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
-         ".previous\n\t"
-         : "=r" (addr) : : "cc");
-*/
+	"subq %1, %0\n\t"
+         //".section\t.data.rel.ro\n"
+         //"1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
+         //".previous\n\t"
+         : "=r" (addr) : "r"(base): "cc");
+
+    //extern ElfW(Dyn) _DYNAMIC[] attribute_hidden;
+    //return (ElfW(Addr)) &_DYNAMIC - elf_machine_dynamic((void *)0);
+    assert(addr != NULL);
     return addr;
 }
