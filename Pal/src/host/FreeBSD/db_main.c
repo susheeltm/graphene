@@ -255,11 +255,11 @@ void pal_linux_main (void * args)
     /* parse argc, argv, envp and auxv */
     pal_init_bootstrap(args, &argc, &argv, &envp);
 
-    ElfW(Addr) pal_addr = elf_machine_load_address();
+    ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
-    elf_get_dynamic_info((void *) pal_addr + elf_machine_dynamic(), pal_dyn,
+    elf_get_dynamic_info(elf_machine_dynamic(pal_addr), pal_dyn,
                          pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 

@@ -54,7 +54,7 @@ void setup_pal_map (const char * realname, ElfW(Dyn) ** dyn, ElfW(Addr) addr)
     const ElfW(Ehdr) * header = (void *) addr;
     struct link_map * l = new_elf_object(realname, OBJECT_RTLD);
     memcpy(l->l_info, dyn, sizeof(l->l_info));
-    l->l_real_ld = l->l_ld = (void *) elf_machine_dynamic();
+    l->l_real_ld = l->l_ld = (void *) elf_machine_dynamic(addr);
     l->l_addr  = addr;
     l->l_entry = header->e_entry;
     l->l_phdr  = (void *) (addr + header->e_phoff);

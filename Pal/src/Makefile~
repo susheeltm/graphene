@@ -9,7 +9,8 @@ LD	= ld
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
 	  -fno-omit-frame-pointer \
 	  -fno-stack-protector -fno-builtin \
-	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD
+	  -fPIC -DPIC\
+	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD 
 LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
 	  -T pal.lds
 ARFLAGS	=
@@ -35,17 +36,17 @@ debug: $(pal_target) security
 .PHONY: security $(host_lib) $(graphene_lib)
 
 $(graphene_lib):
-	make -C ../lib $(debug)
+	gmake -C ../lib $(debug)
 
 $(host_lib):
 	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) $(debug)
 
 security:
-	@[ ! -d security/$(OS) ] || make -C security/$(OS) $(debug)
+	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) $(debug)
 
 libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
 	   $(host_lib) $(graphene_lib)
-	@echo [ $@ ]
+	@echo [ ld $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@]
 	@$(LD) $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@
 
 libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
