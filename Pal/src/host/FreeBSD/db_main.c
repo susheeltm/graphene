@@ -49,7 +49,7 @@ asm (".global pal_start \n"
      "  .type pal_start,@function \n"
      "pal_start: \n"
      "  movq %rsp, %rdi \n"
-     "  call pal_linux_main \n");
+     "  call pal_linux_main@PLT \n");
 
 #define RTLD_BOOTSTRAP
 

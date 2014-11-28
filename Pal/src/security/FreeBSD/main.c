@@ -6,8 +6,8 @@
 #define __GNUC__ 1
 #endif
 
-#include <linux/unistd.h>
-#include <asm/mman.h>
+#include <unistd.h>
+#include <mman.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <fcntl.h>
@@ -17,7 +17,7 @@
 #include <asm-errno.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-
+#include <arpa/inet.h>
 #include "pal_security.h"
 #include "utils.h"
 

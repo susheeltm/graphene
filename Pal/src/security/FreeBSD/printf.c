@@ -5,7 +5,7 @@
 // It is very important that it always go to the console, especially when 
 // debugging file descriptor code!
 
-#include <linux/unistd.h>
+#include <unistd.h>
 #include "utils.h"
 
 // Collect up to PRINTBUF_SIZE characters into a buffer

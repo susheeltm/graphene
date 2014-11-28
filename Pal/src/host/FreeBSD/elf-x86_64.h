@@ -38,17 +38,17 @@
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_dynamic (Elf64_Addr mapbase)
 {
-     Elf64_Addr addr;
+     Elf64_Addr addr;/*
 #ifdef PIC
      addr = (const Elf64_Dyn *)(mapbase + (Elf64_Addr)&_DYNAMIC));
 #else
      addr = (const Elf64_Dyn *)0 + (Elf64_Addr)&_DYNAMIC;
 #endif
-     /* This works because we have our GOT address available in the small PIC
+*/     /* This works because we have our GOT address available in the small PIC
        model.  */
-    /*addr = (Elf64_Addr) &_DYNAMIC;
-    extern const ElfW(Addr) __GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    return __GLOBAL_OFFSET_TABLE_[0];*/
+    //addr = (Elf64_Addr) &_DYNAMIC;
+    extern const ElfW(Addr) _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
+    return _GLOBAL_OFFSET_TABLE_[0];
     return addr;
 }
 

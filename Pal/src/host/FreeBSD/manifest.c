@@ -13,7 +13,7 @@
 #include <sys/socket.h>
 #include <fcntl.h>
 #include <asm-errno.h>
-
+#include <arpa/inet.h>
 #include "../../security/Linux/utils.h"
 #include "graphene.h"
 

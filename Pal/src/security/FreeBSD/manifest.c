@@ -6,15 +6,15 @@
 #define __GNUC__ 1
 #endif
 
-#include <linux/unistd.h>
-#include <asm/mman.h>
+#include <unistd.h>
+#include <mman.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <sys/socket.h>
 #include <fcntl.h>
 #include <asm-errno.h>
-
-#include "../../security/Linux/utils.h"
+#include <arpa/inet.h>
+#include "../../security/FreeBSD/utils.h"
 #include "graphene.h"
 
 static const char * __get_path (struct config_store * config, const char * key)

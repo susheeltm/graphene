@@ -3,15 +3,15 @@
 
 typedef __builtin_va_list __gnuc_va_list;
 
-#include <linux/types.h>
-#include <linux/filter.h>
-#include <linux/seccomp.h>
-#include <linux/unistd.h>
-#include <linux/limits.h>
-#include <linux/sched.h>
-#include <linux/prctl.h>
-#include <asm/fcntl.h>
-#include <asm/ioctls.h>
+#include <types.h>
+#include <filter.h>
+#include <seccomp.h>
+//#include <unistd.h>
+#include <limits.h>
+#include <sched.h>
+#include <prctl.h>
+#include <fcntl.h>
+//#include <asm/ioctls.h>
 
 #include <sys/socket.h>
 #include <sys/mman.h>

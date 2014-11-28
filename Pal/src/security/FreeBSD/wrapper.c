@@ -1,14 +1,14 @@
 /* -*- mode:c; c-file-style:"k&r"; c-basic-offset: 4; tab-width:4; indent-tabs-mode:nil; mode:auto-fill; fill-column:78; -*- */
 /* vim: set ts=4 sw=4 et tw=78 fo=cqt wm=0: */
 
-#include <linux/unistd.h>
+#include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <asm-errno.h>
-
+#include <arpa/inet.h>
 #include "utils.h"
 #include "pal_security.h"
 #include "graphene.h"

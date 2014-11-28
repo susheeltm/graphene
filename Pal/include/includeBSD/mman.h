@@ -91,7 +91,7 @@
 #else
 # define MAP_UNINITIALIZED 0x0		/* Don't support this flag */
 #endif
-
+#define MAP_HUGETLB	0x40000
 
 /*
  * Extended flags
