@@ -151,7 +151,7 @@ typedef struct {
 
 #define pal_control (*pal_control_addr())
 
-PAL_CONTROL * pal_control_addr (void);
+extern PAL_CONTROL * pal_control_addr (void);
 
 /* The ABI includes three calls to allocate, free, and modify the
  * permission bits on page-base virtual memory. Permissions in-

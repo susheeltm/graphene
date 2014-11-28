@@ -35,7 +35,7 @@
 #include "linux_list.h"
 
 #include <atomic.h>
-#include <sys/_sigset.h>
+//#include <sys/_sigset.h>
 #include <sigset.h>
 #include "signal.h"
 #include <ucontext.h>
@@ -85,8 +85,8 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 //    action.sa_restorer = restore_rt;
 #endif
 
-    __sigemptyset((__sigset_t *) &action.sa_mask);
-    __sigaddset((__sigset_t *) &action.sa_mask, SIGCONT);
+    __sigemptyset((_sigset_t *) &action.sa_mask);
+    __sigaddset((_sigset_t *) &action.sa_mask, SIGCONT);
 
     for (int i = 0 ; i < nsig ; i++) {
         if (sigs[i] == SIGCHLD)
@@ -106,7 +106,7 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 
     bool maskset = false;
     int ret = 0;
-    __sigset_t mask;
+    _sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -134,7 +134,7 @@ int block_signals (int * sigs, int nsig)
 {
     bool maskset = false;
     int ret = 0;
-    __sigset_t mask;
+    _sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (!__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -162,7 +162,7 @@ int unblock_signals (int * sigs, int nsig)
 {
     bool maskset = false;
     int ret = 0;
-    __sigset_t mask;
+    _sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -193,7 +193,7 @@ int unset_sighandler (int * sigs, int nsig)
         int ret = INLINE_SYSCALL(sigaction, 4, sigs[i], SIG_DFL, NULL)
 #else
         int ret = INLINE_SYSCALL(sigaction, 4, sigs[i], SIG_DFL, NULL,
-                                 sizeof(__sigset_t));
+                                 sizeof(_sigset_t));
 #endif
         if (IS_ERR(ret))
             return -PAL_ERROR_DENIED;

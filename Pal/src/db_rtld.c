@@ -20,7 +20,7 @@
 /*
  * db_rtld.c
  *
- * This file contains utilities to load ELF binaries into the memory
+ * This file contains utilities to load
  * and link them against each other.
  * The source code in this file is imported and modified from the GNU C
  * Library.
@@ -643,13 +643,18 @@ int load_elf_object_by_handle (PAL_HANDLE handle, enum object_type type)
     };
 
 #define ELFOSABI_LINUX		3	/* Linux.  */
+#define ELFOSABI_FREEBSD	9	
 
     int maplength;
-
+    /*printf(" Raj -- %x %x -%x %x\n\n",ehdr->e_ident[EI_OSABI],ELFOSABI_LINUX,ELFOSABI_FREEBSD,__builtin_expect(
+			            memcmp(ehdr->e_ident, expected, EI_OSABI) != 0 || (
+					            ehdr->e_ident[EI_OSABI] != ELFOSABI_SYSV &&
+						            ehdr->e_ident[EI_OSABI] != ELFOSABI_FREEBSD), 0)); */
     /* See whether the ELF header is what we expect.  */
     if (__builtin_expect(
         memcmp(ehdr->e_ident, expected, EI_OSABI) != 0 || (
         ehdr->e_ident[EI_OSABI] != ELFOSABI_SYSV &&
+        // ehdr->e_ident[EI_OSABI] != ELFOSABI_FREEBSD), 0)) {
         ehdr->e_ident[EI_OSABI] != ELFOSABI_LINUX), 0)) {
         errstring = "ELF file with invalid header";
         goto verify_failed;
@@ -773,20 +778,8 @@ unsigned long int elf_hash (const char *name_arg)
     return hash;
 }
 
-ElfW(Sym) *
-do_lookup_map (ElfW(Sym) * ref, const char * undef_name,
-               const uint_fast32_t hash, unsigned long int elf_hash,
-               const struct link_map * map)
-{
-    /* These variables are used in the nested function.  */
-    Elf_Symndx symidx;
-    ElfW(Sym) * sym;
-    /* The tables for this map.  */
-    ElfW(Sym) * symtab = (void *) D_PTR (map->l_info[DT_SYMTAB]);
-    const char * strtab = (const void *) D_PTR (map->l_info[DT_STRTAB]);
-
-    /* Nested routine to check whether the symbol matches.  */
-    ElfW(Sym) * check_match (ElfW(Sym) *sym)
+/* Nested routine to check whether the symbol matches.  */
+static ElfW(Sym) * check_match (ElfW(Sym) *sym, const char * strtab, const char * undef_name, ElfW(Sym) * ref)
     {
         unsigned int stt = ELFW(ST_TYPE) (sym->st_info);
         assert (ELF_RTYPE_CLASS_PLT == 1);
@@ -806,14 +799,28 @@ do_lookup_map (ElfW(Sym) * ref, const char * undef_name,
         if (__builtin_expect (((1 << stt) & ALLOWED_STT) == 0, 0))
             return NULL;
 
-        if (sym != ref && memcmp(strtab + sym->st_name, undef_name,
-                                 strlen(undef_name)))
-            /* Not the symbol we are looking for.  */
-            return NULL;
+        if (sym != ref) {
+            int i = 0, len = strlen(undef_name);
+            for (; i < len ; i++)
+                if (strtab[sym->st_name + i] != undef_name[i])
+                    return NULL;
+        }	    
 
         /* There cannot be another entry for this symbol so stop here.  */
         return sym;
     }
+
+ElfW(Sym) *
+do_lookup_map (ElfW(Sym) * ref, const char * undef_name,
+               const uint_fast32_t hash, unsigned long int elf_hash,
+               const struct link_map * map)
+{
+    /* These variables are used in the nested function.  */
+    Elf_Symndx symidx;
+    ElfW(Sym) * sym;
+    /* The tables for this map.  */
+    ElfW(Sym) * symtab = (void *) D_PTR (map->l_info[DT_SYMTAB]);
+    const char * strtab = (const void *) D_PTR (map->l_info[DT_STRTAB]);
 
     const ElfW(Addr) * bitmask = map->l_gnu_bitmask;
 
@@ -836,7 +843,7 @@ do_lookup_map (ElfW(Sym) * ref, const char * undef_name,
                 do
                     if (((*hasharr ^ hash) >> 1) == 0) {
                         symidx = hasharr - map->l_gnu_chain_zero;
-                        sym = check_match (&symtab[symidx]);
+                        sym = check_match (&symtab[symidx], strtab, undef_name, ref);
                         if (sym != NULL)
                             return sym;
                     }
@@ -853,7 +860,7 @@ do_lookup_map (ElfW(Sym) * ref, const char * undef_name,
         for (symidx = map->l_buckets[elf_hash % map->l_nbuckets];
              symidx != STN_UNDEF;
              symidx = map->l_chain[symidx]) {
-            sym = check_match (&symtab[symidx]);
+            sym = check_match (&symtab[symidx], strtab, undef_name, ref);
             if (sym != NULL)
                 return sym;
         }

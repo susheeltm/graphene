@@ -43,7 +43,7 @@
 #include <sys/types.h>
 
 // have to delete this
-void * text_start, * text_end, * data_start, * data_end;
+void * text_start =0 , * text_end =0, * data_start=0, * data_end=0;
 
 /* At the begining of entry point, rsp starts at argc, then argvs,
    envps and auxvs. Here we store rsp to rdi, so it will not be
@@ -126,7 +126,7 @@ static void pal_init_bootstrap (void * args, int * pargc,
                 break;
 #endif
         }
-
+    //printf("argv: %08x, %s",argv,*argv);
     if (memcmp(*argv + strlen(*argv) - LIBRARY_NAMELEN, LIBRARY_NAME,
                LIBRARY_NAMELEN) == 0) {
         libname = *argv;
@@ -273,9 +273,8 @@ void pal_linux_main (void * args)
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
-    printf("pal_addr = %08x\n", pal_addr);
-    elf_get_dynamic_info(elf_machine_dynamic(pal_addr), pal_dyn,
-                         pal_addr);
+    //printf("pal_addr = %08x\n", pal_addr);
+    elf_get_dynamic_info((ElfW(Dyn) *)elf_machine_dynamic(pal_addr), pal_dyn, pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
     init_slab_mgr();

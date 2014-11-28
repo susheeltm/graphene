@@ -32,7 +32,7 @@
 #include "pal_security.h"
 #include "api.h"
 
-#include <time.h>
+#include <sys/time.h>
 #include <fcntl.h>
 
 #ifdef __x86_64__

@@ -41,7 +41,7 @@
 /* Perform the relocation specified by RELOC and SYM (which is fully resolved).
    MAP is the object containing the reloc.  */
 
-#define DEBUG_RELOC
+//#define DEBUG_RELOC
 
 static void
 elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
@@ -57,11 +57,11 @@ elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
 #ifdef DEBUG_RELOC
 #define elf_machine_rela_debug(r_type, sym, value)                  \
     ({  if (strtab && sym && sym->st_name)                          \
-            printf(#r_type ": %s\n", strtab + sym->st_name);        \
+            printf(#r_type "(%p): %s => %p\n", reloc_addr, strtab + sym->st_name, value);        \
         else if (value)                                             \
-            printf(#r_type ": %p\n", value);                        \
+            printf(#r_type "(%p): %p\n", reloc_addr, value);                        \
         else                                                        \
-            printf(#r_type "\n", value);                            \
+            printf(#r_type "(%p)\n", reloc_addr);                            \
     })
 #else
 #define elf_machine_rela_debug(...) ({})

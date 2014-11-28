@@ -24,7 +24,7 @@
 
 #include <sysdeps/generic/sysdep.h>
 #include <libc-symbols.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include<sys/syscall.h>
 /* For Linux we can use the system call table in the header file
 	/usr/include/asm/unistd.h
@@ -284,16 +284,19 @@
 #define INTERNAL_SYSCALL_DECL(err) do { } while (0)
 
 #define INTERNAL_SYSCALL_NCS(name, err, nr, args...) \
-  ({									      \
-    unsigned long resultvar;						      \
-    LOAD_ARGS_##nr (args)						      \
-    LOAD_REGS_##nr							      \
+  ({						      \
+    LOAD_ARGS_##nr (args)			      \
+    LOAD_REGS_##nr				      \
+    unsigned long resultvar;			      \
     asm volatile (		 			\
+    /*"int $3\n\t"*/		 			\
     "int $0x80\n\t"		 			\
-    /*"syscall\n\t"*/		 			\
     : "=a" (resultvar)					\
-    : "0" (name) ASM_ARGS_##nr : "memory", "cc", "r11");		      	\
-    (long) IS_SYSCALL_ERROR(resultvar); })
+    : "0" (name) ASM_ARGS_##nr 				\
+    : "memory", "cc", "r11");		      		\
+    (long) IS_SYSCALL_ERROR(resultvar); 		\
+   })
+
 
 #undef INTERNAL_SYSCALL
 #define INTERNAL_SYSCALL(name, err, nr, args...) \
@@ -318,7 +321,7 @@ INTERNAL_SYSCALL_NCS(SYS_ifyBSD(name), err, nr, ##args)
     int carry;						\
     asm volatile("mov $0, %0\n\t"			\
 		  "adc $0, %0\n\t"			\
-		  : "=r"(carry)				\
+		  : "=b"(carry)				\
 		  :					\
 		  : "cc", "memory", "eax");		\
     (carry)? (-val):val; })

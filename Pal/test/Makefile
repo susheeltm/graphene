@@ -12,7 +12,7 @@ headers = $(wildcard ../include/pal/*.h)
 
 all:	$(target) manifest
 
-debug:	CC=gcc -g -gdwarf-2
+debug:	CC=gcc -g
 debug:	$(target) manifest
 
 manifest: manifest.template

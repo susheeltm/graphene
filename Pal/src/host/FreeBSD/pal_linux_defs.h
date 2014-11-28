@@ -9,7 +9,7 @@
 
 #define USE_VSYSCALL_GETTIME    0
 #define USE_VDSO_GETTIME        0
-#define USE_CLOCK_GETTIME       0
+#define USE_CLOCK_GETTIME       1
 
 typedef int __kernel_pid_t;
 #endif /* PAL_LINUX_DEFS_H */

@@ -39,6 +39,7 @@ elf_machine_dynamic (Elf64_Addr mapbase)
 {
     Elf64_Addr addr;
     addr = (Elf64_Addr)&_DYNAMIC + mapbase;
+    // addr = (Elf64_Addr)&_DYNAMIC;
     
      /* This work because we have our GOT address available in the small PIC
        model.  */
@@ -52,7 +53,7 @@ elf_machine_dynamic (Elf64_Addr mapbase)
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_load_address (void** auxv)
 {
-    Elf64_Addr addr = NULL, base = NULL;
+    Elf64_Addr addr = NULL;
 
     /* The easy way is just the same as on x86:
          leaq _dl_start, %0
@@ -77,9 +78,9 @@ elf_machine_load_address (void** auxv)
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
-			base = av->a_un.a_val;
+			addr = av->a_un.a_val;
 	   		break;}
-    assert(base != NULL);
+    assert((void *)addr != NULL);
     
     /*asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
 	"subq %1, %0\n\t"
@@ -88,5 +89,5 @@ elf_machine_load_address (void** auxv)
          ".previous\n\t"
          : "=r" (addr) :"r"(base) : "cc");
 	*/
-    return base;
+    return addr;
 }

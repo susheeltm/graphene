@@ -38,7 +38,7 @@
 #include <sys/fcntl.h>
 #include <asm-errno.h>
 
-//#include <sys/types.h>
+#include <sys/types.h>
 typedef __kernel_pid_t pid_t;
 /* 'open' operation for file streams */
 static int file_open (PAL_HANDLE * handle, const char * type, const char * uri,
