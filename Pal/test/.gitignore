@@ -13,3 +13,6 @@ Memory
 
 # mem dir
 mem
+
+
+*.unused

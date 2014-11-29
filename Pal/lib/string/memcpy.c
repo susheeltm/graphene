@@ -57,7 +57,7 @@ void * memcpy (void *dstpp, const void *srcpp, size_t len)
   while (len--)
     *d++ = *s++;
   return dstpp;
- #endif  
+#endif  
 }
 
 void * memmove (void * destpp, void * srcpp, size_t len)
@@ -111,11 +111,9 @@ void * memmove (void * destpp, void * srcpp, size_t len)
         /* There are just a few bytes to copy.  Use byte memory operations.  */
         BYTE_COPY_BWD (dstp, srcp, len);
     }
-
-    return destpp;
 #else
-	char *d = dest;
-	const char *s = src;
+	char *d = destpp;
+	const char *s = srcpp;
 	  if (d < s) {
 			  while (len--)
 					*d++ = *s++;
@@ -127,6 +125,6 @@ void * memmove (void * destpp, void * srcpp, size_t len)
 			while (len--)
 				*lastd-- = *lasts--;
 		}
-	  return dest;
 #endif
+    return destpp;
 }
