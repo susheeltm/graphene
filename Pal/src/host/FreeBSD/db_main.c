@@ -251,7 +251,10 @@ void pal_linux_main (void * args)
 {
     int argc;
     const char ** argv, ** envp;
-
+    asm("int $3");
+    //int pid = INLINE_SYSCALL(getpid,0);
+    //INLINE_SYSCALL(exit, 1, 1);
+    asm("int $3");    
     /* parse argc, argv, envp and auxv */
     pal_init_bootstrap(args, &argc, &argv, &envp);
 

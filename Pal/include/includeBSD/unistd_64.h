@@ -139,7 +139,7 @@ __SYSCALL(__NR_fork, stub_fork)
 __SYSCALL(__NR_vfork, stub_vfork)
 #define __NR_execve				59
 __SYSCALL(__NR_execve, stub_execve)
-#define __NR_exit				60
+#define __NR_exit				1
 __SYSCALL(__NR_exit, sys_exit)
 #define __NR_wait4				61
 __SYSCALL(__NR_wait4, sys_wait4)

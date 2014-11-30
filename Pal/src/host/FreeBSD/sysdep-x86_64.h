@@ -287,9 +287,10 @@
     LOAD_ARGS_##nr (args)						      \
     LOAD_REGS_##nr							      \
     asm volatile (							      \
-    "syscall\n\t"							      \
+    "int $0x80\n\t"					\
+    /*"syscall\n\t"*/							      \
     : "=a" (resultvar)							      \
-    : "0" (name) ASM_ARGS_##nr : "memory", "cc", "r11", "cx");		      \
+    : "0" (name) ASM_ARGS_##nr: "memory", "cc", "r11", "cx");		      \
     (long) resultvar; })
 
 #undef INTERNAL_SYSCALL
@@ -318,7 +319,12 @@
   LOAD_ARGS_0 ()
 #define LOAD_REGS_1					\
   register long int _a1 asm ("rdi") = __arg1;		\
+  asm volatile("push %0\n\t"				\
+		  :					\
+		  : "r"(__arg1)				\
+		  : "cc", "memory");			\
   LOAD_REGS_0
+
 #define ASM_ARGS_1	ASM_ARGS_0, "r" (_a1)
 
 #define LOAD_ARGS_2(a1, a2)				\
@@ -326,6 +332,10 @@
   LOAD_ARGS_1 (a1)
 #define LOAD_REGS_2					\
   register long int _a2 asm ("rsi") = __arg2;		\
+  asm volatile("push %0\n\t"				\
+		 :					\
+		 : "r"(__arg2)				\
+		 : "cc", "memory");			\
   LOAD_REGS_1
 #define ASM_ARGS_2	ASM_ARGS_1, "r" (_a2)
 
@@ -334,6 +344,10 @@
   LOAD_ARGS_2 (a1, a2)
 #define LOAD_REGS_3					\
   register long int _a3 asm ("rdx") = __arg3;		\
+  asm volatile("push %0\n\t"				\
+ 		  :					\
+  		  : "r"(__arg3)				\
+  		  : "cc", "memory");			\
   LOAD_REGS_2
 #define ASM_ARGS_3	ASM_ARGS_2, "r" (_a3)
 
@@ -342,6 +356,10 @@
   LOAD_ARGS_3 (a1, a2, a3)
 #define LOAD_REGS_4					\
   register long int _a4 asm ("r10") = __arg4;		\
+  asm volatile("push %0\n\t"				\
+  		  :					\
+  		  : "r"(__arg4)				\
+  		  : "cc", "memory");			\
   LOAD_REGS_3
 #define ASM_ARGS_4	ASM_ARGS_3, "r" (_a4)
 
@@ -350,6 +368,10 @@
   LOAD_ARGS_4 (a1, a2, a3, a4)
 #define LOAD_REGS_5					\
   register long int _a5 asm ("r8") = __arg5;		\
+  asm volatile("push %0\n\t"				\
+  		  :					\
+  		  : "r"(__arg5)				\
+  		  : "cc", "memory");			\
   LOAD_REGS_4
 #define ASM_ARGS_5	ASM_ARGS_4, "r" (_a5)
 
@@ -358,6 +380,10 @@
   LOAD_ARGS_5 (a1, a2, a3, a4, a5)
 #define LOAD_REGS_6					\
   register long int _a6 asm ("r9") = __arg6;		\
+  asm volatile("push %0\n\t"				\
+  		  :					\
+  		  : "r"(__arg6)				\
+  		  : "cc", "memory");			\
   LOAD_REGS_5
 #define ASM_ARGS_6	ASM_ARGS_5, "r" (_a6)
 
