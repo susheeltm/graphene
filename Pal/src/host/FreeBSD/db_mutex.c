@@ -33,7 +33,7 @@
 #include "pal_error.h"
 #include "api.h"
 
-#include <futex.h>
+//#include <futex.h>
 #include <limits.h>
 #include <atomic.h>
 #include <cmpxchg.h>
@@ -80,7 +80,7 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
         ret = c ? 0 : -PAL_ERROR_TRYAGAIN;
         goto out;
     }
-
+/* No futex!
     while (!c) {
         struct timespec waittime;
         long sec = timeout / 1000000;
@@ -100,14 +100,14 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
             printf("mutex held by thread %d\n", mut->owner);
 #endif
 
-        /* Upon wakeup, we still need to check whether mutex is unlocked or
+        * Upon wakeup, we still need to check whether mutex is unlocked or
          * someone else took it.
          * If c==0 upon return from xchg (i.e., the older value of m==0), we
          * will exit the loop. Else, we sleep again (through a futex call).
-         */
+         *
         c = atomic_dec_and_test(m);
     }
-
+*/
 success:
 #ifdef DEBUG_MUTEX
     mut->owner = INLINE_SYSCALL(gettid, 0);
@@ -132,7 +132,7 @@ int _DkMutexLock (struct mutex_handle * mut)
     }
 
     /* The lock is now contended */
-
+/* No futex!
     while (!c) {
         ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAIT, 2, NULL, NULL, 0);
 
@@ -145,13 +145,13 @@ int _DkMutexLock (struct mutex_handle * mut)
         if (IS_ERR(ret))
             printf("mutex held by thread %d\n", mut->owner);
 #endif
-        /* Upon wakeup, we still need to check whether mutex is unlocked or
+        * Upon wakeup, we still need to check whether mutex is unlocked or
          * someone else took it.
          * If c==0 upon return from xchg (i.e., the older value of m==0), we
          * will exit the loop. Else, we sleep again (through a futex call).
-         */
+         *
         c = atomic_dec_and_test(m);
-    }
+    }*/
 
 success:
 #ifdef DEBUG_MUTEX
@@ -178,8 +178,9 @@ int _DkMutexUnlock (struct mutex_handle * mut)
 
     atomic_set(m, 1);
 
-    if (must_wake) {
-        /* We need to wake someone up */
+    /*No futex!
+     if (must_wake) {
+        // We need to wake someone up
         ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAKE, 1, NULL, NULL, 0);
     }
 
@@ -187,7 +188,7 @@ int _DkMutexUnlock (struct mutex_handle * mut)
         ret = -PAL_ERROR_TRYAGAIN;
         goto out;
     }
-
+*/
     ret = 0;
 out:
     return ret;

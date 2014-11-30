@@ -22,27 +22,27 @@
  * The source code is imported and modified from the GNU C Library.
  */
 
-//#include <asm/unistd.h>
-#include <sysdep.h>
+//#include <unistd.h>
+//#include <sysdep.h>
 
-#include "sysdep-x86_64.h"
+//#include "sysdep-x86_64.h"
 
 /* For the calculation see asm/vsyscall.h.  */
-#define VSYSCALL_ADDR_vgettimeofday	0xffffffffff600000
+//#define VSYSCALL_ADDR_vgettimeofday	0xffffffffff600000
 
-        .text
-ENTRY (gettimeofday)
-	/* Align stack.  */
-	sub	$0x8, %rsp
-	cfi_adjust_cfa_offset(8)
-	movq	$VSYSCALL_ADDR_vgettimeofday, %rax
-	callq	*%rax
-	/* Check error return.  */
-	/* cmpl	$-4095, %eax */
-	/* jae	SYSCALL_ERROR_LABEL */
+//        .text
+//ENTRY (gettimeofday)
+//	/* Align stack.  */
+//	sub	$0x8, %rsp
+//	cfi_adjust_cfa_offset(8)
+//	movq	$VSYSCALL_ADDR_vgettimeofday, %rax
+//	callq	*%rax
+//	/* Check error return.  */
+//	/* cmpl	$-4095, %eax */
+//	/* jae	SYSCALL_ERROR_LABEL */
 
-L(pseudo_end):
-	add	$0x8, %rsp
-	cfi_adjust_cfa_offset(-8)
-	ret
-PSEUDO_END(gettimeofday)
+//L(pseudo_end):
+//	add	$0x8, %rsp
+//	cfi_adjust_cfa_offset(-8)
+//	ret
+//PSEUDO_END(gettimeofday)

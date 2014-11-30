@@ -41,8 +41,8 @@ $(graphene_lib):
 $(host_lib):
 	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) $(debug)
 
-security:
-	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) $(debug)
+#security:
+#	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) $(debug)
 
 libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
 	   $(host_lib) $(graphene_lib)
@@ -69,4 +69,4 @@ libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
 clean:
 	rm -f $(addsuffix .o,$(objs)) $(pal_target)
 	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) clean
-	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) clean
+#	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) clean

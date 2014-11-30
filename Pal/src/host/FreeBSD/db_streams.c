@@ -33,13 +33,12 @@
 #include "pal_error.h"
 #include "api.h"
 
-#include "types.h"
+#include <sys/types.h>
 typedef __kernel_pid_t pid_t;
-#include <stat.h>
 #include <sys/msg.h>
 #include <sys/socket.h>
 #include <sys/wait.h>
-#include <stat.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <poll.h>
 #include <sys/signal.h>

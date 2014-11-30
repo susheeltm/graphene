@@ -17,7 +17,7 @@ headers = asm-errlist.h api.h
 
 all: graphene-lib.a
 
-debug: CC = gcc49 -g
+debug: CC = gcc49 -g -gdwarf-2
 debug: CFLAGS += -DDEBUG
 debug: graphene-lib.a
 

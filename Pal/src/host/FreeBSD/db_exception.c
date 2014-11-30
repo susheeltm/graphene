@@ -36,7 +36,7 @@
 
 #include <atomic.h>
 #include <sys/_sigset.h>
-#include"sigset.h"
+#include <sigset.h>
 #include "signal.h"
 #include <ucontext.h>
 #include <asm-errno.h>
@@ -60,8 +60,8 @@ void restore_rt (void) asm ("__restore_rt");
 #ifndef SA_RESTORER
 #define SA_RESTORER  0x04000000
 #endif
-
-#define DEFINE_RESTORE_RT(syscall) DEFINE_RESTORE_RT2(syscall)
+//Not sure what this does
+/*#define DEFINE_RESTORE_RT(syscall) DEFINE_RESTORE_RT2(syscall)
 # define DEFINE_RESTORE_RT2(syscall)                \
     asm (                                           \
          "    nop\n"                                \
@@ -71,9 +71,8 @@ void restore_rt (void) asm ("__restore_rt");
          "__restore_rt:\n"                          \
          "    movq $" #syscall ", %rax\n"           \
          "    syscall\n");
-
 DEFINE_RESTORE_RT(__NR_rt_sigreturn)
-#endif
+*/#endif
 
 int set_sighandler (int * sigs, int nsig, void * handler)
 {
@@ -86,8 +85,8 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 //    action.sa_restorer = restore_rt;
 #endif
 
-    __sigemptyset((_sigset_t *) &action.sa_mask);
-    __sigaddset((_sigset_t *) &action.sa_mask, SIGCONT);
+    __sigemptyset((__sigset_t *) &action.sa_mask);
+    __sigaddset((__sigset_t *) &action.sa_mask, SIGCONT);
 
     for (int i = 0 ; i < nsig ; i++) {
         if (sigs[i] == SIGCHLD)
@@ -96,7 +95,7 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 #if defined(__i386__)
         int ret = INLINE_SYSCALL(sigaction, 3, sigs[i], &action, NULL)
 #else
-        int ret = INLINE_SYSCALL(rt_sigaction, 4, sigs[i], &action, NULL,
+        int ret = INLINE_SYSCALL(sigaction, 4, sigs[i], &action, NULL,
                                  sizeof(sigset_t));
 #endif
         if (IS_ERR(ret))
@@ -107,7 +106,7 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 
     bool maskset = false;
     int ret = 0;
-    _sigset_t mask;
+    __sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -120,7 +119,7 @@ int set_sighandler (int * sigs, int nsig, void * handler)
 #if defined(__i386__)
         ret = INLINE_SYSCALL(sigprocmask, 3, SIG_UNBLOCK, &mask, NULL)
 #else
-        ret = INLINE_SYSCALL(rt_sigprocmask, 4, SIG_UNBLOCK, &mask, NULL,
+        ret = INLINE_SYSCALL(sigprocmask, 4, SIG_UNBLOCK, &mask, NULL,
                              sizeof(sigset_t));
 #endif
     }
@@ -135,7 +134,7 @@ int block_signals (int * sigs, int nsig)
 {
     bool maskset = false;
     int ret = 0;
-    _sigset_t mask;
+    __sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (!__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -148,7 +147,7 @@ int block_signals (int * sigs, int nsig)
 #if defined(__i386__)
         ret = INLINE_SYSCALL(sigprocmask, 3, SIG_BLOCK, &mask, NULL)
 #else
-        ret = INLINE_SYSCALL(rt_sigprocmask, 4, SIG_BLOCK, &mask, NULL,
+        ret = INLINE_SYSCALL(sigprocmask, 4, SIG_BLOCK, &mask, NULL,
                              sizeof(sigset_t));
 #endif
     }
@@ -163,7 +162,7 @@ int unblock_signals (int * sigs, int nsig)
 {
     bool maskset = false;
     int ret = 0;
-    _sigset_t mask;
+    __sigset_t mask;
     __sigemptyset(&mask);
     for (int i = 0 ; i < nsig ; i++)
         if (__sigismember(&pal_linux_config.sigset, sigs[i])) {
@@ -176,7 +175,7 @@ int unblock_signals (int * sigs, int nsig)
 #if defined(__i386__)
         ret = INLINE_SYSCALL(sigprocmask, 3, SIG_UNBLOCK, &mask, NULL)
 #else
-        ret = INLINE_SYSCALL(rt_sigprocmask, 4, SIG_UNBLOCK, &mask, NULL,
+        ret = INLINE_SYSCALL(sigprocmask, 4, SIG_UNBLOCK, &mask, NULL,
                              sizeof(sigset_t));
 #endif
     }
@@ -193,8 +192,8 @@ int unset_sighandler (int * sigs, int nsig)
 #if defined(__i386__)
         int ret = INLINE_SYSCALL(sigaction, 4, sigs[i], SIG_DFL, NULL)
 #else
-        int ret = INLINE_SYSCALL(rt_sigaction, 4, sigs[i], SIG_DFL, NULL,
-                                 sizeof(_sigset_t));
+        int ret = INLINE_SYSCALL(sigaction, 4, sigs[i], SIG_DFL, NULL,
+                                 sizeof(__sigset_t));
 #endif
         if (IS_ERR(ret))
             return -PAL_ERROR_DENIED;

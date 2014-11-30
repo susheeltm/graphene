@@ -25,11 +25,11 @@
 /* clone() is even more special than fork() as it mucks with stacks
    and invokes a function in the right context after its all over.  */
 
-//#include <asm/unistd.h>
-#include <sysdep.h>
-#include <asm-errno.h>
+//#include <unistd.h>
+//#include <sysdep.h>
+//#include <asm-errno.h>
 
-#include "sysdep-x86_64.h"
+//#include "sysdep-x86_64.h"
 
 #define CLONE_VM	0x00000100
 #define CLONE_THREAD	0x00010000
@@ -57,62 +57,62 @@
    r8:	thread pointer  */
 
 
-        .text
-ENTRY (clone)
+//        .text
+//ENTRY (clone)
 	/* Sanity check arguments.  */
-	movq	$-EINVAL,%rax
-	testq	%rdi,%rdi		/* no NULL function pointers */
+//	movq	$-EINVAL,%rax
+//	testq	%rdi,%rdi		/* no NULL function pointers */
 	/* jz	SYSCALL_ERROR_LABEL */
-	testq	%rsi,%rsi		/* no NULL stack pointers */
+//	testq	%rsi,%rsi		/* no NULL stack pointers */
 	/* jz	SYSCALL_ERROR_LABEL */
 
 	/* Insert the argument onto the new stack.  */
-	subq	$16,%rsi
-	movq	%rcx,8(%rsi)
+//	subq	$16,%rsi
+//	movq	%rcx,8(%rsi)
 
 	/* Save the function pointer.  It will be popped off in the
 	   child in the ebx frobbing below.  */
-	movq	%rdi,0(%rsi)
+//	movq	%rdi,0(%rsi)
 
 	/* Do the system call.  */
-	movq	%rdx, %rdi
-	movq	%r8, %rdx
-	movq	%r9, %r8
-	movq	8(%rsp), %r10
-	movl	$SYS_ify(clone),%eax
+//	movq	%rdx, %rdi
+//	movq	%r8, %rdx
+//	movq	%r9, %r8
+//	movq	8(%rsp), %r10
+//	movl	$SYS_ify(clone),%eax
 
 	/* End FDE now, because in the child the unwind info will be
 	   wrong.  */
-	cfi_endproc;
-	syscall
+//	cfi_endproc;
+//	syscall
 
-	testq	%rax,%rax
+//	testq	%rax,%rax
 	/* jl	SYSCALL_ERROR_LABEL */
-	jz	L(thread_start)
+//	jz	L(thread_start)
 
-L(pseudo_end):
-	ret
+//L(pseudo_end):
+//	ret
 
-L(thread_start):
-	cfi_startproc;
+//L(thread_start):
+//	cfi_startproc;
 	/* Clearing frame pointer is insufficient, use CFI.  */
-	cfi_undefined (rip);
+//	cfi_undefined (rip);
 	/* Clear the frame pointer.  The ABI suggests this be done, to mark
 	   the outermost frame obviously.  */
-	xorl	%ebp, %ebp
+//	xorl	%ebp, %ebp
 
 	/* Set up arguments for the function call.  */
-	popq	%rax		/* Function to call.  */
-	popq	%rdi		/* Argument.  */
-	call	*%rax
+//	popq	%rax		/* Function to call.  */
+//	popq	%rdi		/* Argument.  */
+//	call	*%rax
 	/* Call exit with return value from function call. */
 	/* movq %rax, %rdi */
 	/* movl $SYS_ify(exit), %eax */
 	/* syscall */
 	/* Instead of syscall exit, let's call _DkThreadExit */
-	movq _DkThreadExit@GOTPCREL(%rip), %rax
-	call *%rax
-	cfi_endproc;
+//	movq _DkThreadExit@GOTPCREL(%rip), %rax
+//	call *%rax
+//	cfi_endproc;
 
-	cfi_startproc;
-PSEUDO_END (clone)
+//	cfi_startproc;
+//PSEUDO_END (clone)

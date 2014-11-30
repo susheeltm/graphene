@@ -41,7 +41,7 @@
 #include "api.h"
 
 #include <sched.h>
-#include <types.h>
+#include <sys/types.h>
 typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <sys/socket.h>
@@ -383,7 +383,8 @@ void _DkProcessExit (int exitcode)
     if (__pal_control.manifest_handle)
         _DkObjectClose(__pal_control.manifest_handle);
 
-    INLINE_SYSCALL(exit_group, 1, exitcode);
+    //INLINE_SYSCALL(exit_group, 1, exitcode); -> No exit group in BSD. alternative?
+    INLINE_SYSCALL(exit, 1, exitcode);
 }
 
 int ioctl_set_graphene (struct config_store * config, int ndefault,

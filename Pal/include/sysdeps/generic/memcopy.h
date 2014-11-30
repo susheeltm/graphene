@@ -36,7 +36,7 @@
    exhaustive in the sense that I tried all alignment and length
    combinations, with and without overlap.  */
 
-#include <endian.h>
+#include <sys/endian.h>
 
 /* Type to use for aligned memory operations.
    This should normally be the biggest type supported by a single load

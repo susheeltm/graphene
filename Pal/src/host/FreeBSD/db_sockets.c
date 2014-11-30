@@ -48,6 +48,10 @@ typedef __kernel_pid_t pid_t;
    address */
 #define PAL_SOCKADDR_SIZE   96
 
+//Undefined in BSD
+typedef uint16_t __attribute__((bitwise)) __be16;
+#define SOL_TCP			6
+#define TCP_CORK	TCP_NOPUSH //Apparently similar
 static inline int addr_size (struct sockaddr * addr)
 {
     switch (addr->sa_family) {

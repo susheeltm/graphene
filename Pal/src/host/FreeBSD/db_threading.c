@@ -34,9 +34,9 @@
 
 #include <errno.h>
 #include <signal.h>
-#include <mman.h>
+#include <sys/mman.h>
 #include <sched.h>
-#include <types.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/timespec.h>
 /* default size of a new thread */
@@ -64,14 +64,17 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     flags &= PAL_THREAD_MASK;
 
     int tid = 0;
-    int ret = __clone(callback, child_stack,
+    //CLONE_flags do not exist in BSD, need to change to Pthread compatible
+    /*int ret = __clone(callback, child_stack,
                       CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SYSVSEM|
                       CLONE_THREAD|CLONE_SIGHAND|CLONE_PTRACE|
                       CLONE_PARENT_SETTID|flags,
                       param, &tid, NULL);
+
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
-
+	*/
+    return -PAL_ERROR_NOTIMPLEMENTED;
     PAL_HANDLE hdl = malloc(HANDLE_SIZE(thread));
     SET_HANDLE_TYPE(hdl, thread);
     hdl->thread.tid = tid;
@@ -85,7 +88,7 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 #if defined(__i386__)
 #include <asm/ldt.h>
 #else
-#include <prctl.h>
+//#include <prctl.h> -> Not present in BSD
 #endif
 
 /* PAL call DkThreadPrivate: set up the thread private area for the
@@ -93,6 +96,9 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
    area. */
 void * _DkThreadPrivate (void * addr)
 {
+    //No arch_set_fs etc in BSD, Linux specific only.
+    return NULL;
+    /*
     int ret = 0;
 
     if ((void *) addr == 0) {
@@ -136,7 +142,7 @@ void * _DkThreadPrivate (void * addr)
             return NULL;
 
         return addr;
-    }
+    }*/
 }
 
 int _DkThreadDelayExecution (unsigned long * duration)
@@ -178,8 +184,8 @@ void _DkThreadExit (int exitcode)
 
 int _DkThreadResume (PAL_HANDLE threadHandle)
 {
-    int ret = INLINE_SYSCALL(tgkill, 3, pal_linux_config.pid,
-                             threadHandle->thread.tid, SIGCONT);
+    int ret = INLINE_SYSCALL(thr_kill2, 3, pal_linux_config.pid,
+                             threadHandle->thread.tid, SIGCONT);//BSD specific syscall
 
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;

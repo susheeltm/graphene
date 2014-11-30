@@ -6,8 +6,8 @@
 #define __GNUC__ 1
 #endif
 
-//#include <unistd.h>
-#include <mman.h>
+#include <unistd.h>
+#include <sys/mman.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <sys/socket.h>

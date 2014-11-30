@@ -34,7 +34,7 @@
 #include "pal_security.h"
 #include "api.h"
 
-#include <mman.h>
+#include <sys/mman.h>
 //#include <ioctls.h>
 #include <fcntl.h>
 #include <asm-errno.h>

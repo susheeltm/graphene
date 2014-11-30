@@ -32,7 +32,7 @@
 #include "api.h"
 
 #include <atomic.h>
-#include <futex.h>
+//#include <futex.h>
 #include <asm-errno.h>
 #include <sys/time.h>
 
@@ -54,8 +54,8 @@ void _DkEventDestroy (PAL_HANDLE handle)
 
 int _DkEventSet (PAL_HANDLE event)
 {
-    int ret = 0;
-
+   return -PAL_ERROR_NOTIMPLEMENTED;
+   /*int ret = 0;
     if (event->event.isnotification) {
         // Leave it signaled, wake all
         if (atomic_cmpxchg(&event->event.signaled, 0, 1) == 0) {
@@ -73,13 +73,13 @@ int _DkEventSet (PAL_HANDLE event)
                              NULL, NULL, 0);
     }
 
-    return IS_ERR(ret) ? PAL_ERROR_TRYAGAIN : 0;
+    return IS_ERR(ret) ? PAL_ERROR_TRYAGAIN : 0;*/
 }
 
 int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
 {
+	return -PAL_ERROR_NOTIMPLEMENTED ;/*
     int ret = 0;
-
     if (!atomic_read(&event->event.signaled)) {
         struct timespec waittime;
         unsigned long sec = timeout / 1000000UL;
@@ -106,11 +106,13 @@ int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
         atomic_dec(&event->event.nwaiters);
     }
 
-    return ret;
+    return ret;*/
 }
 
 int _DkEventWait (PAL_HANDLE event)
 {
+	return -PAL_ERROR_NOTIMPLEMENTED;
+	/*
     int ret = 0;
 
     if (!atomic_read(&event->event.signaled)) {
@@ -133,7 +135,7 @@ int _DkEventWait (PAL_HANDLE event)
         atomic_dec(&event->event.nwaiters);
     }
 
-    return ret;
+    return ret;*/
 }
 
 int _DkEventClear (PAL_HANDLE event)

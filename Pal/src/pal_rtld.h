@@ -172,7 +172,8 @@ ELF_PREFERRED_ADDRESS_DATA;
                       + DT_EXTRANUM + DT_VALTAGIDX (tag))
 #endif
 
-#include <endian.h>
+#include<sys/endian.h>
+
 #if BYTE_ORDER == BIG_ENDIAN
 # define byteorder ELFDATA2MSB
 #elif BYTE_ORDER == LITTLE_ENDIAN

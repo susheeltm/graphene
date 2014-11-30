@@ -33,7 +33,7 @@
 
 #include <cmpxchg.h>
 #include <atomic.h>
-#include <futex.h>
+//#include <futex.h>
 #include <limits.h>
 #include <errno.h>
 #include <sys/time.h>
@@ -119,7 +119,8 @@ int _DkSemaphoreAcquire (PAL_HANDLE sem, int count)
     int ret = 0;
     atomic_inc (&sem->semaphore.nwaiters);
 
-    while (1) {
+    /* No futex!!
+        while (1) {
         ret = INLINE_SYSCALL(futex, 6, value, FUTEX_WAIT, 0,
                              NULL, NULL, 0);
 
@@ -140,13 +141,13 @@ int _DkSemaphoreAcquire (PAL_HANDLE sem, int count)
         if (c)
             break;
 
-        /* We didn't get the lock.  Bump the count back up. */
+        // We didn't get the lock.  Bump the count back up.
         if (count == 1)
             atomic_inc (value);
         else
             atomic_add (count, value);
     }
-
+	*/
     atomic_dec (&sem->semaphore.nwaiters);
     return ret;
 }
@@ -198,7 +199,9 @@ int _DkSemaphoreAcquireTimeout (PAL_HANDLE sem, int count, int timeout)
     int ret = 0;
     atomic_inc (&sem->semaphore.nwaiters);
 
-    while (1) {
+
+    //No futex in BSD!
+    /*while (1) {
         ret = INLINE_SYSCALL(futex, 6, value, FUTEX_WAIT, 0,
                              &waittime, NULL, 0);
 
@@ -216,7 +219,7 @@ int _DkSemaphoreAcquireTimeout (PAL_HANDLE sem, int count, int timeout)
 
         if (c)
             break;
-    }
+    }*/
 
     /* We didn't get the lock.  Bump the count back up. */
     if (count == 1)
@@ -248,8 +251,9 @@ void _DkSemaphoreRelease (PAL_HANDLE sem, int count)
 
     int nwaiters = atomic_read (&sem->semaphore.nwaiters);
 
-    if (nwaiters > 0)
-        INLINE_SYSCALL(futex, 6, value, FUTEX_WAKE, nwaiters, NULL, NULL, 0);
+    /*No futex!!
+       if (nwaiters > 0)
+        INLINE_SYSCALL(futex, 6, value, FUTEX_WAKE, nwaiters, NULL, NULL, 0);*/
 }
 
 int _DkSemaphoreGetCurrentCount (PAL_HANDLE sem)
