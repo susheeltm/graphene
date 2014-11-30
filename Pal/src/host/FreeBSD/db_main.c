@@ -270,7 +270,7 @@ void pal_linux_main (void * args)
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
     init_slab_mgr();
-
+	pal_printf("%lx %lx\n\n",pal_dyn,pal_addr);
     setup_pal_map(XSTRINGIFY(SRCDIR) "/" LIBRARY_NAME, pal_dyn, pal_addr);
 
     /* jump to main function */

@@ -26,7 +26,7 @@ graphene_lib = ../lib/graphene-lib.a
 host_lib = host/$(OS)/libpal-$(OS).a
 headers	= $(wildcard *.h) $(wildcard ../lib/*.h)
 
-all: $(pal_target) security
+all: $(pal_target) 
 
 debug: debug = debug
 debug: CC = gcc49 -g -gdwarf-2 -gstrict-dwarf
