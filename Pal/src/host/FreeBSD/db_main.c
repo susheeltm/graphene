@@ -42,12 +42,15 @@
 #include <sysdeps/generic/ldsodefs.h>
 #include <sys/types.h>
 
+// have to delete this
+void * text_start, * text_end, * data_start, * data_end;
+
 /* At the begining of entry point, rsp starts at argc, then argvs,
    envps and auxvs. Here we store rsp to rdi, so it will not be
    messed up by function calls */
 asm (".global pal_start \n"
      "  .type pal_start,@function \n"
-     "pal_start: \n int $3 \n"
+     "pal_start: \n "
      "  movq %rsp, %rdi \n"
      "  call pal_linux_main@PLT \n");
 
@@ -253,6 +256,10 @@ void pal_linux_main (void * args)
     int argc;
     const char ** argv, ** envp;
     
+    /* parse argc, argv, envp and auxv */
+    pal_init_bootstrap(args, &argc, &argv, &envp);
+
+    ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
     /* Debugging code only
     asm("int $3");
     int pid = INLINE_SYSCALL(getpid,0);
@@ -263,17 +270,15 @@ void pal_linux_main (void * args)
     */
     
     /* parse argc, argv, envp and auxv */
-    pal_init_bootstrap(args, &argc, &argv, &envp);
-       ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
+    printf("pal_addr = %08x\n", pal_addr);
     elf_get_dynamic_info(elf_machine_dynamic(pal_addr), pal_dyn,
                          pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
     init_slab_mgr();
-	pal_printf("%lx %lx\n\n",pal_dyn,pal_addr);
     setup_pal_map(XSTRINGIFY(SRCDIR) "/" LIBRARY_NAME, pal_dyn, pal_addr);
 
     /* jump to main function */

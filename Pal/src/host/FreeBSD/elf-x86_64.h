@@ -37,17 +37,16 @@
 static inline Elf64_Addr __attribute__ ((unused))
 elf_machine_dynamic (Elf64_Addr mapbase)
 {
-     //Elf64_Addr addr;
+    Elf64_Addr addr;
     
-    //addr = (Elf64_Addr) &_DYNAMIC;
+    addr = (Elf64_Addr) &_DYNAMIC + mapbase;
     
      /* This work because we have our GOT address available in the small PIC
        model.  */
-    extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    asm volatile ("int $3");
-    return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
+    //extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
+    //return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
     
-    //return addr;
+    return addr;
 }
 
 /* Return the run-time load address of the shared object.  */
@@ -72,8 +71,6 @@ elf_machine_load_address (void** auxv)
        it is prelinked for.  */
 
     /* fetch environment information from aux vectors */
-    
-    asm volatile ("int $3");
     //Consume envp vector
     for (; *(auxv - 1); auxv++);
     
@@ -81,7 +78,6 @@ elf_machine_load_address (void** auxv)
     ElfW(auxv_t) *av;
     for (av = (ElfW(auxv_t) *)auxv ; av->a_type != AT_NULL ; av++)
            if (av->a_type == AT_BASE){ 
-   	 		asm volatile ("int $3");
 			base = av->a_un.a_val;
 	   		break;}
     assert(base != NULL);
