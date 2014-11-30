@@ -24,10 +24,6 @@
  * "file:" or "dir:".
  */
 #undef __GLIBC__
-#include "stat.h"
-#include <sys/fcntl.h>
-#include <asm-errno.h>
-
 
 #include "pal_defs.h"
 #include "pal_linux_defs.h"
@@ -37,6 +33,10 @@
 #include "pal_debug.h"
 #include "pal_error.h"
 #include "api.h"
+
+#include <sys/stat.h>
+#include <sys/fcntl.h>
+#include <asm-errno.h>
 
 //#include <sys/types.h>
 typedef __kernel_pid_t pid_t;
@@ -393,8 +393,8 @@ int dir_read (PAL_HANDLE handle, int offset, int count, void * buf)
         if (handle->dir.endofstream)
             break;
 
-        int size = INLINE_SYSCALL(getdents64, 3, handle->dir.fd, dent_buf,
-                                  DIRBUF_SIZE);
+        int size = INLINE_SYSCALL(getdents, 3, handle->dir.fd, dent_buf,
+                                  DIRBUF_SIZE); //No getdents64 in BSD
 
         if (IS_ERR(size))
             return -PAL_ERROR_DENIED;

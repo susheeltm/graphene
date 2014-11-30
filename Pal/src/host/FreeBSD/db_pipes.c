@@ -34,7 +34,7 @@
 #include "pal_debug.h"
 #include "api.h"
 
-#include "types.h"
+#include <sys/types.h>
 typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <poll.h>

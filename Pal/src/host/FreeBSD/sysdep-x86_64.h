@@ -24,7 +24,7 @@
 
 #include <sysdeps/generic/sysdep.h>
 #include <libc-symbols.h>
-#include "unistd_64.h"
+#include <unistd.h>
 #include<sys/syscall.h>
 /* For Linux we can use the system call table in the header file
 	/usr/include/asm/unistd.h
@@ -32,6 +32,7 @@
    so we have to redefine the `SYS_ify' macro here.  */
 #undef SYS_ify
 #define SYS_ify(syscall_name)	__NR_##syscall_name
+//BSD useds SYS_* sys call names, so we can use these to get syscall nums
 #define SYS_ifyBSD(syscall_name) SYS_##syscall_name
 /* This is a kludge to make syscalls.list find these under the names
    pread and pwrite, since some kernel headers define those names
@@ -297,8 +298,8 @@
 
 #undef INTERNAL_SYSCALL
 #define INTERNAL_SYSCALL(name, err, nr, args...) \
- INTERNAL_SYSCALL_NCS (__NR_##name, err, nr, ##args)
-//INTERNAL_SYSCALL_NCS(SYS_ifyBSD(name), err, nr, ##args)  
+INTERNAL_SYSCALL_NCS(SYS_ifyBSD(name), err, nr, ##args)  
+//INTERNAL_SYSCALL_NCS (__NR_##name, err, nr, ##args)
 
 #undef INTERNAL_SYSCALL_ERROR
 #define INTERNAL_SYSCALL_ERROR(val) ((val) < 0)

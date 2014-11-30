@@ -17,6 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
+#define __FREEBSD__
 #ifndef PAL_LINUX_H
 #define PAL_LINUX_H
 
@@ -41,7 +42,7 @@ extern struct pal_linux_config {
     bool            noexec;
 } pal_linux_config;
 
-#include "mman.h"
+#include <sys/mman.h>
 #ifdef INLINE_SYSCALL
 # ifdef __i386__
 #  define ARCH_MMAP(addr, len, prot, flags, fd, offset)          \
@@ -82,7 +83,7 @@ extern struct pal_linux_config {
 static inline int HOST_FLAGS (int alloc_type, int prot)
 {
     return ((alloc_type & PAL_ALLOC_32BIT) ? MAP_32BIT : 0) |
-           ((alloc_type & PAL_ALLOC_RESERVE) ? MAP_NORESERVE|MAP_UNINITIALIZED : 0) |
+           ((alloc_type & PAL_ALLOC_RESERVE) ? MAP_NORESERVE/*|MAP_UNINITIALIZED - not present in BSD*/ : 0) |
            ((prot & PAL_PROT_WRITECOPY) ? MAP_PRIVATE : MAP_SHARED);
 }
 

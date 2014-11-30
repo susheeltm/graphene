@@ -34,14 +34,14 @@
 #include "pal_error.h"
 #include "api.h"
 
-#include "types.h"
+#include <sys/types.h>
 #include <poll.h>
 typedef __kernel_pid_t pid_t;
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "tcp.h"
+#include <netinet/tcp.h>
 #include <asm-errno.h>
 
 /* 96 bytes is the minimal size of buffer to store a IPv4/IPv6
