@@ -1,9 +1,0 @@
-GLIBC_2.12 {
-  global:
-    benchmark_rpc; send_rpc; recv_rpc;
-    checkpoint;
-    msgpersist;
-    sandbox_create; sandbox_attach; sandbox_current;
-  local:
-    *;
-};

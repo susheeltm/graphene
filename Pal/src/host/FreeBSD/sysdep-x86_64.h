@@ -25,13 +25,14 @@
 #include <sysdeps/generic/sysdep.h>
 #include <libc-symbols.h>
 #include "unistd_64.h"
+#include<sys/syscall.h>
 /* For Linux we can use the system call table in the header file
 	/usr/include/asm/unistd.h
    of the kernel.  But these symbols do not follow the SYS_* syntax
    so we have to redefine the `SYS_ify' macro here.  */
 #undef SYS_ify
 #define SYS_ify(syscall_name)	__NR_##syscall_name
-
+#define SYS_ifyBSD(syscall_name) SYS_##syscall_name
 /* This is a kludge to make syscalls.list find these under the names
    pread and pwrite, since some kernel headers define those names
    and some define the *64 names for the same system calls.  */
@@ -284,18 +285,20 @@
 #define INTERNAL_SYSCALL_NCS(name, err, nr, args...) \
   ({									      \
     unsigned long resultvar;						      \
+	 asm ("int $3"); \
     LOAD_ARGS_##nr (args)						      \
     LOAD_REGS_##nr							      \
-    asm volatile (							      \
-    "int $0x80\n\t"							      \
-    /*"syscall\n\t"*/							      \
-    : "=a" (resultvar)							      \
-    : "0" (name) );		      \
+    asm volatile (		 			\
+    "int $0x80\n\t"		 			\
+    /*"syscall\n\t"*/		 			\
+    : "=a" (resultvar)					\
+    : "0" (name) ASM_ARGS_##nr : "memory", "cc", "r11");		      	\
     (long) resultvar; })
 
 #undef INTERNAL_SYSCALL
 #define INTERNAL_SYSCALL(name, err, nr, args...) \
-  INTERNAL_SYSCALL_NCS (__NR_##name, err, nr, ##args)
+ INTERNAL_SYSCALL_NCS (__NR_##name, err, nr, ##args)
+//INTERNAL_SYSCALL_NCS(SYS_ifyBSD(name), err, nr, ##args)  
 
 #undef INTERNAL_SYSCALL_ERROR
 #define INTERNAL_SYSCALL_ERROR(val) ((val) < 0)
@@ -311,7 +314,7 @@
 #define INTERNAL_SYSCALL_ERRNO_P(val) (-((long) val))
 
 #define LOAD_ARGS_0()
-#define LOAD_REGS_0
+#define LOAD_REGS_0					
 #define ASM_ARGS_0
 
 #define LOAD_ARGS_1(a1)					\
@@ -319,10 +322,6 @@
  LOAD_ARGS_0 ()
 #define LOAD_REGS_1					\
   register long int _a1 asm ("rdi") = __arg1;		\
-	 asm ("int $3"); \
-  asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg1) : "memory", "cc");	         	\
   LOAD_REGS_0
 
 #define ASM_ARGS_1	ASM_ARGS_0, "r" (_a1)
@@ -332,9 +331,6 @@
   LOAD_ARGS_1 (a1)
 #define LOAD_REGS_2					\
   register long int _a2 asm ("rsi") = __arg2;		\
-asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg2) : "memory", "cc");	         	\
   LOAD_REGS_1
 #define ASM_ARGS_2	ASM_ARGS_1, "r" (_a2)
 
@@ -342,10 +338,7 @@ asm volatile (			                \
   long int __arg3 = (long) (a3);			\
   LOAD_ARGS_2 (a1, a2)
 #define LOAD_REGS_3					\
-  register long int _a3 asm ("rdx") = __arg3;		\
- asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg3) : "memory", "cc");	         	\
+ register long int _a3 asm ("rdx") = __arg3;		\
 	  LOAD_REGS_2
 
 #define ASM_ARGS_3	ASM_ARGS_2, "r" (_a3)
@@ -354,10 +347,7 @@ asm volatile (			                \
   long int __arg4 = (long) (a4);			\
   LOAD_ARGS_3 (a1, a2, a3)
 #define LOAD_REGS_4					\
-  register long int _a4 asm ("r10") = __arg4;		\
- asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg4) : "memory", "cc");	         	\
+ register long int _a4 asm ("rcx") = __arg4;		\
 	  LOAD_REGS_3
 #define ASM_ARGS_4	ASM_ARGS_3, "r" (_a4)
 
@@ -365,10 +355,7 @@ asm volatile (			                \
   long int __arg5 = (long) (a5);			\
   LOAD_ARGS_4 (a1, a2, a3, a4)
 #define LOAD_REGS_5					\
-  register long int _a5 asm ("r8") = __arg5;		\
-	 asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg5) : "memory", "cc");	         	\
+	register long int _a5 asm ("r8") = __arg5;		\
   LOAD_REGS_4
 #define ASM_ARGS_5	ASM_ARGS_4, "r" (_a5)
 
@@ -376,10 +363,7 @@ asm volatile (			                \
   long int __arg6 = (long) (a6);			\
 	  LOAD_ARGS_5 (a1, a2, a3, a4, a5)
 #define LOAD_REGS_6					\
-  register long int _a6 asm ("r9") = __arg6;		\
-	asm volatile (			                \
-  "pushq %0\n\t" 				        \
-  : : "r" (__arg6) : "memory", "cc");	         	\
+register long int _a6 asm ("r9") = __arg6;		\
   LOAD_REGS_5
 #define ASM_ARGS_6	ASM_ARGS_5, "r" (_a6)
 

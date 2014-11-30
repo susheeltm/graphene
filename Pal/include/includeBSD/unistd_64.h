@@ -31,7 +31,7 @@ __SYSCALL(__NR_poll, sys_poll)
 
 #define __NR_lseek			199	
 __SYSCALL(__NR_lseek, sys_lseek)
-#define __NR_mmap			71	
+#define __NR_mmap			477	
 __SYSCALL(__NR_mmap, sys_mmap)
 #define __NR_mprotect			74	
 __SYSCALL(__NR_mprotect, sys_mprotect)
