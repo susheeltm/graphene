@@ -49,7 +49,7 @@ typedef __kernel_pid_t pid_t;
 
 void _DkPrintConsole (const void * buf, int size)
 {
-    INLINE_SYSCALL(write, 3, 99, buf, size);
+    INLINE_SYSCALL(write, 3, 2, buf, size);
 }
 
 bool stataccess (struct stat * stat, int acc)
