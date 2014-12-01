@@ -46,11 +46,16 @@
 struct link_map * rtld_map = NULL;
 
 extern void setup_elf_hash (struct link_map *map);
+//extern unsigned long allocsize, allocshift, allocmask;
 
 void setup_pal_map (const char * realname, ElfW(Dyn) ** dyn, ElfW(Addr) addr)
-{
-	pal_printf("Loaded libraries %x", &loaded_libraries);
-    //assert (loaded_libraries == NULL || loaded_libraries == 0x0); //-> points to a bad address. Why?
+{	/*was originally only getting initialized in pal_main, but the alignments below fail because these aren't initialized, so called them here as well*/
+	allocsize  = _DkGetPagesize();
+	allocshift = allocsize - 1;
+	allocmask  = ~allocshift;
+
+	//pal_printf("Loaded libraries %x", &loaded_libraries);
+    assert (loaded_libraries == NULL); //-> points to a bad address. Why?
 	
     const ElfW(Ehdr) * header = (void *) addr;
     struct link_map * l = new_elf_object(realname, OBJECT_RTLD);

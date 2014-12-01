@@ -41,7 +41,7 @@
 /* Perform the relocation specified by RELOC and SYM (which is fully resolved).
    MAP is the object containing the reloc.  */
 
-#define DEBUG_RELOC
+//#define DEBUG_RELOC
 
 static void
 elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,

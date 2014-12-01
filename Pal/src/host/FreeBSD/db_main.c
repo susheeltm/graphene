@@ -273,9 +273,8 @@ void pal_linux_main (void * args)
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
-    printf("pal_addr = %08x\n", pal_addr);
-    elf_get_dynamic_info(elf_machine_dynamic(pal_addr), pal_dyn,
-                         pal_addr);
+    //printf("pal_addr = %08x\n", pal_addr);
+    elf_get_dynamic_info((ElfW(Dyn) *)elf_machine_dynamic(pal_addr), pal_dyn, pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 
     init_slab_mgr();

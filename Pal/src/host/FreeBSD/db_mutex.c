@@ -56,14 +56,15 @@
 
 int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
 {
-    int i, c = 0;
+    return -PAL_ERROR_NOTIMPLEMENTED;
+	/*int i, c = 0;
 
     if (timeout == -1)
         return -_DkMutexLock(mut);
 
     struct atomic_int * m = &mut->value;
 
-    /* Spin and try to take lock */
+    // Spin and try to take lock 
     for (i = 0 ; i < MUTEX_SPINLOCK_TIMES ; i++)
     {
         c = atomic_dec_and_test(m);
@@ -72,7 +73,7 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
         cpu_relax();
     }
 
-    /* The lock is now contended */
+    //The lock is now contended 
 
     int ret;
 
@@ -80,7 +81,7 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
         ret = c ? 0 : -PAL_ERROR_TRYAGAIN;
         goto out;
     }
-/* No futex!
+ 
     while (!c) {
         struct timespec waittime;
         long sec = timeout / 1000000;
@@ -107,23 +108,24 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
          *
         c = atomic_dec_and_test(m);
     }
-*/
+
 success:
 #ifdef DEBUG_MUTEX
     mut->owner = INLINE_SYSCALL(gettid, 0);
 #endif
     ret = 0;
 out:
-    return ret;
+    return ret;*/
 }
 
 int _DkMutexLock (struct mutex_handle * mut)
 {
-    int i, c = 0;
+    return -PAL_ERROR_NOTIMPLEMENTED;
+	/*int i, c = 0;
     int ret;
     struct atomic_int * m = &mut->value;
 
-    /* Spin and try to take lock */
+    // Spin and try to take lock 
     for (i = 0; i < MUTEX_SPINLOCK_TIMES; i++) {
         c = atomic_dec_and_test(m);
         if (c)
@@ -131,8 +133,8 @@ int _DkMutexLock (struct mutex_handle * mut)
         cpu_relax();
     }
 
-    /* The lock is now contended */
-/* No futex!
+    // The lock is now contended 
+
     while (!c) {
         ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAIT, 2, NULL, NULL, 0);
 
@@ -151,7 +153,7 @@ int _DkMutexLock (struct mutex_handle * mut)
          * will exit the loop. Else, we sleep again (through a futex call).
          *
         c = atomic_dec_and_test(m);
-    }*/
+    }
 
 success:
 #ifdef DEBUG_MUTEX
@@ -159,12 +161,13 @@ success:
 #endif
     ret = 0;
 out:
-    return ret;
+    return ret;*/
 }
 
 int _DkMutexUnlock (struct mutex_handle * mut)
 {
-    int ret = 0;
+    return -PAL_ERROR_NOTIMPLEMENTED;
+	/*int ret = 0;
     int must_wake = 0;
     struct atomic_int * m = &mut->value;
 
@@ -172,13 +175,13 @@ int _DkMutexUnlock (struct mutex_handle * mut)
     mut->owner = 0;
 #endif
 
-    /* Unlock, and if not contended then exit. */
+     Unlock, and if not contended then exit. 
     if (atomic_read(m) < 0)
         must_wake = 1;
 
     atomic_set(m, 1);
 
-    /*No futex!
+    No futex!
      if (must_wake) {
         // We need to wake someone up
         ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAKE, 1, NULL, NULL, 0);
@@ -188,8 +191,8 @@ int _DkMutexUnlock (struct mutex_handle * mut)
         ret = -PAL_ERROR_TRYAGAIN;
         goto out;
     }
-*/
+
     ret = 0;
 out:
-    return ret;
+    return ret;*/
 }

@@ -24,7 +24,7 @@
 #include "pal_defs.h"
 #include "pal_linux_defs.h"
 #include "pal.h"
-#include <sys/_sigset.h>
+#include <sigset.h>
 #include <sys/syscall.h>
 
 #ifdef __x86_64__
@@ -38,7 +38,7 @@
 
 extern struct pal_linux_config {
     unsigned int    pid, uid, gid;
-    __sigset_t      sigset;
+    _sigset_t      sigset;
     bool            noexec;
 } pal_linux_config;
 

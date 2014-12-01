@@ -80,11 +80,11 @@ elf_dynamic_do_rel (ElfW(Dyn) **l_info, ElfW(Addr) l_addr,
 # endif
 #endif
                 for (; relative < r; ++relative) {
-		    printf("relocate: %08x\n", relative);
+		    //printf("relocate: %08x\n", relative);
                     DO_ELF_MACHINE_REL_RELATIVE (l_addr, relative);
                 }
         for (; r < end; ++r) {
-	    printf("relocate: %08x\n", r);
+	    //printf("relocate: %08x\n", r);
             elf_machine_rel (l_info, l_addr, r,
                              &symtab[ELFW(R_SYM) (r->r_info)],
                              (void *) (l_addr + r->r_offset),

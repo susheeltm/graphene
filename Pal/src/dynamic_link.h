@@ -101,7 +101,6 @@ elf_get_dynamic_info (ElfW(Dyn) *dyn, ElfW(Dyn) **l_info, ElfW(Addr) l_addr)
 # define ADJUST_DYN_INFO(tag)                             \
         do {                                              \
             if (l_info[tag]) {                            \
-                printf("relocate " #tag "\n");            \
 		l_info[tag]->d_un.d_ptr += l_addr;        \
             }                                             \
         } while(0);
@@ -246,14 +245,14 @@ _elf_dynamic_do_reloc(int dt_reloc, int dt_reloc_sz,
 
     /* This is interesting, don't make it lazy. */
     if (ELF_DURING_STARTUP) {
-        printf("relocate (startup): %08x-%08x\n", ranges[0].start, ranges[0].start + ranges[0].size);
+        //printf("relocate (startup): %08x-%08x\n", ranges[0].start, ranges[0].start + ranges[0].size);
   	(*do_reloc) (l_info, l_addr,
                      ranges[0].start, ranges[0].size,
                      rel, rel_relative);
     } else {
         int ranges_index;
         for (ranges_index = 0; ranges_index < 2; ++ranges_index) {
-            printf("relocate: %08x-%08x\n", ranges[ranges_index].start, ranges[ranges_index].start + ranges[ranges_index].size);
+           // printf("relocate: %08x-%08x\n", ranges[ranges_index].start, ranges[ranges_index].start + ranges[ranges_index].size);
    	    (*do_reloc) (l_info, l_addr,
                          ranges[ranges_index].start,
                          ranges[ranges_index].size,

@@ -1,7 +1,7 @@
 #ifndef __SIGSET_H__
 #define __SIGSET_H__
 
-/* __sig_atomic_t, __sigset_t, and related definitions.  Linux version.
+/* __sig_atomic_t, _sigset_t, and related definitions.  Linux version.
    Copyright (C) 1991, 1992, 1994, 1996, 1997, 2007
    Free Software Foundation, Inc.
    This file is part of the GNU C Library.
@@ -29,13 +29,12 @@ typedef int __sig_atomic_t;
 /* A `sigset_t' has a bit for each signal.  */
 
 # define _SIGSET_NWORDS	(64 / (8 * sizeof (unsigned long int)))
-#undef __sigset_t
-#ifndef _sigset_t
+//Renamed this because of a conflicting type in _sigset.h, causing a lot of issues
 typedef struct
   {
     unsigned long int __val[_SIGSET_NWORDS];
   } _sigset_t;
-#endif
+
 
 /* Return a mask that includes the bit for SIG only.  */
 # define __sigmask(sig) \
