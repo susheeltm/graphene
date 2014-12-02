@@ -1,6 +1,6 @@
 include ../src/Makefile.Host
 
-CC	= gcc49
+CC	= gcc
 AR	= ar rcs
 
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
@@ -17,7 +17,7 @@ headers = asm-errlist.h api.h
 
 all: graphene-lib.a
 
-debug: CC = gcc49 -g -gdwarf-2
+debug: CC = gcc -g -gdwarf-2
 debug: CFLAGS += -DDEBUG
 debug: graphene-lib.a
 

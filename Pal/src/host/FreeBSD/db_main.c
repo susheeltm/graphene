@@ -43,7 +43,7 @@
 #include <sys/types.h>
 
 // have to delete this
-void * text_start, * text_end, * data_start, * data_end;
+void * text_start =0 , * text_end =0, * data_start=0, * data_end=0;
 
 /* At the begining of entry point, rsp starts at argc, then argvs,
    envps and auxvs. Here we store rsp to rdi, so it will not be

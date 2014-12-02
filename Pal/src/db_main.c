@@ -170,10 +170,11 @@ static void * find_heap_base (void)
        The top of heap must be at least 1/16 of the area below where PAL
        is loaded. The address is still randomized. */
     unsigned long heap_base = (unsigned long) pal_config.lib_text_start;
-    unsigned long pal_size = pal_config.lib_data_end -
-                             pal_config.lib_text_start;
+    //Had to reverse this just to cross it. Since we're not using the linking script, text, data sections are randomized. I guess we could put a check.
+    unsigned long pal_size = pal_config.lib_text_start -
+                             pal_config.lib_data_end;
     unsigned long base = allocsize;
-
+    
     while ((base >> 12) < pal_size)
         base <<= 1;
     while ((base << 6) < heap_base)

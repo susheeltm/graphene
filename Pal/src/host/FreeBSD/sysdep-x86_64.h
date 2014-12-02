@@ -289,7 +289,7 @@
     LOAD_REGS_##nr				      \
     unsigned long resultvar;			      \
     asm volatile (		 			\
-    "int $3\n\t"		 			\
+    /*"int $3\n\t"*/		 			\
     "int $0x80\n\t"		 			\
     : "=a" (resultvar)					\
     : "0" (name) ASM_ARGS_##nr 				\
