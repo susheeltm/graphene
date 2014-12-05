@@ -38,6 +38,11 @@
 #include <errno.h>
 #include <sys/time.h>
 
+#define	UMTX_OP_WAIT		2
+#define	UMTX_OP_WAKE		3
+#define	UMTX_OP_WAIT_UINT	11
+
+
 static inline int atomic_dec_if_positive (struct atomic_int *v)
 {
     int c, old, dec;
@@ -119,10 +124,10 @@ int _DkSemaphoreAcquire (PAL_HANDLE sem, int count)
     int ret = 0;
     atomic_inc (&sem->semaphore.nwaiters);
 
-    /* No futex!!
+    
         while (1) {
-        ret = INLINE_SYSCALL(futex, 6, value, FUTEX_WAIT, 0,
-                             NULL, NULL, 0);
+        ret = INLINE_SYSCALL(_umtx_op, 5, value, UMTX_OP_WAIT, 0,
+                             NULL, NULL);
 
         if (IS_ERR(ret)) {
             if (ERRNO(ret) == EWOULDBLOCK) {
@@ -147,7 +152,7 @@ int _DkSemaphoreAcquire (PAL_HANDLE sem, int count)
         else
             atomic_add (count, value);
     }
-	*/
+	
     atomic_dec (&sem->semaphore.nwaiters);
     return ret;
 }
@@ -200,10 +205,10 @@ int _DkSemaphoreAcquireTimeout (PAL_HANDLE sem, int count, int timeout)
     atomic_inc (&sem->semaphore.nwaiters);
 
 
-    //No futex in BSD!
-    /*while (1) {
-        ret = INLINE_SYSCALL(futex, 6, value, FUTEX_WAIT, 0,
-                             &waittime, NULL, 0);
+    
+    while (1) {
+        ret = INLINE_SYSCALL(_umtx_op, 5, value, UMTX_OP_WAIT_UINT, 0,
+                             NULL, &waittime);
 
         if (ERRNO(ret) == EWOULDBLOCK) {
             ret = 0;
@@ -219,7 +224,7 @@ int _DkSemaphoreAcquireTimeout (PAL_HANDLE sem, int count, int timeout)
 
         if (c)
             break;
-    }*/
+    }
 
     /* We didn't get the lock.  Bump the count back up. */
     if (count == 1)
@@ -251,9 +256,8 @@ void _DkSemaphoreRelease (PAL_HANDLE sem, int count)
 
     int nwaiters = atomic_read (&sem->semaphore.nwaiters);
 
-    /*No futex!!
-       if (nwaiters > 0)
-        INLINE_SYSCALL(futex, 6, value, FUTEX_WAKE, nwaiters, NULL, NULL, 0);*/
+    if (nwaiters > 0)
+        INLINE_SYSCALL(_umtx_op, 5, value, UMTX_OP_WAIT, nwaiters, NULL, NULL);
 }
 
 int _DkSemaphoreGetCurrentCount (PAL_HANDLE sem)

@@ -53,11 +53,13 @@
 #endif
 
 #define MUTEX_SPINLOCK_TIMES    20
+#define	UMTX_OP_WAIT		2
+#define	UMTX_OP_WAKE		3
+#define	UMTX_OP_WAIT_UINT	11
 
 int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
 {
-    return -PAL_ERROR_NOTIMPLEMENTED;
-	/*int i, c = 0;
+    int i, c = 0;
 
     if (timeout == -1)
         return -_DkMutexLock(mut);
@@ -89,7 +91,7 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
         waittime.tv_sec = sec;
         waittime.tv_nsec = microsec * 1000;
 
-        ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAIT, 2, &waittime, NULL, 0);
+        ret = INLINE_SYSCALL(_umtx_op, 5, m, UMTX_OP_WAIT_UINT, 2, NULL, &waittime);
 
         if (IS_ERR(ret) && ERRNO(ret) != EWOULDBLOCK) {
             ret = unix_to_pal_error(ERRNO(ret));
@@ -101,11 +103,11 @@ int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout)
             printf("mutex held by thread %d\n", mut->owner);
 #endif
 
-        * Upon wakeup, we still need to check whether mutex is unlocked or
+        /* Upon wakeup, we still need to check whether mutex is unlocked or
          * someone else took it.
          * If c==0 upon return from xchg (i.e., the older value of m==0), we
          * will exit the loop. Else, we sleep again (through a futex call).
-         *
+         */
         c = atomic_dec_and_test(m);
     }
 
@@ -115,13 +117,11 @@ success:
 #endif
     ret = 0;
 out:
-    return ret;*/
+    return ret;
 }
-
 int _DkMutexLock (struct mutex_handle * mut)
 {
-    return -PAL_ERROR_NOTIMPLEMENTED;
-	/*int i, c = 0;
+    int i, c = 0;
     int ret;
     struct atomic_int * m = &mut->value;
 
@@ -136,7 +136,7 @@ int _DkMutexLock (struct mutex_handle * mut)
     // The lock is now contended 
 
     while (!c) {
-        ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAIT, 2, NULL, NULL, 0);
+        ret = INLINE_SYSCALL(_umtx_op, 5, m, UMTX_OP_WAIT, 2, NULL, NULL);
 
         if (IS_ERR(ret) && ERRNO(ret) != EWOULDBLOCK) {
             ret = unix_to_pal_error(ERRNO(ret));
@@ -147,11 +147,11 @@ int _DkMutexLock (struct mutex_handle * mut)
         if (IS_ERR(ret))
             printf("mutex held by thread %d\n", mut->owner);
 #endif
-        * Upon wakeup, we still need to check whether mutex is unlocked or
+        /* Upon wakeup, we still need to check whether mutex is unlocked or
          * someone else took it.
          * If c==0 upon return from xchg (i.e., the older value of m==0), we
          * will exit the loop. Else, we sleep again (through a futex call).
-         *
+         */
         c = atomic_dec_and_test(m);
     }
 
@@ -161,13 +161,13 @@ success:
 #endif
     ret = 0;
 out:
-    return ret;*/
+    return ret;
 }
 
 int _DkMutexUnlock (struct mutex_handle * mut)
 {
-    return -PAL_ERROR_NOTIMPLEMENTED;
-	/*int ret = 0;
+    
+    int ret = 0;
     int must_wake = 0;
     struct atomic_int * m = &mut->value;
 
@@ -175,16 +175,15 @@ int _DkMutexUnlock (struct mutex_handle * mut)
     mut->owner = 0;
 #endif
 
-     Unlock, and if not contended then exit. 
+    // Unlock, and if not contended then exit. 
     if (atomic_read(m) < 0)
         must_wake = 1;
 
     atomic_set(m, 1);
 
-    No futex!
      if (must_wake) {
         // We need to wake someone up
-        ret = INLINE_SYSCALL(futex, 6, m, FUTEX_WAKE, 1, NULL, NULL, 0);
+        ret = INLINE_SYSCALL(_umtx_op, 5, m, UMTX_OP_WAKE, 1, NULL, NULL);
     }
 
     if (IS_ERR(ret)) {
@@ -194,5 +193,5 @@ int _DkMutexUnlock (struct mutex_handle * mut)
 
     ret = 0;
 out:
-    return ret;*/
+    return ret;
 }

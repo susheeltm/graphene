@@ -49,24 +49,24 @@
 int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
                      const void * param, int flags)
 {
-    void * child_stack = NULL;
+    /*void * child_stack = NULL;
 
     if (_DkVirtualMemoryAlloc(&child_stack,
                               PAL_THREAD_STACK_SIZE, 0,
                               PAL_PROT_READ|PAL_PROT_WRITE) < 0)
         return -PAL_ERROR_NOMEM;
 
-    /* move child_stack to the top of stack. */
+    // move child_stack to the top of stack. 
     child_stack += PAL_THREAD_STACK_SIZE;
 
-    /* align child_stack to 16 */
+    // align child_stack to 16 
     child_stack = (void *) ((uintptr_t) child_stack & ~16);
 
     flags &= PAL_THREAD_MASK;
-
+	*/
     int tid = 0;
-    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFMEM|RFSIGSHARE);
-    //int ret = rfork_thread(RFPROC|RFFDG|RFMEM|RFSIGSHARE, child_stack, (void *)callback, (void *)param);
+    //int ret = INLINE_SYSCALL(fork, 0);
+    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE);
     if(ret == 0)
     {
 	ret = ((int (*) (const void *))
@@ -74,8 +74,9 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 	_DkThreadExit(ret);
 
     }
-	tid = ret;
-    /*pthread_t thread;
+    tid = ret;
+    /*
+    pthread_t thread;
     pthread_attr_t attr;
 	pthread_attr_init(&attr);
 	pthread_attr_setstacksize(&attr, PAL_THREAD_STACK_SIZE);
@@ -89,10 +90,10 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
                       CLONE_PARENT_SETTID|flags,
                       param, &tid, NULL);
 
-    */if (IS_ERR(ret))
+    */
+    if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
     
-	//return -PAL_ERROR_NOTIMPLEMENTED;
     PAL_HANDLE hdl = malloc(HANDLE_SIZE(thread));
     SET_HANDLE_TYPE(hdl, thread);
     hdl->thread.tid = tid;
@@ -202,9 +203,9 @@ void _DkThreadExit (int exitcode)
 
 int _DkThreadResume (PAL_HANDLE threadHandle)
 {
-    int ret = INLINE_SYSCALL(thr_kill2, 3, pal_linux_config.pid,
+    int ret = INLINE_SYSCALL(thr_kill2, 3, pal_linux_config.pid,\
                              threadHandle->thread.tid, SIGCONT);//BSD specific syscall
-
+    //int ret = INLINE_SYSCALL(kill, 2, threadHandle->thread.tid, SIGCONT);
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
 
