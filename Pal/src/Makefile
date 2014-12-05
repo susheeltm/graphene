@@ -9,7 +9,7 @@ LD	= ld
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
 	  -fno-omit-frame-pointer \
 	  -fno-stack-protector -fno-builtin \
-	  -fPIC \
+	  -fPIC -pthread\
 	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD 
 LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
 	  -e pal_start#-T pal.lds  

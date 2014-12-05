@@ -39,7 +39,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/timespec.h>
-/* default size of a new thread */
+#include <unistd.h>
+#include <pthread.h>/* default size of a new thread */
 #define PAL_THREAD_STACK_SIZE allocsize
 
 /* _DkThreadCreate for internal use. Create an internal thread
@@ -64,17 +65,34 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     flags &= PAL_THREAD_MASK;
 
     int tid = 0;
-    //CLONE_flags do not exist in BSD, need to change to Pthread compatible
-    /*int ret = __clone(callback, child_stack,
+    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFMEM|RFSIGSHARE);
+    //int ret = rfork_thread(RFPROC|RFFDG|RFMEM|RFSIGSHARE, child_stack, (void *)callback, (void *)param);
+    if(ret == 0)
+    {
+	ret = ((int (*) (const void *))
+                callback) (param);
+	_DkThreadExit(ret);
+
+    }
+	tid = ret;
+    /*pthread_t thread;
+    pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setstacksize(&attr, PAL_THREAD_STACK_SIZE);
+	pthread_attr_setstackaddr(&attr, child_stack);
+    int ret = pthread_create(&thread, NULL, callback,param); 
+    tid = thread;*/
+	/*CLONE_flags do not exist in BSD, need to change to Pthread compatible
+    int ret = __clone(callback, child_stack,
                       CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SYSVSEM|
                       CLONE_THREAD|CLONE_SIGHAND|CLONE_PTRACE|
                       CLONE_PARENT_SETTID|flags,
                       param, &tid, NULL);
 
-    if (IS_ERR(ret))
+    */if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
-	*/
-    return -PAL_ERROR_NOTIMPLEMENTED;
+    
+	//return -PAL_ERROR_NOTIMPLEMENTED;
     PAL_HANDLE hdl = malloc(HANDLE_SIZE(thread));
     SET_HANDLE_TYPE(hdl, thread);
     hdl->thread.tid = tid;
