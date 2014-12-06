@@ -389,7 +389,7 @@ static int tcp_accept (PAL_HANDLE handle, PAL_HANDLE * client)
     int ret = 0;
 
     int newfd = INLINE_SYSCALL(accept4, 4, handle->sock.fd, &buffer,
-                               &addrlen, O_CLOEXEC);
+                               &addrlen, SOCK_CLOEXEC);
 
     if (IS_ERR(newfd))
         switch(ERRNO(newfd)) {
