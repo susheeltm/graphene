@@ -26,7 +26,7 @@
 #include "pal.h"
 #include <sigset.h>
 #include <sys/syscall.h>
-
+#include <unistd.h>
 #ifdef __x86_64__
 # include "sysdep-x86_64.h"
 #endif
@@ -73,11 +73,9 @@ extern struct pal_linux_config {
 //Not present in BSD
 /*#define ARCH_FORK() INLINE_SYSCALL(clone, 4, CLONE_CHILD_SETTID, 0, \
                                    NULL, &pal_linux_config.pid)
-
-#define ARCH_VFORK() INLINE_SYSCALL(clone, 4, CLONE_VM|CLONE_VFORK, 0, \
-                                    NULL, NULL)
 */
-#define ARCH_VFORK() -PAL_ERROR_NOTIMPLEMENTED
+#define ARCH_VFORK() INLINE_SYSCALL(rfork, 1, RFPROC|RFSIGSHARE|RFFDG)
+
 #define PRESET_PAGESIZE (1 << 12)
 
 #define DEFAULT_BACKLOG     2048

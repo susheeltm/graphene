@@ -99,6 +99,7 @@ static void pal_init_bootstrap (void * args, int * pargc,
      *            user stack
      */
     const char ** all_args = (const char **) args;
+    if (all_args[0] == 0) all_args++;
     int argc = (uintptr_t) all_args[0];
     const char ** argv = &all_args[1];
     const char ** envp = argv + argc + 1;
