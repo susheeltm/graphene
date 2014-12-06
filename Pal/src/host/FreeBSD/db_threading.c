@@ -49,7 +49,8 @@
 int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
                      const void * param, int flags)
 {
-    /*void * child_stack = NULL;
+    //Can't assign stack at syscall level in BSD... Need to use pthreads
+	/*void * child_stack = NULL;
 
     if (_DkVirtualMemoryAlloc(&child_stack,
                               PAL_THREAD_STACK_SIZE, 0,
@@ -64,26 +65,18 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 
     flags &= PAL_THREAD_MASK;
 	*/
+    printf("",param);//Just to stop the compiler from optimizing out param!!
     int tid = 0;
-    //int ret = INLINE_SYSCALL(fork, 0);
-    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE);
+    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE|RFNOWAIT);
     if(ret == 0)
     {
-	ret = ((int (*) (const void *))
-                callback) (param);
-	_DkThreadExit(ret);
+	int r = ((int (*) (const void *))callback) (param);
+	_DkThreadExit(r);
 
     }
     tid = ret;
-    /*
-    pthread_t thread;
-    pthread_attr_t attr;
-	pthread_attr_init(&attr);
-	pthread_attr_setstacksize(&attr, PAL_THREAD_STACK_SIZE);
-	pthread_attr_setstackaddr(&attr, child_stack);
-    int ret = pthread_create(&thread, NULL, callback,param); 
-    tid = thread;*/
-	/*CLONE_flags do not exist in BSD, need to change to Pthread compatible
+
+    /*Clone does not exist in BSD, need to change to Pthread if we want this facility
     int ret = __clone(callback, child_stack,
                       CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SYSVSEM|
                       CLONE_THREAD|CLONE_SIGHAND|CLONE_PTRACE|
