@@ -118,7 +118,7 @@ static int pipe_waitforclient (PAL_HANDLE handle, PAL_HANDLE * client)
         return -PAL_ERROR_DENIED;
 
     int newfd = INLINE_SYSCALL(accept4, 4, handle->pipe.fd, NULL, NULL,
-                               O_CLOEXEC);
+                               SOCK_CLOEXEC);
 
     if (IS_ERR(newfd))
         switch (ERRNO(newfd)) {
@@ -134,7 +134,7 @@ static int pipe_waitforclient (PAL_HANDLE handle, PAL_HANDLE * client)
     int pipes[2];
     struct msghdr hdr;
     struct iovec iov;
-    char cbuf[sizeof(struct cmsghdr) + 2 * sizeof(int)];
+    char cbuf[sizeof(struct cmsghdr) + 3 * sizeof(int)];
     char b = 0;
     int ret = 0;
 
@@ -224,7 +224,7 @@ static int pipe_connect (PAL_HANDLE * handle, PAL_NUM pipeid, PAL_IDX connid,
 
     struct msghdr hdr;
     struct iovec iov;
-    char cbuf[sizeof(struct cmsghdr) + 2 * sizeof(int)];
+    char cbuf[sizeof(struct cmsghdr) + 3 * sizeof(int)];
     char b = 0;
 
     memset(&hdr, 0, sizeof(struct msghdr));
@@ -234,7 +234,6 @@ static int pipe_connect (PAL_HANDLE * handle, PAL_NUM pipeid, PAL_IDX connid,
     hdr.msg_controllen = sizeof(cbuf);
     iov.iov_base = &b;
     iov.iov_len = 1;
-
     struct cmsghdr * chdr = CMSG_FIRSTHDR(&hdr);
     chdr->cmsg_level = SOL_SOCKET;
     chdr->cmsg_type = SCM_RIGHTS;
