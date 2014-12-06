@@ -42,7 +42,7 @@
 #include <sysdeps/generic/ldsodefs.h>
 #include <sys/types.h>
 
-// have to delete this
+//Workaround when not using the linker script 
 void * text_start =0 , * text_end =0, * data_start=0, * data_end=0;
 
 /* At the begining of entry point, rsp starts at argc, then argvs,
@@ -99,7 +99,9 @@ static void pal_init_bootstrap (void * args, int * pargc,
      *            user stack
      */
     const char ** all_args = (const char **) args;
-    if (all_args[0] == 0) all_args++;
+    //Workaround because sometimes BSD misaligns arguments on stack
+    if (all_args[0] == 0) 
+	    all_args++;
     int argc = (uintptr_t) all_args[0];
     const char ** argv = &all_args[1];
     const char ** envp = argv + argc + 1;
@@ -127,7 +129,6 @@ static void pal_init_bootstrap (void * args, int * pargc,
                 break;
 #endif
         }
-    //printf("argv: %08x, %s",argv,*argv);
     if (memcmp(*argv + strlen(*argv) - LIBRARY_NAMELEN, LIBRARY_NAME,
                LIBRARY_NAMELEN) == 0) {
         libname = *argv;
@@ -261,20 +262,11 @@ void pal_linux_main (void * args)
     pal_init_bootstrap(args, &argc, &argv, &envp);
 
     ElfW(Addr) pal_addr = elf_machine_load_address((void**)envp + 1);
-    /* Debugging code only
-    asm("int $3");
-    int pid = INLINE_SYSCALL(getpid,0);
-    INLINE_SYSCALL(exit, 1, 1);
-    asm("int $3");    
-    asm volatile ("int $3");
-    pal_printf("pid - %d", pid);
-    */
     
     /* parse argc, argv, envp and auxv */
     ElfW(Dyn) * pal_dyn[DT_NUM + DT_THISPROCNUM + DT_VERSIONTAGNUM +
                         DT_EXTRANUM + DT_VALNUM + DT_ADDRNUM];
     memset(pal_dyn, 0, sizeof(pal_dyn));
-    //printf("pal_addr = %08x\n", pal_addr);
     elf_get_dynamic_info((ElfW(Dyn) *)elf_machine_dynamic(pal_addr), pal_dyn, pal_addr);
     ELF_DYNAMIC_RELOCATE(pal_dyn, pal_addr);
 

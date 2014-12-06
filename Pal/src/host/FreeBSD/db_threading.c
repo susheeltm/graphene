@@ -67,7 +67,8 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 	*/
     printf("",param);//Just to stop the compiler from optimizing out param!!
     int tid = 0;
-    int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE|RFNOWAIT);
+    int ret = INLINE_SYSCALL(fork,0);
+    //int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE|RFNOWAIT);
     if(ret == 0)
     {
 	int r = ((int (*) (const void *))callback) (param);
