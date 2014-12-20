@@ -172,7 +172,11 @@ ELF_PREFERRED_ADDRESS_DATA;
                       + DT_EXTRANUM + DT_VALTAGIDX (tag))
 #endif
 
+#if OS == Linux
+#include<endian.h>
+#else
 #include<sys/endian.h>
+#endif
 
 #if BYTE_ORDER == BIG_ENDIAN
 # define byteorder ELFDATA2MSB

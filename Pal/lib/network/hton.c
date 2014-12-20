@@ -17,8 +17,13 @@
    02111-1307 USA.  */
 
 #include "api.h"
-#include <sys/endian.h>
-/*
+#ifdef __linux__
+# include <endian.h>
+#else
+# include <sys/endian.h>
+#endif
+
+#ifdef __linux__
 uint32_t __htonl (uint32_t x)
 {
 #if BYTE_ORDER == BIG_ENDIAN
@@ -50,4 +55,4 @@ uint16_t __ntohs (uint16_t x)
 {
     return __htons (x);
 }
-*/
+#endif

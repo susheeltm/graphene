@@ -30,6 +30,50 @@ typedef int __sig_atomic_t;
 
 # define _SIGSET_NWORDS	(64 / (8 * sizeof (unsigned long int)))
 //Renamed this because of a conflicting type in _sigset.h, causing a lot of issues
+// #if OS == Linux 
+#ifdef __linux__
+typedef struct
+  {
+    unsigned long int __val[_SIGSET_NWORDS];
+  } __sigset_t;
+
+
+/* Return a mask that includes the bit for SIG only.  */
+# define __sigmask(sig) \
+  (((unsigned long int) 1) << (((sig) - 1) % (8 * sizeof (unsigned long int))))
+
+/* Return the word index for SIG.  */
+# define __sigword(sig)	(((sig) - 1) / (8 * sizeof (unsigned long int)))
+
+# define __sigemptyset(set) \
+  ({ int __cnt = _SIGSET_NWORDS;				      \
+		    __sigset_t *__set = (set);				      \
+		    while (--__cnt >= 0) __set->__val[__cnt] = 0;	      \
+		    0; })
+# define __sigfillset(set) \
+  ({ int __cnt = _SIGSET_NWORDS;				      \
+		    __sigset_t *__set = (set);				      \
+		    while (--__cnt >= 0) __set->__val[__cnt] = ~0UL;	      \
+		    0; })
+# define __sigcopyset(set, src) \
+  ({ int __cnt = _SIGSET_NWORDS;				      \
+		    __sigset_t *__set = (set);				      \
+		    __sigset_t *__src = (src);				      \
+		    while (--__cnt >= 0) __set->__val[__cnt] = __src->__val[__cnt]; \
+		    0; })
+
+/* These functions needn't check for a bogus signal number -- error
+   checking is done in the non __ versions.  */
+
+# define __SIGSETFN(NAME, BODY, CONST)					      \
+  static inline int							      \
+  NAME (CONST __sigset_t *__set, int __sig)				      \
+  {									      \
+    unsigned long int __mask = __sigmask (__sig);			      \
+    unsigned long int __word = __sigword (__sig);			      \
+    return BODY;							      \
+  }
+#else 
 typedef struct
   {
     unsigned long int __val[_SIGSET_NWORDS];
@@ -71,6 +115,7 @@ typedef struct
     unsigned long int __word = __sigword (__sig);			      \
     return BODY;							      \
   }
+#endif 
 
 __SIGSETFN (__sigismember, (__set->__val[__word] & __mask) ? 1 : 0, __const)
 __SIGSETFN (__sigaddset, ((__set->__val[__word] |= __mask), 0), )

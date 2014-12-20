@@ -98,7 +98,7 @@ elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
 #else
     Elf64_Sym *refsym = sym;
     Elf64_Addr value;
-    Elf64_Addr sym_map;
+    Elf64_Addr sym_map = 0;
 
     value = RESOLVE_MAP_IN_RTLD(sym);
 

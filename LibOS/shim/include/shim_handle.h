@@ -37,9 +37,9 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/shm.h>
-#include <sys/msg.h>
-#include <sys/un.h>
+#include <linux/shm.h>
+#include <linux/msg.h>
+#include <linux/un.h>
 #include <netinet/in.h>
 
 /* start definition of shim handle */

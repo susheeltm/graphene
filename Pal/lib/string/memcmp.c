@@ -30,7 +30,11 @@
 #endif /* C++ or ANSI C.  */
 
 # include <sysdeps/generic/memcopy.h>
+#ifdef __linux__
+# include <endian.h>
+#else
 # include <sys/endian.h>
+#endif
 
 # if __BYTE_ORDER == __BIG_ENDIAN
 #  define WORDS_BIGENDIAN

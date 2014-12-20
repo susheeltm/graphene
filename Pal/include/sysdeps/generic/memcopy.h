@@ -35,8 +35,11 @@
    I made an "exhaustive" test of this memmove when I wrote it,
    exhaustive in the sense that I tried all alignment and length
    combinations, with and without overlap.  */
-
+#ifdef __linux__
+#include <endian.h>
+#else
 #include <sys/endian.h>
+#endif
 
 /* Type to use for aligned memory operations.
    This should normally be the biggest type supported by a single load

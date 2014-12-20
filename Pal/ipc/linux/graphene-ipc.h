@@ -1,7 +1,10 @@
 #ifndef _GRAPHENE_IPC_H
 #define _GRAPHENE_IPC_H
-
+#ifdef __linux__
+#include <linux/ioctl.h>
+#else
 #include <sys/ioctl.h>
+#endif
 
 #define GIPC_FILE   "/dev/gipc"
 #define GIPC_MINOR		240

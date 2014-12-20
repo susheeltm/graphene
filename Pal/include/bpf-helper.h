@@ -14,12 +14,22 @@
 #ifndef __BPF_HELPER_H__
 #define __BPF_HELPER_H__
 
+#ifdef __linux__
+#include <asm/bitsperlong.h>	/* for __BITS_PER_LONG */
+#include <endian.h>
+#include <linux/filter.h>
+#include <linux/seccomp.h>	/* for seccomp_data */
+#include <linux/types.h>
+#include <linux/unistd.h>
+#else
 #include <bitsperlong.h>	/* for __BITS_PER_LONG */
 #include <sys/endian.h>
 #include <filter.h>
 #include <seccomp.h>	/* for seccomp_data */
 #include <sys/types.h>
 //#include <unistd.h>
+#endif 
+
 #include <stddef.h>
 
 #define SECCOMP_RET_ISOLATE	0x00010000U /* redirect to appropriate handler.*/

@@ -276,8 +276,9 @@ void __store_frame (struct pal_frame * frame,
    code will be ignored. Ignoring PAL error code can be a possible
    optimization for SHIM. */
 void notify_failure (unsigned long error);
-
-//#include "sigset.h"
+#ifdef __linux__
+#include "sigset.h"
+#endif
 
 /* all pal config value */
 extern struct pal_config {

@@ -2,7 +2,7 @@ MAKEFLAGS += --check-symlink-times
 
 include Makefile.Host
 
-CC	= gcc49
+CC	= gcc
 AR	= ar rcs
 LD	= ld
 
@@ -11,8 +11,13 @@ CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
 	  -fno-stack-protector -fno-builtin \
 	  -fPIC -pthread\
 	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD 
+ifeq ($(OS),Linux)
 LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
-	  -e pal_start#-T pal.lds  
+	  -T pal.lds  
+else
+LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
+	  -e pal_start
+endif
 ARFLAGS	= 
 
 pal_target = libpal.a libpal.so
@@ -26,27 +31,32 @@ graphene_lib = ../lib/graphene-lib.a
 host_lib = host/$(OS)/libpal-$(OS).a
 headers	= $(wildcard *.h) $(wildcard ../lib/*.h)
 
+ifeq ($(OS),Linux)
+all: $(pal_target) security
+else
 all: $(pal_target) 
+endif
 
 debug: debug = debug
-debug: CC = gcc49 -g -gdwarf-2 -gstrict-dwarf
+debug: CC = gcc -g -gdwarf-2 -gstrict-dwarf
 debug: CFLAGS += -DDEBUG
 debug: $(pal_target) security
 
 .PHONY: security $(host_lib) $(graphene_lib)
 
 $(graphene_lib):
-	gmake -C ../lib $(debug)
+	make -C ../lib $(debug)
 
 $(host_lib):
-	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) $(debug)
-
-#security:
-#	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) $(debug)
+	@[ ! -d host/$(OS) ] || make -C host/$(OS) $(debug)
+ifeq ($(OS),Linux)
+security:
+	@[ ! -d security/$(OS) ] || make -C security/$(OS) $(debug)
+endif 
 
 libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
 	   $(host_lib) $(graphene_lib)
-	@echo [ ld $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@]
+	@echo [ ld $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@  ]
 	@$(LD) $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@
 
 libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
@@ -68,5 +78,5 @@ libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
 
 clean:
 	rm -f $(addsuffix .o,$(objs)) $(pal_target)
-	@[ ! -d host/$(OS) ] || gmake -C host/$(OS) clean
-#	@[ ! -d security/$(OS) ] || gmake -C security/$(OS) clean
+	@[ ! -d host/$(OS) ] || make -C host/$(OS) clean
+	@[ ! -d security/$(OS) ] || make -C security/$(OS) clean

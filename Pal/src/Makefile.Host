@@ -1,7 +1,7 @@
 all_hosts = Linux FreeBSD
 
 ifeq ($(OS),)
-SYS := $(shell gcc49 -dumpmachine)
+SYS := $(shell gcc -dumpmachine)
 ifeq ($(SYS),x86_64-linux-gnu)
 OS := Linux
 else ifeq ($(SYS), x86_64-portbld-freebsd10.0)
