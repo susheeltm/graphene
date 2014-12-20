@@ -29,6 +29,7 @@ Description:
 This project is to port PAL component of Graphene to FreeBSD. 
 Graphene is a Library OS developed at Stony Brook University under the guidance of Prof. Donald Porter. 
 For more details about Graphene, see <https://github.com/oscarlab/graphene/wiki>
+
 Status:
 --------------
 Most Pal/test binaries run successfully with the BSD code.(Except HandleSend)
@@ -45,7 +46,8 @@ Implemented Functionality:
 Note:
 - Currently, Linux compatibility is broken. We were forced to make changes in the common code to compile on BSD (missing header files etc.). We did not have time to update them with system-specific macros(ifdef)
 - We have not compiled/tested LibOS, all our testing was done with Pal directly
--A lot of the advanced functionality of clone isn't present in BSD at the systemcall level. Pthreads would be the ideal option, but that involves linking libc-r
+- A lot of the advanced functionality of clone isn't present in BSD at the systemcall level. Pthreads would be the ideal option, but that involves linking libc-r
+
 Acknowledgements:
 -------------------
 Many thanks to Chia-Che Tsai for helping us with our early linking issues and in solving "The case of the missing Dynamic section."
