@@ -1,0 +1,13 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/sunrpc/cross-rpc_clntout.o: \
+ rpc_clntout.c /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ rpc/types.h rpc_parse.h rpc_util.h proto.h
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+rpc/types.h:
+
+rpc_parse.h:
+
+rpc_util.h:
+
+proto.h:

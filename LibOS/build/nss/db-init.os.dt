@@ -1,0 +1,10 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/nss/db-init.os: \
+ nss_db/db-init.c ../include/libc-symbols.h \
+ /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:

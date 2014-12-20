@@ -1,0 +1,12 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/nss/hash-string.o: \
+ ../intl/hash-string.c ../include/libc-symbols.h \
+ /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h ../intl/hash-string.h
+
+../include/libc-symbols.h:
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:
+
+../intl/hash-string.h:

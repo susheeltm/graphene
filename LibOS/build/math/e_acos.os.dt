@@ -1,0 +1,10 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/math/e_acos.os: \
+ ../sysdeps/ieee754/dbl-64/e_acos.c ../include/libc-symbols.h \
+ /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h
+
+../include/libc-symbols.h:
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:

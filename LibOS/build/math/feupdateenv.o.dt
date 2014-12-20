@@ -1,0 +1,39 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/math/feupdateenv.o: \
+ ../sysdeps/x86_64/fpu/feupdateenv.c ../include/libc-symbols.h \
+ /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ ../sysdeps/generic/symbol-hacks.h ../include/fenv.h ../math/fenv.h \
+ ../include/features.h ../include/stdc-predef.h ../include/sys/cdefs.h \
+ ../misc/sys/cdefs.h ../sysdeps/x86/bits/wordsize.h \
+ ../include/gnu/stubs.h ../sysdeps/x86/fpu/bits/fenv.h \
+ ../bits/fenvinline.h ../include/shlib-compat.h \
+ /home/cse506/FreeBSD/BSD/graphene/LibOS/build/abi-versions.h
+
+../include/libc-symbols.h:
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+../sysdeps/generic/symbol-hacks.h:
+
+../include/fenv.h:
+
+../math/fenv.h:
+
+../include/features.h:
+
+../include/stdc-predef.h:
+
+../include/sys/cdefs.h:
+
+../misc/sys/cdefs.h:
+
+../sysdeps/x86/bits/wordsize.h:
+
+../include/gnu/stubs.h:
+
+../sysdeps/x86/fpu/bits/fenv.h:
+
+../bits/fenvinline.h:
+
+../include/shlib-compat.h:
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/abi-versions.h:

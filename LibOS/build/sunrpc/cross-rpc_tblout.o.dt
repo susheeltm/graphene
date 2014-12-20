@@ -1,0 +1,11 @@
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/sunrpc/cross-rpc_tblout.o: \
+ rpc_tblout.c /home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h \
+ rpc_parse.h rpc_util.h proto.h
+
+/home/cse506/FreeBSD/BSD/graphene/LibOS/build/config.h:
+
+rpc_parse.h:
+
+rpc_util.h:
+
+proto.h:
