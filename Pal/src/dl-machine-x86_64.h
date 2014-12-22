@@ -43,7 +43,11 @@
 
 //#define DEBUG_RELOC
 
+#ifdef __linux__
 static void
+#else
+static inline void
+#endif
 elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
                   Elf64_Rela *reloc, Elf64_Sym *sym, void *const reloc_addr_arg,
                   bool rel, bool rel_relative)
@@ -202,8 +206,11 @@ elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
            interpreter to relocate it again. */
         reloc->r_info ^= ELF64_R_TYPE (reloc->r_info);
 }
-
+#ifdef __linux__
 static void
+#else
+static inline void
+#endif
 elf_machine_rela_relative (Elf64_Addr l_addr, const Elf64_Rela *reloc,
                            void *const reloc_addr_arg)
 {

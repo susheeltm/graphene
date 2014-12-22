@@ -48,7 +48,7 @@ int main (int argc, char ** argv)
                                       0600, PAL_CREAT_TRY, 0);
 
             if (handles[i] == NULL) {
-                pal_printf("Parent: DkStreamOpen failed\n");
+                pal_printf("Parent: DkStreamOpen failed for i: %d\n",i);
                 goto out;
             }
 

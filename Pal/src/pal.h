@@ -240,8 +240,14 @@ DkProcessSandboxCreate (PAL_STR manifest, PAL_FLG flags);
 #define PAL_SHARE_MASK      0777
 
 /* Stream Create Flags */
+#ifdef __linux__
 #define PAL_CREAT_TRY        0100       /* 0100 Create file if file not
                                            exist (O_CREAT) */
+#else
+#define PAL_CREAT_TRY        0200       /* 0100 Create file if file not
+                                           exist (O_CREAT) */
+#endif
+
 #define PAL_CREAT_ALWAYS     0200       /* 0300 Create file and fail if file
                                            already exist (O_CREAT|O_EXCL) */
 #define PAL_CREAT_MASK       0300

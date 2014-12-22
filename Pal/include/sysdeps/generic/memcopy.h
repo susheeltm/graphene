@@ -55,7 +55,7 @@ typedef unsigned char byte;
 
 #if __BYTE_ORDER == __LITTLE_ENDIAN
 #define MERGE(w0, sh_1, w1, sh_2) (((w0) >> (sh_1)) | ((w1) << (sh_2)))
-#else if __BYTE_ORDER == __BIG_ENDIAN
+#elif __BYTE_ORDER == __BIG_ENDIAN
 #define MERGE(w0, sh_1, w1, sh_2) (((w0) << (sh_1)) | ((w1) >> (sh_2)))
 #endif
 

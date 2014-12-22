@@ -39,23 +39,39 @@
    copying memory, breaking the very code written to handle the
    unaligned cases.  */
 #if ! ELF_MACHINE_NO_REL
+#ifdef __linux__
 static void __attribute__((always_inline))
+#else 
+static __always_inline void 
+#endif
 elf_machine_rel (ElfW(Dyn) ** l_info, ElfW(Addr) l_addr,
                  ElfW(Rel) *reloc, ElfW(Sym) *sym, void *const reloc_addr,
                  bool rel, bool rel_relative);
 
+#ifdef __linux__
 static void __attribute__((always_inline))
+#else 
+static __always_inline void 
+#endif
 elf_machine_rel_relative (ElfW(Addr) l_addr, const ElfW(Rel) *reloc,
                           void *const reloc_addr);
 #endif
 
 #if ! ELF_MACHINE_NO_RELA
+#ifdef __linux__
 static void __attribute__((always_inline))
+#else 
+static __always_inline void 
+#endif
 elf_machine_rela (ElfW(Dyn) ** l_info, ElfW(Addr) l_addr,
                   ElfW(Rela) *reloc, ElfW(Sym) *sym, void *const reloc_addr,
                   bool rel, bool rel_relative);
 
+#ifdef __linux__
 static void __attribute__((always_inline))
+#else 
+static __attribute__((__always_inline__)) void
+#endif
 elf_machine_rela_relative (ElfW(Addr) l_addr, const ElfW(Rela) *reloc,
                            void *const reloc_addr);
 #endif

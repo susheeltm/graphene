@@ -88,8 +88,8 @@ static int _DkObjectWaitOne (PAL_HANDLE handle, int timeout)
         //No ppoll in FREEBSD
 	/*int ret = INLINE_SYSCALL(ppoll, 5, &fds, nfds,
                                  timeout >= 0 ? &timeout_ts : NULL,
-                                 NULL, 0);
-	*/
+                                 NULL, 0);*/
+	
 	int ret = INLINE_SYSCALL(poll, 3, &fds, nfds,timeout);
 
         if (IS_ERR(ret))
@@ -211,11 +211,14 @@ int _DkObjectsWaitAny (int count, PAL_HANDLE * handleArray, int timeout,
         timeout_ts.tv_nsec = microsec * 1000;
     }
 	//No ppoll in BSD
-    /*ret = INLINE_SYSCALL(ppoll, 5, fds, nfds,
+/*#ifdef SYS_ppoll
+    ret = INLINE_SYSCALL(ppoll, 5, fds, nfds,
                          timeout >= 0 ? &timeout_ts : NULL,
-                         NULL, 0);*/
+                         NULL, 0);
+#else*/    
 	ret = INLINE_SYSCALL(poll, 3, fds, nfds,
 	                  timeout);
+//#endif
 
     if (IS_ERR(ret))
         switch (ERRNO(ret)) {
