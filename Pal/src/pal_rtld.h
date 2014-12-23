@@ -172,7 +172,8 @@ ELF_PREFERRED_ADDRESS_DATA;
                       + DT_EXTRANUM + DT_VALTAGIDX (tag))
 #endif
 
-#if OS == Linux
+// #if OS == Linux
+#ifdef __linux__
 #include<endian.h>
 #else
 #include<sys/endian.h>
