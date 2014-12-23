@@ -144,7 +144,6 @@ int _DkStreamOpen (PAL_HANDLE * handle, const char * uri,
 {
     struct handle_ops * ops = NULL;
     const char * type = NULL;
-
     int ret = parse_stream_uri(&uri, &type, &ops);
 
     if (ret < 0)
@@ -152,6 +151,10 @@ int _DkStreamOpen (PAL_HANDLE * handle, const char * uri,
 
     assert(ops && ops->open);
 
+#ifndef __linux__
+    if(create != 0)
+	    create = PAL_CREAT_TRY;
+#endif	    
     return ops->open(handle, type, uri, access, share, create, options);
 }
 

@@ -240,14 +240,9 @@ DkProcessSandboxCreate (PAL_STR manifest, PAL_FLG flags);
 #define PAL_SHARE_MASK      0777
 
 /* Stream Create Flags */
-#define LIN 0100
-#define BSD 0x0200
+#ifdef __linux__
 #define PAL_CREAT_TRY	0100       /* 0100 Create file if file not
 												exist (O_CREAT) */
-#define PAL_CREAT_ALWAYS     0200       /* 0300 Create file and fail if file
-                                           already exist (O_CREAT|O_EXCL) */
-#define PAL_CREAT_MASK       0300
-
 #define PAL_CREAT_ALWAYS     0200       /* 0300 Create file and fail if file
                                            already exist (O_CREAT|O_EXCL) */
 #define PAL_CREAT_MASK       0300
@@ -255,6 +250,18 @@ DkProcessSandboxCreate (PAL_STR manifest, PAL_FLG flags);
 /* Stream Option Flags */
 #define PAL_OPTION_NONBLOCK     04000
 #define PAL_OPTION_MASK         04000
+#else 
+#define PAL_CREAT_TRY	0x0200       /* 0100 Create file if file not
+												exist (O_CREAT) */
+#define PAL_CREAT_ALWAYS     0x0800       /* 0300 Create file and fail if file
+                                           already exist (O_CREAT|O_EXCL) */
+#define PAL_CREAT_MASK       0x0A00
+
+/* Stream Option Flags */
+#define PAL_OPTION_NONBLOCK     0x00004
+#define PAL_OPTION_MASK         0x00004
+
+#endif
 
 PAL_HANDLE
 DkStreamOpen (PAL_STR uri, PAL_FLG access, PAL_FLG share_flags,
