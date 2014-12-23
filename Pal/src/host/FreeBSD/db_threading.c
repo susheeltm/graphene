@@ -101,7 +101,7 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 #if defined(__i386__)
 #include <asm/ldt.h>
 #else
-//#include <prctl.h> -> Not present in BSD
+#include <machine/sysarch.h> 
 #endif
 
 /* PAL call DkThreadPrivate: set up the thread private area for the
@@ -110,11 +110,13 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 void * _DkThreadPrivate (void * addr)
 {
     //No arch_set_fs etc in BSD, Linux specific only.
-    return NULL;
-    /*
+    // return NULL;
+    
     int ret = 0;
 
     if ((void *) addr == 0) {
+// 32-Bit Not touched a bit...!! 
+// Changed only the 64-Bit BSD part.!
 #if defined(__i386__)
         struct user_desc u_info;
 
@@ -127,7 +129,7 @@ void * _DkThreadPrivate (void * addr)
 #else
         unsigned long ret_addr;
 
-        ret = INLINE_SYSCALL(arch_prctl, 2, ARCH_GET_FS, &ret_addr);
+        ret = INLINE_SYSCALL(sysarch, 2, AMD64_GET_FSBASE, &ret_addr);
 
         if (IS_ERR(ret))
             return NULL;
@@ -149,13 +151,13 @@ void * _DkThreadPrivate (void * addr)
 
         ret = INLINE_SYSCALL(set_thread_area, 1, &u_info);
 #else
-        ret = INLINE_SYSCALL(arch_prctl, 2, ARCH_SET_FS, addr);
+        ret = INLINE_SYSCALL(sysarch, 2, AMD64_SET_FSBASE, addr);
 #endif
         if (IS_ERR(ret))
             return NULL;
 
         return addr;
-    }*/
+    }
 }
 
 int _DkThreadDelayExecution (unsigned long * duration)
