@@ -48,15 +48,15 @@ static int _DkObjectWaitOne (PAL_HANDLE handle, int timeout)
     /* only for all these handle which has a file descriptor, or
        a eventfd. events and semaphores will skip this part */
     if (handle->__in.flags & HAS_FDS) {
-        struct timespec timeout_ts;
+        /* struct timespec timeout_ts;
 
         if (timeout >= 0) {
-            long sec = (unsigned long) timeout / 1000000;
-            long microsec = (unsigned long) timeout - (sec * 1000000);
+           long sec = (unsigned long) timeout / 1000000;
+           long microsec = (unsigned long) timeout - (sec * 1000000);
 
             timeout_ts.tv_sec = sec;
             timeout_ts.tv_nsec = microsec * 1000;
-        }
+         } */
 
         struct pollfd fds[MAX_FDS];
         int off[MAX_FDS];
@@ -202,14 +202,14 @@ int _DkObjectsWaitAny (int count, PAL_HANDLE * handleArray, int timeout,
     if (!nfds)
         return -PAL_ERROR_TRYAGAIN;
 
-    struct timespec timeout_ts;
+    /* struct timespec timeout_ts;
 
     if (timeout >= 0) {
         long sec = (unsigned long) timeout / 1000000;
         long microsec = (unsigned long) timeout - (sec * 1000000);
         timeout_ts.tv_sec = sec;
         timeout_ts.tv_nsec = microsec * 1000;
-    }
+    } */
 	//No ppoll in BSD
 /*#ifdef SYS_ppoll
     ret = INLINE_SYSCALL(ppoll, 5, fds, nfds,
