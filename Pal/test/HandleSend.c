@@ -41,14 +41,14 @@ int main (int argc, char ** argv)
             pal_printf("Parent: DkStreamOpen for socket failed\n");
             goto out;
         }
-
+		// pal_printf("OCEATE FLAG: 5d\n",O_CREAT);
         for (i = 2 ; i < nsend; i++) {
             pal_snprintf(uri, 80, "file:test_file_%d", i - 2);
             handles[i] = DkStreamOpen(uri, PAL_ACCESS_RDWR,
                                       0600, PAL_CREAT_TRY, 0);
 
             if (handles[i] == NULL) {
-                pal_printf("Parent: DkStreamOpen failed for i: %d\n",i);
+                pal_printf("Parent: DkStreamOpen failed\n");
                 goto out;
             }
 
@@ -138,6 +138,7 @@ int main (int argc, char ** argv)
     }
 
 out:
+	pal_printf("Closing all the handles.");
     for (i = 0 ; i < nsend ; i++)
         DkObjectClose(handles[i]);
 
