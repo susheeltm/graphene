@@ -22,7 +22,7 @@ int main (int argc, char ** argv)
         PAL_HANDLE child;
         int bytes;
 
-        pal_printf("Parent: Creating handles\n");
+        pal_printf("Parent: Creating handles - Create: %o\n",PAL_CREAT_TRY);
 
         // Sending pipe handle
         handles[0] = DkStreamOpen("pipe.srv:012", PAL_ACCESS_RDWR,
