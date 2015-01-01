@@ -6,7 +6,7 @@
 #include "pal.h"
 #include "pal_debug.h"
 
-#define PAL_CREAT_TRY 0x0200
+// #define PAL_CREAT_TRY 0x0200
 
 int main (int argc, char ** argv)
 {
