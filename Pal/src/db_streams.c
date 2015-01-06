@@ -264,7 +264,7 @@ int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
         return -PAL_ERROR_ZEROSIZE;
 
     int ret;
-
+    pal_printf("Raj--> %d",handle->file.fd);
     if (addr) {
         if (!ops->readbyaddr)
             return -PAL_ERROR_NOTSUPPORT;
