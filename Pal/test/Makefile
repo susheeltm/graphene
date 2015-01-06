@@ -1,6 +1,6 @@
 CC	= gcc
 CFLAGS	= -Wall -O2 -std=gnu99 -fgnu89-inline -fno-builtin -nostdlib -e main \
-	  -I../include -I../include/pal -I../lib -I../src/host/Linux -L../src -lpal -DIN_PAL
+	  -I../include/pal -I../lib -L../src -lpal
 
 rtarget	= HelloWorld File Failure Thread Fork Event \
 	  Process Exception Memory Pipe Tcp Udp Yield Broadcast
