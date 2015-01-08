@@ -176,6 +176,7 @@ static void * find_heap_base (void)
     unsigned long pal_size = pal_config.lib_data_end -
                             pal_config.lib_text_start;
 #else
+    heap_base = 0x1021000;
     unsigned long pal_size = pal_config.lib_text_start -
                              pal_config.lib_data_end;
 #endif
