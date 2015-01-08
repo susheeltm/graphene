@@ -12,7 +12,7 @@ int main (int argc, char ** argv)
 {
     int nsend = 5 , i;
     PAL_HANDLE handles[nsend];
-
+    // PAL_NUM ret;
     if (argc == 1)  /* parent */ 
     {
         pal_printf("Parent: Executing the program\n");
@@ -53,7 +53,7 @@ int main (int argc, char ** argv)
                 pal_printf("Parent: DkStreamOpen failed\n");
                 goto out;
             }
-
+	    pal_printf("Raj: Handle type: %d\n",handles[i]->__in.type);
             DkStreamSetLength(handles[i], 0);
         }
 
@@ -80,7 +80,7 @@ int main (int argc, char ** argv)
         }
 
         for (i = 0 ; i < nsend ; i++) {
-            pal_printf("Parent: Sending Handle %d\n", i);
+            pal_printf("Parent: Sending Handle %d FD: %d\n", i, handles[i]->file.fd);
 
             if (!DkSendHandle(child, handles[i])) {
                 pal_printf("Send handle failed\n");
@@ -116,10 +116,11 @@ int main (int argc, char ** argv)
 
             switch(__PAL_GET_TYPE(handles[i])) {
                 case pal_type_file:
-                    if ((DkStreamRead(handles[i], 0, 20, data, NULL, 0)))
+                    pal_printf("Raj:-- %d Type  Handle FD: %d ", i, handles[i]->file.fd);
+                    if ((DkStreamRead(handles[i], 0, 13, data, NULL, 0)))
                         pal_printf("File Data: %s\n", data);
                     else
-                        pal_printf("Couldn't read\n");
+                        pal_printf("Couldn't read the file with FD: %d\n",handles[i]->file.fd);
                     break;
                 case pal_type_pipesrv:
                     pal_printf("Pipe\n");
