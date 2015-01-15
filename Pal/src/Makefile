@@ -16,7 +16,8 @@ LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
 	  -T pal.lds  
 else
 LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
-	  -e pal_start
+	  -T freebsd.lds #-e pal_start # -T pal.lds 
+	  # --verbose 
 endif
 ARFLAGS	= 
 

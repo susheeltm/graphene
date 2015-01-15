@@ -39,10 +39,8 @@ typedef __kernel_pid_t pid_t;
 #include <sys/socket.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include <sys/socket.h>
 #include <poll.h>
 #include <sys/signal.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
 #include <asm-errno.h>
 

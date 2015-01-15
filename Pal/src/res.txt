@@ -1,0 +1,37 @@
+./db_main.c:    unsigned long heap_base = (unsigned long) pal_config.lib_text_start;
+./db_main.c:                            pal_config.lib_text_start;
+./db_main.c:    unsigned long pal_size = pal_config.lib_text_start -
+./db_main.c:    pal_config.lib_text_start = (void *) &text_start;
+./db_main.c:    __pal_control.library_begin = &text_start;
+./db_memory.c:    void * pal_min = pal_config.lib_text_start;
+./db_rtld.c:            l->l_text_start = l->l_addr + c->mapstart;
+./host/FreeBSD/db_exception.c:        ((void *) (addr) > pal_config.lib_text_start && \
+./host/FreeBSD/db_main.c:void * text_start =0 , * text_end =0, * data_start=0, * data_end=0;
+./host/FreeBSD/db_rtld.c:    l->l_text_start = (ElfW(Addr)) &text_start;
+Binary file ./host/FreeBSD/db_process.o matches
+Binary file ./host/FreeBSD/db_main.o matches
+Binary file ./host/FreeBSD/db_rtld.o matches
+Binary file ./host/FreeBSD/db_exception.o matches
+Binary file ./host/FreeBSD/libpal-FreeBSD.a matches
+./host/Linux/db_exception.c:        ((void *) (addr) > pal_config.lib_text_start && \
+./host/Linux/db_rtld.c:    l->l_text_start = (ElfW(Addr)) &text_start;
+./pal.lds:  text_start = .;
+./pal_internal.h:    void *          lib_text_start, * lib_text_end;
+./pal_internal.h:extern void * text_start, * text_end;
+./pal_rtld.h:    ElfW(Addr) l_text_start, l_text_end;
+Binary file ./security/Linux/libpal_sec.so.backup matches
+./security/Linux/main.c:                        unsigned long * text_start, unsigned long * text_end,
+./security/Linux/main.c:    *text_start = (unsigned long) -1;
+./security/Linux/main.c:            if (base + c->mapstart < *text_start)
+./security/Linux/main.c:                *text_start = base + c->mapstart;
+Binary file ./db_memory.o matches
+Binary file ./db_main.o matches
+Binary file ./db_rtld.o matches
+Binary file ./libpal.a matches
+Binary file ./libpal.so matches
+Binary file ./.db_main.c.swp matches
+./db_main.c~:    unsigned long heap_base = (unsigned long) pal_config.lib_text_start;
+./db_main.c~:                            pal_config.lib_text_start;
+./db_main.c~:    unsigned long pal_size = pal_config.lib_text_start -
+./db_main.c~:    pal_config.lib_text_start = (void *) &text_start;
+./db_main.c~:    __pal_control.library_begin = &text_start;

@@ -170,31 +170,43 @@ static void * find_heap_base (void)
        but try to get around future address of PAL caused by ASLR.
        The top of heap must be at least 1/16 of the area below where PAL
        is loaded. The address is still randomized. */
-    unsigned long heap_base = (unsigned long) pal_config.lib_text_start;
+    unsigned long heap_base = (unsigned long) pal_config.lib_data_end 
+                              + 0x800000000;
     //Had to reverse this just to cross it. Since we're not using the linking script, text, data sections are randomized. I guess we could put a check.
 #ifdef __linux__
     unsigned long pal_size = pal_config.lib_data_end -
                             pal_config.lib_text_start;
 #else
-    heap_base = 0x80139e000;
-    unsigned long pal_size = pal_config.lib_text_start -
-                             pal_config.lib_data_end;
+    // heap_base = 0x80139e000;
+    // heap_base = 0x801245aa8;
+    // heap_base = 0x801245aa8;
+    unsigned long pal_size = pal_config.lib_data_end - pal_config.lib_text_start;
+    // unsigned long pal_size = pal_config.lib_text_start - 
+    //                          pal_config.lib_data_end;
 #endif
     unsigned long base = allocsize;
+    void * addr = (void *) heap_base;
+    printf("\n\n-- Debugging -- Heap base: %016x pal_size: %x base: %x alloc_mask: %x Address: %p\n\n",heap_base, pal_size, base, allocmask, addr);
     
-    while ((base >> 12) < pal_size)
+    while ((base >> 12) < pal_size){
         base <<= 1;
+	// printf("\n Base: %x Base >> 2: %x pal_size: %x\n",base, base>>12, pal_size);
+    }	
+    printf("\n\n -- Raj -testing \n\n");
     while ((base << 6) < heap_base)
         base <<= 1;
-
+    printf("\n\n -- Raj -testing \n\n");
     heap_base &= allocmask;
     while ((heap_base -= base) > base) {
         void * heap = (void *) heap_base;
+        // printf("\n\n == Returning Heap Value: %p \n\n",heap);
         if (!_DkVirtualMemoryAlloc(&heap, allocsize, PAL_ALLOC_RESERVE,
-                                   PAL_PROT_NONE))
+                                   PAL_PROT_NONE)){
+            // printf("\n\n == Returning Heap Value: %p \n\n",heap);
             return heap;
+	}
     }
-
+    printf("\n\n == Returning Null \n\n");
     return NULL;
 }
 

@@ -75,6 +75,7 @@ extern struct pal_linux_config {
                                    NULL, &pal_linux_config.pid)
 */
 #define ARCH_VFORK() INLINE_SYSCALL(vfork,0)
+// #define ARCH_VFORK() INLINE_SYSCALL(rfork, 1, 0);
 
 #define PRESET_PAGESIZE (1 << 12)
 

@@ -250,9 +250,11 @@ void DkStreamDelete (PAL_HANDLE handle, PAL_FLG access)
 int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
                    char * addr, int addrlen)
 {
+    // pal_printf("1\n");	
     if (UNKNOWN_HANDLE(handle))
         return -PAL_ERROR_BADHANDLE;
 
+    // pal_printf("2\n");	
     const struct handle_ops * ops = HANDLE_OPS(handle);
 
     /* if ops or ops->read is not defined, it infers that the stream can
@@ -260,15 +262,19 @@ int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
     if (!ops)
         return -PAL_ERROR_NOTSUPPORT;
 
+    // pal_printf("3\n");	
     if (!count)
         return -PAL_ERROR_ZEROSIZE;
 
+    // pal_printf("4\n");	
+    pal_printf("5 Fd: %d\n",handle->file.fd);	
     int ret;
-    // pal_printf("Raj--> %d",handle->file.fd);
+
     if (addr) {
         if (!ops->readbyaddr)
             return -PAL_ERROR_NOTSUPPORT;
 
+    // pal_printf("5 Fd: %d\n",handle->file.fd);	
         ret = ops->readbyaddr(handle, offset, count, buf, addr, addrlen);
     } else {
         if (!ops->read)
@@ -277,6 +283,7 @@ int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
         ret = ops->read(handle, offset, count, buf);
     }
 
+    // pal_printf("6\n");	
     return ret ? : -PAL_ERROR_ENDOFSTREAM;
 }
 

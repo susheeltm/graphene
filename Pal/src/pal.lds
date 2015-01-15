@@ -1,4 +1,5 @@
-OUTPUT_FORMAT("elf64-x86-64", "elf64-x86-64", "elf64-x86-64")
+OUTPUT_FORMAT("elf64-x86-64-freebsd", "elf64-x86-64-freebsd",
+	      "elf64-x86-64-freebsd")
 OUTPUT_ARCH(i386:x86-64)
 ENTRY(pal_start);
 
@@ -6,7 +7,7 @@ SECTIONS
 {
   /* Read-only sections, merged into text segment; */
   text_start = .;
-  . = SEGMENT_START("text-segment", 0) + SIZEOF_HEADERS;
+  . = 0 + SIZEOF_HEADERS;
   .hash          : { *(.hash) }
   .note.gnu.build-id : { *(.note.gnu.build-id) }
   .dynsym        : { *(.dynsym) }
@@ -21,8 +22,11 @@ SECTIONS
   .text :
   {
     /* the rest of text segments */
-    *(.text .stub .text.*);
-  }
+    /*(.text .stub .text.*);*/
+    *(.text .stub .text.* .gnu.linkonce.t.*)
+    KEEP (*(.text.*personality*))
+    *(.gnu.warning)
+  } =0x909090900 
   .fini          : { *(.fini) }
   .rodata :
   {
