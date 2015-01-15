@@ -36,6 +36,10 @@
 #include <asm-errno.h>
 #include <sys/time.h>
 
+#define	UMTX_OP_WAIT		2
+#define	UMTX_OP_WAKE		3
+#define	UMTX_OP_WAIT_UINT	11
+
 int _DkEventCreate (PAL_HANDLE * event, bool initialState, bool isnotification)
 {
     PAL_HANDLE ev = malloc(HANDLE_SIZE(event));
@@ -54,31 +58,30 @@ void _DkEventDestroy (PAL_HANDLE handle)
 
 int _DkEventSet (PAL_HANDLE event)
 {
-   return -PAL_ERROR_NOTIMPLEMENTED;
-   /*int ret = 0;
+printf ("Set an event");
+	int ret = 0;
     if (event->event.isnotification) {
-        // Leave it signaled, wake all
+	    // Leave it signaled, wake all
         if (atomic_cmpxchg(&event->event.signaled, 0, 1) == 0) {
             int nwaiters = atomic_read(&event->event.nwaiters);
             if (nwaiters) {
-                ret = INLINE_SYSCALL(futex, 6, &event->event.signaled,
-                                     FUTEX_WAKE, nwaiters, NULL, NULL, 0);
+                ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled,
+                                     UMTX_OP_WAKE, nwaiters, NULL, NULL);
                 if (IS_ERR(ret))
                     atomic_set(&event->event.signaled, 0);
             }
         }
     } else {
         // Only one thread wakes up, leave unsignaled
-        ret = INLINE_SYSCALL(futex, 6, &event->event.signaled, FUTEX_WAKE, 1,
-                             NULL, NULL, 0);
+        
+	    ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled, UMTX_OP_WAKE, 1, NULL, NULL);
     }
 
-    return IS_ERR(ret) ? PAL_ERROR_TRYAGAIN : 0;*/
+    return IS_ERR(ret) ? PAL_ERROR_TRYAGAIN : 0;
 }
 
 int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
 {
-	return -PAL_ERROR_NOTIMPLEMENTED ;/*
     int ret = 0;
     if (!atomic_read(&event->event.signaled)) {
         struct timespec waittime;
@@ -90,8 +93,7 @@ int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
         atomic_inc(&event->event.nwaiters);
 
         do {
-            ret = INLINE_SYSCALL(futex, 6, &event->event.signaled, FUTEX_WAIT,
-                                 0, &waittime, NULL, 0);
+            ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled, UMTX_OP_WAIT_UINT, 1, NULL, &waittime);
 
             if (IS_ERR(ret)) {
                 if (ERRNO(ret) == EWOULDBLOCK) {
@@ -106,21 +108,18 @@ int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
         atomic_dec(&event->event.nwaiters);
     }
 
-    return ret;*/
+    return ret;
 }
 
 int _DkEventWait (PAL_HANDLE event)
 {
-	return -PAL_ERROR_NOTIMPLEMENTED;
-	/*
     int ret = 0;
 
     if (!atomic_read(&event->event.signaled)) {
         atomic_inc(&event->event.nwaiters);
 
         do {
-            ret = INLINE_SYSCALL(futex, 6, &event->event.signaled, FUTEX_WAIT,
-                                  0, NULL, NULL, 0);
+            ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled, UMTX_OP_WAIT, 0, NULL, NULL);
 
             if (IS_ERR(ret)) {
                 if (ERRNO(ret) == EWOULDBLOCK) {
@@ -135,7 +134,7 @@ int _DkEventWait (PAL_HANDLE event)
         atomic_dec(&event->event.nwaiters);
     }
 
-    return ret;*/
+    return ret;
 }
 
 int _DkEventClear (PAL_HANDLE event)

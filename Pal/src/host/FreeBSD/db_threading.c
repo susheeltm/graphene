@@ -50,7 +50,7 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
                      const void * param, int flags)
 {
     //Can't assign stack at syscall level in BSD... Need to use pthreads
-	/*void * child_stack = NULL;
+   void * child_stack = NULL;
 
     if (_DkVirtualMemoryAlloc(&child_stack,
                               PAL_THREAD_STACK_SIZE, 0,
@@ -64,19 +64,24 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     child_stack = (void *) ((uintptr_t) child_stack & ~16);
 
     flags &= PAL_THREAD_MASK;
-	*/
+	
     printf("",param);//Just to stop the compiler from optimizing out param!!
-    int tid = 0;
-    int ret = INLINE_SYSCALL(fork,0);
+    //int tid = 0;
+    //int ret = INLINE_SYSCALL(fork,0);
+    int ret = rfork_thread(
+		    RFPROC|RFFDG|RFSIGSHARE|RFMEM, 
+		    child_stack, 
+		    callback, 
+		    (void *)param);
     //int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE|RFNOWAIT);
-    if(ret == 0)
+    /*if(ret == 0)
     {
 	int r = ((int (*) (const void *))callback) (param);
 	_DkThreadExit(r);
 
     }
     tid = ret;
-
+	*/
     /*Clone does not exist in BSD, need to change to Pthread if we want this facility
     int ret = __clone(callback, child_stack,
                       CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SYSVSEM|
@@ -90,7 +95,7 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     
     PAL_HANDLE hdl = malloc(HANDLE_SIZE(thread));
     SET_HANDLE_TYPE(hdl, thread);
-    hdl->thread.tid = tid;
+    hdl->thread.tid = ret;
     *handle = hdl;
 
     /* _DkThreadAdd(tid); */

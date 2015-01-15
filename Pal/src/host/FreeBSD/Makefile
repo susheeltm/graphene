@@ -5,7 +5,7 @@ AS	= gcc49
 AR	= ar rcs
 
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -Wall -U_FORTIFY_SOURCE \
-	  -fno-omit-frame-pointer \
+	  -fno-omit-frame-pointer\
 	  -fno-stack-protector -fno-builtin \
 	  -I. -I../.. -I../../../include -I../../../lib -I../../../ipc/linux \
 	  -I../../../linux-3.5/graphene 
@@ -19,7 +19,7 @@ host_target = libpal-FreeBSD.a
 defs	= -DIN_PAL -DGDB_SCRIPT="$(CURDIR)/pal-gdb.py"
 objs	= $(addprefix db_,files devices pipes sockets streams memory threading \
 	    semaphore mutex events process object main rtld misc ipc \
-	    exception) manifest clone-x86_64 gettimeofday-x86_64
+	    exception) manifest rfork_thread gettimeofday-x86_64
 graphene_lib = ../../../lib/graphene-lib.a
 headers	= $(wildcard *.h) $(wildcard ../../*.h) $(wildcard ../../../lib/*.h)
 
