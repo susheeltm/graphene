@@ -257,7 +257,7 @@ void _DkSemaphoreRelease (PAL_HANDLE sem, int count)
     int nwaiters = atomic_read (&sem->semaphore.nwaiters);
 
     if (nwaiters > 0)
-        INLINE_SYSCALL(_umtx_op, 5, value, UMTX_OP_WAIT, nwaiters, NULL, NULL);
+        INLINE_SYSCALL(_umtx_op, 5, value, UMTX_OP_WAKE, nwaiters, NULL, NULL);
 }
 
 int _DkSemaphoreGetCurrentCount (PAL_HANDLE sem)

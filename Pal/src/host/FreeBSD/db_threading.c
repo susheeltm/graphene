@@ -49,7 +49,6 @@
 int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
                      const void * param, int flags)
 {
-    //Can't assign stack at syscall level in BSD... Need to use pthreads
    void * child_stack = NULL;
 
     if (_DkVirtualMemoryAlloc(&child_stack,

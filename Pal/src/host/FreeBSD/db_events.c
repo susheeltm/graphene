@@ -58,7 +58,6 @@ void _DkEventDestroy (PAL_HANDLE handle)
 
 int _DkEventSet (PAL_HANDLE event)
 {
-printf ("Set an event");
 	int ret = 0;
     if (event->event.isnotification) {
 	    // Leave it signaled, wake all
@@ -93,7 +92,7 @@ int _DkEventWaitTimeout (PAL_HANDLE event, int timeout)
         atomic_inc(&event->event.nwaiters);
 
         do {
-            ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled, UMTX_OP_WAIT_UINT, 1, NULL, &waittime);
+            ret = INLINE_SYSCALL(_umtx_op, 5, &event->event.signaled, UMTX_OP_WAIT_UINT, 0, NULL, &waittime);
 
             if (IS_ERR(ret)) {
                 if (ERRNO(ret) == EWOULDBLOCK) {
