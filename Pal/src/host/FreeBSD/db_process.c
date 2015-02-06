@@ -161,16 +161,15 @@ int _DkProcessCreate (PAL_HANDLE * handle, const char * uri,
 
     if (IS_ERR(ret)) {
         ret = -PAL_ERROR_DENIED;
-        goto out;
+	goto out;
     }
-
     if (!ret) {
-        for (int i = 0 ; i < 3 ; i++)
+	//asm volatile("1:\n\tmovq $0, %rax\n\tcmpq $0, %rax\n\tjz 1b"); 
+	for (int i = 0 ; i < 3 ; i++)
             INLINE_SYSCALL(close, 1, proc_fds[1][i]);
 
         if (manifest_fd >= 0)
             INLINE_SYSCALL(fcntl, 3, manifest_fd, F_SETFD, 0);
-
         rete = INLINE_SYSCALL(execve, 3, pal_config.lib_name, new_args,
                               pal_config.environments);
 

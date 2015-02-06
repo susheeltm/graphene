@@ -289,6 +289,7 @@
     LOAD_REGS_##nr				      \
     unsigned long resultvar;			      \
     asm volatile (		 			\
+    "movq %%rax, %%r11\n\t"					\
     /*"int $3\n\t"*/		 			\
     "int $0x80\n\t"		 			\
     : "=a" (resultvar)					\
@@ -324,7 +325,8 @@ INTERNAL_SYSCALL_NCS(SYS_ifyBSD(name), err, nr, ##args)
 		  : "=b"(carry)				\
 		  :					\
 		  : "cc", "memory", "eax");		\
-    (carry)? (-val):val; })
+	/* if (carry) asm volatile("int $3");	*/	\
+	 (carry)? (-val):val; })
 	  		
 
 #define LOAD_ARGS_0()

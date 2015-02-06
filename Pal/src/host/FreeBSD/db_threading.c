@@ -68,7 +68,7 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     //int tid = 0;
     //int ret = INLINE_SYSCALL(fork,0);
     int ret = rfork_thread(
-		    RFPROC|RFFDG|RFSIGSHARE|RFMEM, 
+		    RFPROC|RFSIGSHARE|RFMEM, 
 		    child_stack, 
 		    callback, 
 		    (void *)param);

@@ -180,7 +180,7 @@ DkStreamOpen (PAL_STR uri, PAL_FLG access, PAL_FLG share, PAL_FLG create,
 
 int _DkStreamWaitForClient(PAL_HANDLE handle, PAL_HANDLE * client)
 {
-    if (UNKNOWN_HANDLE(handle))
+	if (UNKNOWN_HANDLE(handle))
         return -PAL_ERROR_BADHANDLE;
 
     const struct handle_ops * ops = HANDLE_OPS(handle);
@@ -250,7 +250,7 @@ void DkStreamDelete (PAL_HANDLE handle, PAL_FLG access)
 int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
                    char * addr, int addrlen)
 {
-    if (UNKNOWN_HANDLE(handle))
+if (UNKNOWN_HANDLE(handle))
         return -PAL_ERROR_BADHANDLE;
 
     const struct handle_ops * ops = HANDLE_OPS(handle);
@@ -276,8 +276,7 @@ int _DkStreamRead (PAL_HANDLE handle, int offset, int count, void * buf,
 
         ret = ops->read(handle, offset, count, buf);
     }
-
-    return ret ? : -PAL_ERROR_ENDOFSTREAM;
+	return ret ? : -PAL_ERROR_ENDOFSTREAM;
 }
 
 /* PAL call DkStreamRead: Read from stream at absolute offset. Return number

@@ -119,7 +119,6 @@ static int pipe_waitforclient (PAL_HANDLE handle, PAL_HANDLE * client)
 
     int newfd = INLINE_SYSCALL(accept4, 4, handle->pipe.fd, NULL, NULL,
                                SOCK_CLOEXEC);
-
     if (IS_ERR(newfd))
         switch (ERRNO(newfd)) {
             case EWOULDBLOCK:

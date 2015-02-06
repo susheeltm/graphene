@@ -73,6 +73,9 @@ ENTRY(rfork_thread)
 	 * returns, then call __exit.
 	 */
 1:
+	/*movq	$0, %rax
+	cmpq	$0, %rax
+	jz	1b*/
 	movq	%rsi, %rsp
 	movq	%r12, %rdi 
 	call	*%rbx
