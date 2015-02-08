@@ -65,30 +65,11 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
     flags &= PAL_THREAD_MASK;
 	
     printf("",param);//Just to stop the compiler from optimizing out param!!
-    //int tid = 0;
-    //int ret = INLINE_SYSCALL(fork,0);
     int ret = rfork_thread(
-		    RFPROC|RFSIGSHARE|RFMEM, 
+		    RFPROC|RFSIGSHARE|RFMEM|RFTHREAD, 
 		    child_stack, 
 		    callback, 
 		    (void *)param);
-    //int ret = INLINE_SYSCALL(rfork,1, RFPROC|RFFDG|RFSIGSHARE|RFNOWAIT);
-    /*if(ret == 0)
-    {
-	int r = ((int (*) (const void *))callback) (param);
-	_DkThreadExit(r);
-
-    }
-    tid = ret;
-	*/
-    /*Clone does not exist in BSD, need to change to Pthread if we want this facility
-    int ret = __clone(callback, child_stack,
-                      CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SYSVSEM|
-                      CLONE_THREAD|CLONE_SIGHAND|CLONE_PTRACE|
-                      CLONE_PARENT_SETTID|flags,
-                      param, &tid, NULL);
-
-    */
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
     
@@ -113,9 +94,6 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
    area. */
 void * _DkThreadPrivate (void * addr)
 {
-    //No arch_set_fs etc in BSD, Linux specific only.
-    // return NULL;
-    
     int ret = 0;
 
     if ((void *) addr == 0) {

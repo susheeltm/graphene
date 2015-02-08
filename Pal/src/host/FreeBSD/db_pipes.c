@@ -534,7 +534,6 @@ static int pipe_attrquerybyhdl (PAL_HANDLE handle, PAL_STREAM_ATTR * attr)
         return -PAL_ERROR_BADHANDLE;
 
     memset(attr, 0, sizeof(PAL_STREAM_ATTR));
-
     ret = INLINE_SYSCALL(ioctl, 3, handle->__in.fds[0], FIONREAD, &val);
     if (!IS_ERR(ret))
         attr->size = val;

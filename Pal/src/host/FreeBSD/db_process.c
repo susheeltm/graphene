@@ -51,7 +51,7 @@ typedef __kernel_pid_t pid_t;
 #ifndef SEEK_SET
 # define SEEK_SET 0
 #endif
-
+//#define LOOPINF
 int _DkProcessCreate (PAL_HANDLE * handle, const char * uri,
                       int flags, const char ** args)
 {
@@ -158,14 +158,17 @@ int _DkProcessCreate (PAL_HANDLE * handle, const char * uri,
         write_arg("mcast=%u;", pal_sec_info.mcast_port);
 
     ret = ARCH_VFORK();
-
+ 
     if (IS_ERR(ret)) {
         ret = -PAL_ERROR_DENIED;
 	goto out;
     }
+
     if (!ret) {
-	//asm volatile("1:\n\tmovq $0, %rax\n\tcmpq $0, %rax\n\tjz 1b"); 
-	for (int i = 0 ; i < 3 ; i++)
+#ifdef LOOPINF
+    	    asm volatile("1:\n\tmovq $0, %rax\n\tcmpq $0, %rax\n\tjz 1b"); 
+#endif
+        for (int i = 0 ; i < 3 ; i++)
             INLINE_SYSCALL(close, 1, proc_fds[1][i]);
 
         if (manifest_fd >= 0)

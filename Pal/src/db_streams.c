@@ -264,7 +264,6 @@ if (UNKNOWN_HANDLE(handle))
         return -PAL_ERROR_ZEROSIZE;
 
     int ret;
-    // pal_printf("Raj--> %d",handle->file.fd);
     if (addr) {
         if (!ops->readbyaddr)
             return -PAL_ERROR_NOTSUPPORT;
@@ -291,7 +290,6 @@ DkStreamRead (PAL_HANDLE handle, PAL_NUM offset, PAL_NUM count,
         notify_failure (PAL_ERROR_INVAL);
         return 0;
     }
-
     int ret = _DkStreamRead(handle, offset, count, buffer,
                             size ? (char *) source : NULL,
                             source ? size : 0);
@@ -690,7 +688,6 @@ PAL_BOL DkSendHandle(PAL_HANDLE handle, PAL_HANDLE cargo)
 
     // Call the internal function after validating input args
     int ret = _DkSendHandle(handle, cargo);
-
     if (ret < 0) {
         notify_failure(-ret);
         return PAL_FALSE;
@@ -727,7 +724,6 @@ PAL_HANDLE DkReceiveHandle (PAL_HANDLE handle)
 
     // call the internal function after validating input args
     int ret = _DkReceiveHandle(handle, &cargo);
-
     // notify failure would have been called from other functions
     if(ret < 0) {
        return NULL;

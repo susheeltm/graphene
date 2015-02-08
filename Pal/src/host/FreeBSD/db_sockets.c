@@ -375,8 +375,7 @@ failed:
 /* accept a tcp connection */
 static int tcp_accept (PAL_HANDLE handle, PAL_HANDLE * client)
 {
-    printf("So it's TCP.");
-	if (!IS_HANDLE_TYPE(handle, tcpsrv) ||
+    if (!IS_HANDLE_TYPE(handle, tcpsrv) ||
         !handle->sock.bind || handle->sock.conn)
         return -PAL_ERROR_NOTSERVER;
 

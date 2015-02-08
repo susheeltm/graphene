@@ -94,7 +94,6 @@ static void read_envs (const char ** envp)
      * variables */
     int nenvs = get_config_entries(pal_config.root_config, "loader.env", cfgbuf,
                                    CONFIG_MAX);
-    printf("config -- %s",cfgbuf);
 
     if (nenvs > 0) {
         struct env { const char * str; int len, idx; } * envs
@@ -186,27 +185,20 @@ static void * find_heap_base (void)
 #endif
     unsigned long base = allocsize;
     void * addr = (void *) heap_base;
-    printf("\n\n-- Debugging -- Heap base: %016x pal_size: %x base: %x alloc_mask: %x Address: %p\n\n",heap_base, pal_size, base, allocmask, addr);
     
     while ((base >> 12) < pal_size){
         base <<= 1;
-	// printf("\n Base: %x Base >> 2: %x pal_size: %x\n",base, base>>12, pal_size);
     }	
-    printf("\n\n -- Raj -testing \n\n");
     while ((base << 6) < heap_base)
         base <<= 1;
-    printf("\n\n -- Raj -testing \n\n");
     heap_base &= allocmask;
     while ((heap_base -= base) > base) {
         void * heap = (void *) heap_base;
-        // printf("\n\n == Returning Heap Value: %p \n\n",heap);
         if (!_DkVirtualMemoryAlloc(&heap, allocsize, PAL_ALLOC_RESERVE,
                                    PAL_PROT_NONE)){
-            // printf("\n\n == Returning Heap Value: %p \n\n",heap);
             return heap;
 	}
     }
-    printf("\n\n == Returning Null \n\n");
     return NULL;
 }
 
@@ -249,7 +241,6 @@ void pal_main (int argc, const char ** argv, const char ** envp)
      */
     if (_DkInitHost(&argc, &argv) < 0)
         leave;
-    //printf("Arguments: db_main : %s\n",argv);
     __pal_control.manifest_handle = pal_config.manifest_handle;
     __pal_control.executable = pal_config.exec;
 

@@ -189,12 +189,10 @@ int _DkSendHandle (PAL_HANDLE hdl, PAL_HANDLE cargo)
     hdl_hdr.type = __PAL_GET_TYPE(cargo);
     hdl_hdr.body_size = msg_len[0] + msg_len[1];
     hdl_hdr.nfds = msg_nfds;
-
     // Declare variables required for sending the message
     struct msghdr hdr; // message header
     struct cmsghdr * chdr; //control message header
     struct iovec iov[3]; // IO Vector
-
     iov[0].iov_base = &hdl_hdr;
     iov[0].iov_len = sizeof(struct hdl_header);
     hdr.msg_name = NULL;
@@ -206,7 +204,6 @@ int _DkSendHandle (PAL_HANDLE hdl, PAL_HANDLE cargo)
     hdr.msg_flags = 0;
 
     int ret = INLINE_SYSCALL(sendmsg, 3, ch, &hdr, MSG_NOSIGNAL);
-
     // Unlock is error
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
@@ -218,8 +215,8 @@ int _DkSendHandle (PAL_HANDLE hdl, PAL_HANDLE cargo)
 
     // Control message buffer with added space for 2 fds (ie. max size
     // that it will have)
-    char cbuf[sizeof(struct cmsghdr) + 2 * sizeof(int)];
-
+    char cbuf[CMSG_SPACE(2 * sizeof(int))];
+    memset(cbuf, 0, sizeof(cbuf));
     // Initialize iovec[0] with struct PAL_HANDLE
     iov[0].iov_base = cargo;
     iov[0].iov_len = sizeof(union pal_handle);
@@ -236,7 +233,6 @@ int _DkSendHandle (PAL_HANDLE hdl, PAL_HANDLE cargo)
     hdr.msg_iovlen = msg_len[0] ? (msg_len[1] ? 3 : 2) : 1;
     hdr.msg_control = cbuf; // Control Message Buffer
     hdr.msg_controllen = sizeof(struct cmsghdr) + sizeof(int) * msg_nfds;
-
     // Fill control message infomation for the file descriptors
     // Check hdr.msg_controllen >= sizeof(struct cmsghdr) to point to
     // cbuf, which is redundant based on the above code as we have
@@ -246,17 +242,15 @@ int _DkSendHandle (PAL_HANDLE hdl, PAL_HANDLE cargo)
     chdr->cmsg_level = SOL_SOCKET; // Originating Protocol
     chdr->cmsg_type = SCM_RIGHTS; // Protocol Specific Type
     // Length of control message = sizeof(struct cmsghdr) + nfds
-    chdr->cmsg_len = CMSG_LEN(sizeof(int) * msg_nfds);
+    chdr->cmsg_len = CMSG_SPACE(sizeof(int) * msg_nfds);
 
     // Copy the fds below control header
     memcpy(CMSG_DATA(chdr), fds, sizeof(int) * msg_nfds);
 
     // Also, Update main header with control message length (duplicate)
     hdr.msg_controllen = chdr->cmsg_len;
-
     //  Send message
     ret = INLINE_SYSCALL(sendmsg, 3, ch, &hdr, 0);
-
     return IS_ERR(ret) ? -PAL_ERROR_DENIED : 0;
 }
 
@@ -289,7 +283,6 @@ int _DkReceiveHandle(PAL_HANDLE hdl, PAL_HANDLE cargo)
     hdr.msg_flags = 0;
 
     int ret = INLINE_SYSCALL(recvmsg, 3, ch, &hdr, 0);
-
     if (IS_ERR(ret) || ret < sizeof(struct hdl_header)) {
         if (!IS_ERR(ret))
             return -PAL_ERROR_TRYAGAIN;
@@ -303,10 +296,9 @@ int _DkReceiveHandle(PAL_HANDLE hdl, PAL_HANDLE cargo)
     void * msg_buf = msg_len ? malloc(msg_len) : NULL;
     // make in stack
     int * fds = __alloca(sizeof(int) * msg_nfds);
-
     // receive PAL_HANDLE contents in the body
-    char cbuf[sizeof(struct cmsghdr) + 2 * sizeof(int)];
-
+    char cbuf[CMSG_SPACE(2 * sizeof(int))];
+    memset(cbuf, 0, sizeof(cbuf));
     // initialize iovec[0] with struct PAL_HANDLE
     iov[0].iov_base = cargo;
     iov[0].iov_len = sizeof(union pal_handle);
@@ -317,16 +309,12 @@ int _DkReceiveHandle(PAL_HANDLE hdl, PAL_HANDLE cargo)
 
     // clear body memory
     memset(&hdr, 0, sizeof(struct msghdr));
-
     // set message header values
     hdr.msg_iov = iov;
     hdr.msg_iovlen = msg_len ? 2 : 1;
     hdr.msg_control = cbuf;
-    hdr.msg_controllen = sizeof(struct cmsghdr) + sizeof(int) *
-                         msg_nfds;
-
+    hdr.msg_controllen = sizeof(cbuf);
     ret = INLINE_SYSCALL(recvmsg, 3, ch, &hdr, 0);
-
     if (!IS_ERR(ret)) {
         struct cmsghdr * chdr = CMSG_FIRSTHDR(&hdr);
         if (chdr &&
@@ -338,11 +326,9 @@ int _DkReceiveHandle(PAL_HANDLE hdl, PAL_HANDLE cargo)
             msg_nfds = 0;
         }
     }
-
     // if error was returned
     if (IS_ERR(ret) && ERRNO(ret) != EINTR && ERRNO(ret) != ERESTART)
         return -ERRNO(ret);
-
     // recreate PAL_HANDLE based on type
     switch(hdl_hdr.type) {
         case pal_type_file: {
@@ -350,7 +336,7 @@ int _DkReceiveHandle(PAL_HANDLE hdl, PAL_HANDLE cargo)
                 return -PAL_ERROR_BADHANDLE;
             cargo->file.fd = fds[0];
             cargo->file.realpath = remalloc(msg_buf, msg_len);
-            break;
+	    break;
         }
         case pal_type_pipe:
         case pal_type_pipesrv:

@@ -48,7 +48,7 @@ static int _DkObjectWaitOne (PAL_HANDLE handle, int timeout)
     /* only for all these handle which has a file descriptor, or
        a eventfd. events and semaphores will skip this part */
     if (handle->__in.flags & HAS_FDS) {
-        /* struct timespec timeout_ts;
+        /*struct timespec timeout_ts;
 
         if (timeout >= 0) {
            long sec = (unsigned long) timeout / 1000000;
@@ -56,8 +56,8 @@ static int _DkObjectWaitOne (PAL_HANDLE handle, int timeout)
 
             timeout_ts.tv_sec = sec;
             timeout_ts.tv_nsec = microsec * 1000;
-         } */
-
+         } 
+*/
         struct pollfd fds[MAX_FDS];
         int off[MAX_FDS];
         int nfds = 0;
@@ -89,9 +89,9 @@ static int _DkObjectWaitOne (PAL_HANDLE handle, int timeout)
 	/*int ret = INLINE_SYSCALL(ppoll, 5, &fds, nfds,
                                  timeout >= 0 ? &timeout_ts : NULL,
                                  NULL, 0);*/
-	
-	int ret = INLINE_SYSCALL(poll, 3, &fds, nfds,timeout);
 
+	int ret = INLINE_SYSCALL(poll, 3, &fds, nfds,timeout);
+	
         if (IS_ERR(ret))
             switch (ERRNO(ret)) {
                 case EINTR:
