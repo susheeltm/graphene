@@ -535,9 +535,11 @@ static int pipe_attrquerybyhdl (PAL_HANDLE handle, PAL_STREAM_ATTR * attr)
 
     memset(attr, 0, sizeof(PAL_STREAM_ATTR));
     ret = INLINE_SYSCALL(ioctl, 3, handle->__in.fds[0], FIONREAD, &val);
+    /* ioctl FIONREAD not implemented for pipes*/
     if (!IS_ERR(ret))
         attr->size = val;
-
+    else
+	attr->size = 100;
     attr->disconnected = handle->__in.flags & ERROR(0);
     attr->readable = (attr->size > 0);
     attr->writeable = handle->__in.flags &

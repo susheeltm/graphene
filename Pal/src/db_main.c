@@ -184,7 +184,6 @@ static void * find_heap_base (void)
     //                          pal_config.lib_data_end;
 #endif
     unsigned long base = allocsize;
-    void * addr = (void *) heap_base;
     
     while ((base >> 12) < pal_size){
         base <<= 1;
