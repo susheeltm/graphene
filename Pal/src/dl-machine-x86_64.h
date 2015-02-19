@@ -104,7 +104,7 @@ elf_machine_rela (Elf64_Dyn **l_info, Elf64_Addr l_addr,
     Elf64_Addr value;
     Elf64_Addr sym_map = 0;
 
-    value = RESOLVE_MAP_IN_RTLD(sym);
+    value = RESOLVE_RTLD(strtab + sym->st_name);
 
     if (value) {
         /* We can't handle a IRELEATIVE symbol if it's found in RTLD,

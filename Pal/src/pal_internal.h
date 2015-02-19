@@ -35,9 +35,6 @@
 # error "pal_internal.h can only be included in PAL"
 #endif
 
-#define LIBRARY_NAME        "libpal.so"
-#define LIBRARY_NAMELEN     9
-
 /* handle_ops is the operators provided for each handler type. They are
    mostly used by Stream-related PAL calls, but can also be used by
    some others in special ways. */
@@ -287,7 +284,6 @@ extern struct pal_config {
     PAL_HANDLE      manifest_handle;
     PAL_HANDLE      exec_handle;
     struct config_store * root_config;
-    const char *    lib_name;
     const char **   environments;
     unsigned long   pagesize;
     unsigned long   alloc_align;
@@ -329,15 +325,8 @@ int _DkInitHost (int * pargc, const char *** pargv);
 
 #include <atomic.h>
 
-/* Initializer of Mutexes */
-#define MUTEX_HANDLE_INIT    { .value = { .counter = 1 } }
-#define INIT_MUTEX_HANDLE(mut)  \
-    do { atomic_set(&(mut)->value, 1); } while (0)
-
-/* Locking and unlocking of Mutexes */
-int _DkMutexLock (struct mutex_handle * mut);
-int _DkMutexLockTimeout (struct mutex_handle * mut, int timeout);
-int _DkMutexUnlock (struct mutex_handle * mut);
+int _DkInternalLock (PAL_LOCK * mut);
+int _DkInternalUnlock (PAL_LOCK * mut);
 
 /* Internal DK calls, in case any of the internal routines needs to use them */
 /* DkStream calls */
@@ -404,7 +393,7 @@ int _DkObjectsWaitAny (int count, PAL_HANDLE * handleArray, int timeout,
 
 /* DkException calls & structures */
 typedef void (*PAL_UPCALL) (PAL_PTR, PAL_NUM, PAL_CONTEXT *);
-int (*_DkExceptionHandlers[PAL_EVENT_NUM_BOUND + 1]) (int, PAL_UPCALL, int);
+int (*_DkExceptionHandlers[PAL_EVENT_NUM_BOUND]) (int, PAL_UPCALL, int);
 void _DkExceptionReturn (const void * event);
 
 /* other DK calls */
@@ -431,7 +420,7 @@ int unblock_signals (int * sigs, int nsig);
 void * find_address (void * addr);
 
 /* function and definition for loading binaries */
-enum object_type { OBJECT_RTLD, OBJECT_EXEC, OBJECT_PRELOAD };
+enum object_type { OBJECT_RTLD, OBJECT_EXEC, OBJECT_PRELOAD, OBJECT_EXTERNAL };
 
 int check_elf_object (PAL_HANDLE handle);
 int load_elf_object (const char * uri, enum object_type type);

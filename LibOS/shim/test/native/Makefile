@@ -5,7 +5,7 @@ NATIVE_TESTS_STATIC = static
 NATIVE_TESTS = $(filter-out $(NATIVE_TESTS_STATIC),$(patsubst %.c,%,$(wildcard *.c)))
 
 targets = $(NATIVE_TESTS) $(NATIVE_TESTS_CPP) $(NATIVE_TESTS_STATIC) \
-	  manifest static.manifest pal
+	  manifest static.manifest pal pal_sec
 rtarget = helloworld clone vfork fork exec vfork_exec errno dup time \
 	  helloworld.pthread udp tcp unix file dev
 clean-extra = clean-exec
@@ -46,4 +46,5 @@ $(NATIVE_TESTS_STATIC): %: %.c
 test-helloworld = grep -q "Hello world" OUTPUT
 
 clean-exec:
-	rm -rf manifest static.manifest libpal.so
+	find -type f -executable -exec rm {} \;
+	rm -rf manifest static.manifest pal pal_sec

@@ -8,61 +8,66 @@ LD	= ld
 
 CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -U_FORTIFY_SOURCE \
 	  -fno-omit-frame-pointer \
-	  -fno-stack-protector -fno-builtin \
-	  -fPIC\
-	  -I. -I../include -Ihost/$(OS) -I../lib -I../include/includeBSD 
-ifeq ($(OS),Linux)
-LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
-	  -T pal.lds  
-else
-LDFLAGS	= -shared -nostdlib --version-script pal.map -z combreloc -z defs \
-	  -T freebsd.lds #-e pal_start # -T pal.lds 
-	  # --verbose 
-endif
-ARFLAGS	= 
+	  -fno-stack-protector -fno-builtin
+LDFLAGS	= -shared -nostdlib -z combreloc -z defs
+ARFLAGS	=
 
-pal_target = libpal.a libpal.so
+pal_loader = libpal.so
+pal_sec =
+pal_lib = libpal.so
+pal_lib_deps =
+pal_lib_post =
+pal_static = libpal.a
 
 include host/$(OS)/Makefile.am
 
-defs	= -DIN_PAL
+CFLAGS	+= -I. -I../include -Ihost/$(OS) -I../lib
+
+pal_target = $(pal_lib) $(pal_lib_post) $(pal_static) $(pal_loader) $(pal_sec) pal pal_sec
+defs	= -DIN_PAL -DSRCDIR="$(PWD)/"
 objs	= $(addprefix db_,streams memory threading semaphore events process \
 	    object main misc ipc exception rtld) slab printf
 graphene_lib = ../lib/graphene-lib.a
 host_lib = host/$(OS)/libpal-$(OS).a
-headers	= $(wildcard *.h) $(wildcard ../lib/*.h)
+headers	= $(wildcard *.h) $(wildcard ../lib/*.h) host/$(OS)/pal_host.h
 
-ifeq ($(OS),Linux)
-all: $(pal_target) security
-else
-all: $(pal_target) 
-endif
+all: $(pal_target)
 
 debug: debug = debug
 debug: CC = gcc -g -gdwarf-2 -gstrict-dwarf
 debug: CFLAGS += -DDEBUG
-debug: $(pal_target) security
+debug: $(pal_target)
 
-.PHONY: security $(host_lib) $(graphene_lib)
+.PHONY: $(host_lib) $(graphene_lib)
 
 $(graphene_lib):
 	make -C ../lib $(debug)
 
 $(host_lib):
 	@[ ! -d host/$(OS) ] || make -C host/$(OS) $(debug)
-ifeq ($(OS),Linux)
-security:
+ifneq ($(pal_sec),)
+$(pal_sec):
 	@[ ! -d security/$(OS) ] || make -C security/$(OS) $(debug)
-endif 
 
-libpal.so: $(addsuffix .o,$(objs)) $(filter %.map %.lds,$(LDFLAGS)) \
-	   $(host_lib) $(graphene_lib)
-	@echo [ ld $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@  ]
-	@$(LD) $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) -soname=$@
+pal_sec: $(pal_sec)
+	ln -sf $(pal_sec) pal_sec
+endif
 
-libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
+$(pal_lib): $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib) $(pal_lib_deps)
 	@echo [ $@ ]
-	@$(AR) $(ARFLAGS) $@ $^
+	$(LD) $(LDFLAGS) -o $@ $(filter-out %.map %.lds,$^) $(LDFLAGS-suffix)
+
+pal: $(pal_loader)
+	ln -sf $(pal_loader) pal
+
+ifneq ($(pal_lib_post),)
+$(pal_lib_post): $(pal_lib)
+	make -C host/$(OS) ../../$@
+endif
+
+$(pal_static): $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
+	@echo [ $@ ]
+	$(AR) $(ARFLAGS) $@ $^ $(ARFLAGS-suffix)
 
 %.asm: %.c $(headers)
 	$(CC) $(CFLAGS) $(defs) -c $< -o $<.o
@@ -71,13 +76,13 @@ libpal.a: $(addsuffix .o,$(objs)) $(host_lib) $(graphene_lib)
 
 %.o: %.c $(headers)
 	@echo [ $@ ]
-	@$(CC) $(CFLAGS) $(defs) -c $< -o $@
+	@$(CC) $(CFLAGS) $(defs) -c $< -o $@ $(CFLAGS-suffix)
 
 %.e: %.c $(headers)
 	@echo [ $@ ]
-	@$(CC) $(CFLAGS) $(defs) -E $< -o $@
+	@$(CC) $(CFLAGS) $(defs) -E $< -o $@ $(CFLAGS-suffix)
 
 clean:
-	rm -f $(addsuffix .o,$(objs)) $(pal_target)
+	rm -rf $(addsuffix .o,$(objs)) $(pal_target)
 	@[ ! -d host/$(OS) ] || make -C host/$(OS) clean
 	@[ ! -d security/$(OS) ] || make -C security/$(OS) clean

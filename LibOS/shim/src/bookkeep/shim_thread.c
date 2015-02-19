@@ -231,6 +231,7 @@ struct shim_thread * get_new_thread (IDTYPE new_tid)
         thread->parent      = cur_thread;
         thread->stack       = cur_thread->stack;
         thread->stack_top   = cur_thread->stack_top;
+        thread->stack_red   = cur_thread->stack_red;
         thread->cwd         = cur_thread->cwd;
         thread->root        = cur_thread->root;
         thread->umask       = cur_thread->umask;
@@ -645,6 +646,7 @@ MIGRATE_FUNC_BODY(thread)
             new_thread->handle_map = NULL;
             new_thread->root   = NULL;
             new_thread->cwd    = NULL;
+            new_thread->robust_list = NULL;
 
             if (!recursive)
                 new_thread->tcb = NULL;
