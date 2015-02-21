@@ -539,7 +539,7 @@ static int pipe_attrquerybyhdl (PAL_HANDLE handle, PAL_STREAM_ATTR * attr)
     if (!IS_ERR(ret))
         attr->size = val;
     else
-	attr->size = 100;
+		attr->size = 100; //Find optimal value
     attr->disconnected = handle->__in.flags & ERROR(0);
     attr->readable = (attr->size > 0);
     attr->writeable = handle->__in.flags &

@@ -78,27 +78,21 @@ static int file_read (PAL_HANDLE handle, int offset, int count,
 {
     int fd = handle->file.fd;
     int ret;
-//    pal_printf("file_read: 1 Handle Offset: %d Offset from call: %d\n",handle->file.offset, offset);
     if (handle->file.offset != offset) {
         ret = INLINE_SYSCALL(lseek, 3, fd, offset, SEEK_SET);
 
-        // pal_printf("file_read: 1 Handle Offset: %d Offset from call: %d Return of seek: %d FD: %d Offset: %d\n",handle->file.offset, offset, ret, fd, offset);
         if (IS_ERR(ret))
             return -PAL_ERROR_DENIED;
 
         handle->file.offset = offset;
     }
 
-    // pal_printf("file_read: 2\n");
     ret = INLINE_SYSCALL(read, 3, fd, buffer, count);
 
-    // pal_printf("file_read: 3\n");
     if (IS_ERR(ret))
         return unix_to_pal_error(ERRNO(ret));
 
-    // pal_printf("file_read: 4\n");
     handle->file.offset = offset + ret;
-    // pal_printf("file_read: 5\n");
     return ret;
 }
 
@@ -400,7 +394,7 @@ int dir_read (PAL_HANDLE handle, int offset, int count, void * buf)
             break;
 
         int size = INLINE_SYSCALL(getdents, 3, handle->dir.fd, dent_buf,
-                                  DIRBUF_SIZE); //No getdents64 in BSD
+                                  DIRBUF_SIZE); 
 
         if (IS_ERR(size))
             return -PAL_ERROR_DENIED;

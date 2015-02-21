@@ -64,7 +64,6 @@ int _DkThreadCreate (PAL_HANDLE * handle, int (*callback) (void *),
 
     flags &= PAL_THREAD_MASK;
 	
-    printf("",param);//Just to stop the compiler from optimizing out param!!
     int ret = rfork_thread(
 		    RFPROC|RFSIGSHARE|RFMEM|RFTHREAD, 
 		    child_stack, 
@@ -183,7 +182,7 @@ int _DkThreadResume (PAL_HANDLE threadHandle)
 {
     int ret = INLINE_SYSCALL(thr_kill2, 3, pal_linux_config.pid,\
                              threadHandle->thread.tid, SIGCONT);//BSD specific syscall
-    //int ret = INLINE_SYSCALL(kill, 2, threadHandle->thread.tid, SIGCONT);
+    
     if (IS_ERR(ret))
         return -PAL_ERROR_DENIED;
 

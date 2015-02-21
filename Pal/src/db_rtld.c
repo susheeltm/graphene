@@ -604,15 +604,10 @@ int load_elf_object_by_handle (PAL_HANDLE handle, enum object_type type)
 #define ELFOSABI_FREEBSD	9	
 
     int maplength;
-    /*printf(" Raj -- %x %x -%x %x\n\n",ehdr->e_ident[EI_OSABI],ELFOSABI_LINUX,ELFOSABI_FREEBSD,__builtin_expect(
-			            memcmp(ehdr->e_ident, expected, EI_OSABI) != 0 || (
-					            ehdr->e_ident[EI_OSABI] != ELFOSABI_SYSV &&
-						            ehdr->e_ident[EI_OSABI] != ELFOSABI_FREEBSD), 0)); */
     /* See whether the ELF header is what we expect.  */
     if (__builtin_expect(
         memcmp(ehdr->e_ident, expected, EI_OSABI) != 0 || (
         ehdr->e_ident[EI_OSABI] != ELFOSABI_SYSV &&
-        // ehdr->e_ident[EI_OSABI] != ELFOSABI_FREEBSD), 0)) {
         ehdr->e_ident[EI_OSABI] != ELFOSABI_LINUX), 0)) {
         errstring = "ELF file with invalid header";
         goto verify_failed;

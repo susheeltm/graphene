@@ -219,7 +219,7 @@ LLL_STUB_UNWIND_INFO_END
 		      : "0" (SYS_futex), "D" (futex),			      \
 			"S" (__lll_private_flag (FUTEX_WAIT, private)),	      \
 			"d" (_val), "r" (__to)				      \
-		      : "memory", "cc", "r11", "cx", "bx");		      \
+		      : "memory", "cc", "r11", "cx");			      \
     __status;								      \
   })
 
@@ -234,7 +234,7 @@ LLL_STUB_UNWIND_INFO_END
 		      : "0" (SYS_futex), "D" (futex),			      \
 			"S" (__lll_private_flag (FUTEX_WAKE, private)),	      \
 			"d" (_nr)					      \
-		      : "memory", "cc", "r10", "r11", "cx", "bx");	      \
+		      : "memory", "cc", "r10", "r11", "cx");		      \
   } while (0)
 
 
@@ -537,7 +537,7 @@ LLL_STUB_UNWIND_INFO_END
 			: "D" (&(futex)), "i" (FUTEX_OWNER_DIED),	      \
 			  "S" (__lll_private_flag (FUTEX_WAKE, private)),     \
 			  "1" (__NR_futex), "d" (1)			      \
-			: "cx", "bx", "r11", "cc", "memory");		      \
+			: "cx", "r11", "cc", "memory");			      \
     }									      \
   while (0)
 
@@ -553,7 +553,7 @@ LLL_STUB_UNWIND_INFO_END
 			 "S" (__lll_private_flag (FUTEX_CMP_REQUEUE,	      \
 						  private)), "d" (nr_wake),   \
 			 "r" (__nr_move), "r" (__mutex), "r" (__val)	      \
-		       : "cx", "bx", "r11", "cc", "memory");		      \
+		       : "cx", "r11", "cc", "memory");			      \
      __res < 0; })
 
 #define lll_islocked(futex) \
@@ -579,7 +579,7 @@ LLL_STUB_UNWIND_INFO_END
 			: "=&a" (__ignore)				      \
 			: "S" (FUTEX_WAIT), "i" (SYS_futex), "D" (&tid),      \
 			  "d" (_tid)					      \
-			: "memory", "cc", "r10", "r11", "cx", "bx");	      \
+			: "memory", "cc", "r10", "r11", "cx");		      \
   } while (0)
 
 extern int __lll_timedwait_tid (int *tid, const struct timespec *abstime)

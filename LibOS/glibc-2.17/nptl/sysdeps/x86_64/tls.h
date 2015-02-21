@@ -141,7 +141,11 @@ typedef struct
   (((tcbhead_t *) (descr))->dtv)
 
 /* For Graphene */
-#define SYSCALLDB "movq syscalldb@GOTPCREL(%%rip), %%rbx\n\tcall %%rbx\n\t"
+#define SYSCALLDB							      \
+	"pushq %%rbx\n\t"						      \
+	"movq syscalldb@GOTPCREL(%%rip), %%rbx\n\t"			      \
+	"callq *%%rbx\n\t"						      \
+	"popq %%rbx\n\t"
 
 /* Code to initially initialize the thread pointer.  This might need
    special attention since 'errno' is not yet available and if the
@@ -164,7 +168,7 @@ typedef struct
 		   : "0" ((unsigned long int) __NR_arch_prctl),		      \
 		     "D" ((unsigned long int) ARCH_SET_FS),		      \
 		     "S" (_thrdescr)					      \
-		   : "memory", "cc", "r11", "cx", "bx");		      \
+		   : "memory", "cc", "r11", "cx");			      \
 									      \
     _result ? "cannot set %fs base address for thread-local storage" : 0;     \
   })

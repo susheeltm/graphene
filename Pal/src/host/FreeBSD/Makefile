@@ -11,12 +11,13 @@ CFLAGS	= -Wall -fPIC -O2 -std=gnu99 -fgnu89-inline -Wall -U_FORTIFY_SOURCE \
 	  -I../../../linux-3.5/graphene 
 ASFLAGS = -DPIC -DSHARED -fPIC -DASSEMBLER -Wa,--noexecstack \
 	  -x assembler-with-cpp \
-	  -I. -I../.. -I../../../include -I../../../include/includeBSD
+	  -I. -I../.. -I../../../include
 ARFLAGS	=
 
 host_target = libpal-FreeBSD.a
-
-defs	= -DIN_PAL -DGDB_SCRIPT="$(CURDIR)/pal-gdb.py"
+#Somehow, passing libpal.so doesn't work!
+defs	= -DIN_PAL -DPAL_LOADER_PATH="/root/G2/graphene/Pal/src/pal" \
+	  	  -DGDB_SCRIPT="$(CURDIR)/pal-gdb.py"
 objs	= $(addprefix db_,files devices pipes sockets streams memory threading \
 	    semaphore mutex events process object main rtld misc ipc \
 	    exception) manifest rfork_thread gettimeofday-x86_64

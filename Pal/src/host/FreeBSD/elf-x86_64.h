@@ -39,13 +39,6 @@ elf_machine_dynamic (Elf64_Addr mapbase)
 {
     Elf64_Addr addr;
     addr = (Elf64_Addr)&_DYNAMIC + mapbase;
-    // addr = (Elf64_Addr)&_DYNAMIC;
-    
-     /* This work because we have our GOT address available in the small PIC
-       model.  */
-    //extern const Elf64_Addr _GLOBAL_OFFSET_TABLE_[] attribute_hidden;
-    //return ((Elf64_Addr)_GLOBAL_OFFSET_TABLE_);
-    
     return addr;
 }
 
@@ -82,12 +75,5 @@ elf_machine_load_address (void** auxv)
 	   		break;}
     assert((void *)addr != NULL);
     
-    /*asm ("leaq " XSTRINGIFY(_ENTRY) "(%%rip), %0\n\t"
-	"subq %1, %0\n\t"
-         ".section\t.data.rel.ro\n"
-         "1:\t.quad " XSTRINGIFY(_ENTRY) "\n\t"
-         ".previous\n\t"
-         : "=r" (addr) :"r"(base) : "cc");
-	*/
     return addr;
 }

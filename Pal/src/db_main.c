@@ -172,17 +172,8 @@ static void * find_heap_base (void)
     unsigned long heap_base = (unsigned long) pal_config.lib_data_end 
                               + 0x800000000;
     //Had to reverse this just to cross it. Since we're not using the linking script, text, data sections are randomized. I guess we could put a check.
-#ifdef __linux__
     unsigned long pal_size = pal_config.lib_data_end -
                             pal_config.lib_text_start;
-#else
-    // heap_base = 0x80139e000;
-    // heap_base = 0x801245aa8;
-    // heap_base = 0x801245aa8;
-    unsigned long pal_size = pal_config.lib_data_end - pal_config.lib_text_start;
-    // unsigned long pal_size = pal_config.lib_text_start - 
-    //                          pal_config.lib_data_end;
-#endif
     unsigned long base = allocsize;
     
     while ((base >> 12) < pal_size){

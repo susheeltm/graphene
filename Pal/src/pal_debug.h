@@ -25,7 +25,7 @@
 
 #ifndef PAL_DEBUG_H
 #define PAL_DEBUG_H
-
+//#define __manual_debug__
 #include "pal.h"
 
 #ifdef IN_PAL
